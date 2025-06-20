@@ -65,7 +65,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">SPACES</div>
+              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">Swarattan store</div>
               <div className="text-xs text-gray-500 ml-2 font-medium hidden sm:block">FABRIC OF HAPPY HOMES</div>
             </Link>
           </div>

@@ -4,6 +4,20 @@ import Image from "next/image"
 import { Star, Filter, Grid, List } from "lucide-react"
 
 export default function MattressPage() {
+
+
+  const productImages = [
+    "/images/MattressSection/mt1.jpeg",
+    "/images/MattressSection/mt2.jpeg",
+    "/images/MattressSection/mt3.jpeg",
+    "/images/MattressSection/mt4.jpeg",
+    "/images/MattressSection/mt5.jpeg",
+    "/images/MattressSection/mt6.jpeg",
+    "/images/MattressSection/mt7.jpeg",
+    "/images/MattressSection/mt8.jpeg",
+   
+  ]
+
   const products = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
     name: `Premium Mattress ${i + 1}`,
@@ -11,7 +25,7 @@ export default function MattressPage() {
     originalPrice: 12999 + i * 1500,
     rating: 4.3 + Math.random() * 0.7,
     reviews: Math.floor(Math.random() * 150) + 30,
-    image: "/placeholder.svg?height=300&width=300",
+    image: productImages[i], // Set unique image from array
     sizes: ["Single", "Double", "Queen", "King"],
     firmness: ["Soft", "Medium", "Firm"],
   }))

@@ -4,6 +4,21 @@ import Image from "next/image"
 import { Star, Filter, Grid, List } from "lucide-react"
 
 export default function CurtainsPage() {
+
+
+  const productImages = [
+    "/images/CurtainSection/c1.jpeg",
+    "/images/CurtainSection/c2.jpeg",
+    "/images/CurtainSection/c3.jpeg",
+    "/images/CurtainSection/c4.jpeg",
+    "/images/CurtainSection/c5.jpeg",
+    "/images/CurtainSection/c6.jpeg",
+    "/images/CurtainSection/c7.jpeg",
+    "/images/CurtainSection/c8.jpeg",
+    "/images/CurtainSection/c9.jpeg",
+    "/images/CurtainSection/c10.jpeg",
+
+  ]
   const products = Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
     name: `Premium Curtain Set ${i + 1}`,
@@ -11,7 +26,7 @@ export default function CurtainsPage() {
     originalPrice: 2299 + i * 350,
     rating: 4.2 + Math.random() * 0.8,
     reviews: Math.floor(Math.random() * 100) + 35,
-    image: "/placeholder.svg?height=300&width=300",
+    image: productImages[i], // Set unique image from array
     sizes: ["Small (4x5)", "Medium (5x7)", "Large (7x9)", "Extra Large (9x12)"],
     types: ["Blackout", "Sheer", "Semi-Sheer", "Thermal"],
   }))

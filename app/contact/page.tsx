@@ -171,6 +171,23 @@ export default function ContactPage() {
         </div>
       </div>
 
+      {/* Embedded Google Map */}
+<div className="my-16">
+  <h3 className="text-2xl text-center font-medium text-gray-900 mb-4">Find Us on Map</h3>
+  <div className="w-full h-[420px] rounded-lg overflow-hidden border border-gray-200">
+    <iframe
+      title="Office Location"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13614.65198705127!2d75.5771681!3d31.3446159!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b9d4539be3b%3A0x45fda3b597ccf6b3!2sBasant%20Hills%2C%20Jalandhar%2C%20Punjab%20144009!5e0!3m2!1sen!2sin!4v1718897460901!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      // al lowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+
+
       <Footer />
     </div>
   )

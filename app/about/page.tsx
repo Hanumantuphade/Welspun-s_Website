@@ -52,7 +52,7 @@ export default function AboutPage() {
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-light text-gray-900 mb-4">About Spaces</h1>
+            <h1 className="text-4xl font-light text-gray-900 mb-4">About Swarattan</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Creating beautiful, comfortable homes with premium quality furnishings since 2010
             </p>
@@ -63,7 +63,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-light text-gray-900 mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Spaces began with a simple vision: to make premium home furnishings accessible to every Indian home.
+                Swarattan store began with a simple vision: to make premium home furnishings accessible to every Indian home.
                   What started as a small family business has grown into one of India's most trusted home decor brands.
                 </p>
                 <p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image src="/placeholder.svg?height=400&width=600" alt="Spaces showroom" fill className="object-cover" />
+              <Image src="/About.jpeg" alt="Spaces showroom" fill className="object-cover" />
             </div>
           </div>
         </div>

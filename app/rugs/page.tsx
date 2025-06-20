@@ -4,6 +4,25 @@ import Image from "next/image"
 import { Star, Filter, Grid, List } from "lucide-react"
 
 export default function RugsPage() {
+
+  const productImages = [
+    "/images/rugsSection/rg1.jpeg",
+    "/images/rugsSection/rg2.jpeg",
+    "/images/rugsSection/rg3.jpeg",
+    "/images/rugsSection/rg4.jpeg",
+    "/images/rugsSection/rg5.jpeg",
+    "/images/rugsSection/rg6.jpeg",
+    "/images/rugsSection/rg7.jpeg",
+    "/images/rugsSection/rg8.jpeg",
+    "/images/rugsSection/rg9.jpeg",
+    "/images/rugsSection/rg10.jpeg",
+    "/images/rugsSection/rg11.jpeg",
+    "/images/rugsSection/rg12.jpeg",
+    "/images/rugsSection/rg13.jpeg",
+    "/images/rugsSection/rg14.jpeg",
+    "/images/rugsSection/rg15.jpeg",
+  ]
+
   const products = Array.from({ length: 15 }, (_, i) => ({
     id: i + 1,
     name: `Designer Rug ${i + 1}`,
@@ -11,7 +30,7 @@ export default function RugsPage() {
     originalPrice: 1899 + i * 300,
     rating: 4.0 + Math.random() * 1.0,
     reviews: Math.floor(Math.random() * 120) + 25,
-    image: "/placeholder.svg?height=300&width=300",
+    image: productImages[i], // Set unique image from array
     sizes: ["Small (3x5)", "Medium (5x7)", "Large (8x10)", "Extra Large (9x12)"],
     patterns: ["Geometric", "Floral", "Abstract", "Traditional"],
   }))
