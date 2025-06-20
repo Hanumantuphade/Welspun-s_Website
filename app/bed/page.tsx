@@ -4,14 +4,32 @@ import Image from "next/image"
 import { Star, Filter, Grid, List } from "lucide-react"
 
 export default function BedPage() {
+
+  const productImages = [
+    "/images/bedSection/bed1.jpeg",
+    "/images/bedSection/bed2.jpeg",
+    "/images/bedSection/bed3.jpeg",
+    "/images/bedSection/bed4.jpeg",
+    "/images/bedSection/bed5.jpeg",
+    "/images/bedSection/bed6.jpeg",
+    "/images/bedSection/bed7.jpeg",
+    "/images/bedSection/bed8.jpeg",
+    "/images/bedSection/bed9.jpeg",
+    "/images/bedSection/bed10.jpeg",
+    "/images/bedSection/bed11.jpeg",
+    "/images/bedSection/bed12.jpeg",
+  ]
+
+
+
   const products = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
-    name: `Premium Bed Sheet Set ${i + 1}`,
+    name: `Premium Bed Sheet Set `,
     price: 1999 + i * 200,
     originalPrice: 2999 + i * 300,
     rating: 4.2 + Math.random() * 0.8,
     reviews: Math.floor(Math.random() * 200) + 50,
-    image: "/placeholder.svg?height=300&width=300",
+    image: productImages[i], // Set unique image from array
     colors: ["White", "Blue", "Gray"],
     sizes: ["Single", "Double", "Queen", "King"],
   }))
