@@ -4,6 +4,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react"
 
 export default function ContactPage() {
   return (
+    <>
+
+    
     <div className="min-h-screen bg-white">
       <div className="bg-amber-900 text-white text-center py-2 text-sm font-medium">
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
@@ -190,5 +193,6 @@ export default function ContactPage() {
 
       <Footer />
     </div>
+    </>
   )
 }
