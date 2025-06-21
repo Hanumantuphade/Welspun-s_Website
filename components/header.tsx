@@ -1,40 +1,22 @@
-"use client"
-
-import Link from "next/link"
-import { Search, Heart, User, ShoppingCart, Menu, X } from "lucide-react"
-import { useState, useEffect } from "react"
-import NavigationDropdown from "./navigation-dropdown"
-import SearchOverlay from "./search-overlay"
-import LoginPopup from "./login-popup"
-import CartDropdown from "./cart-dropdown"
+"use client";
+import { useCart } from "@/app/context/CartContext";
+import Link from "next/link";
+import { Search, Heart, User, ShoppingCart, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import NavigationDropdown from "./navigation-dropdown";
+import SearchOverlay from "./search-overlay";
+import LoginPopup from "./login-popup";
+import CartDropdown from "./cart-dropdown";
+import { Product } from "@/types";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const [isCartOpen, setIsCartOpen] = useState(false)
+  const { cartItems } = useCart();
 
-  // Sample cart items - in real app this would come from context/state management
-  const cartItems = [
-    {
-      id: 1,
-      name: "Premium Cotton Bed Sheet Set",
-      price: 1999,
-      quantity: 1,
-      image: "/placeholder.svg?height=64&width=64",
-      size: "Double",
-      color: "White",
-    },
-    {
-      id: 2,
-      name: "Luxury Towel Set",
-      price: 899,
-      quantity: 2,
-      image: "/placeholder.svg?height=64&width=64",
-      color: "Blue",
-    },
-  ]
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const navItems = [
     { name: "Bath", href: "/bath" },
@@ -44,7 +26,7 @@ export default function Header() {
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   const bedDropdownItems = [
     { name: "Bed Sheets", href: "/bed/sheets" },
@@ -52,11 +34,11 @@ export default function Header() {
     { name: "Duvet Covers", href: "/bed/duvet-covers" },
     { name: "Pillows", href: "/bed/pillows" },
     { name: "Mattress Protectors", href: "/bed/mattress-protectors" },
-  ]
+  ];
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -65,8 +47,12 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">Swarattan store</div>
-              <div className="text-xs text-gray-500 ml-2 font-medium hidden sm:block">FABRIC OF HAPPY HOMES</div>
+              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">
+                Swarattan store
+              </div>
+              <div className="text-xs text-gray-500 ml-2 font-medium hidden sm:block">
+                FABRIC OF HAPPY HOMES
+              </div>
             </Link>
           </div>
 
@@ -115,10 +101,15 @@ export default function Header() {
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="absolute -top-2 -right-2 bg-amber-900 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
-                  {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+                  {cartItems?.reduce((sum, item) => sum + item.quantity, 0) ||
+                    0}
                 </span>
               </button>
-              <CartDropdown isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} items={cartItems} />
+              <CartDropdown
+                isOpen={isCartOpen}
+                onClose={() => setIsCartOpen(false)}
+                items={cartItems}
+              />
             </div>
 
             {/* Mobile menu button */}
@@ -127,7 +118,11 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -156,9 +151,15 @@ export default function Header() {
             </nav>
           </div>
         )}
-        <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-        <LoginPopup isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+        <SearchOverlay
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
+        <LoginPopup
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
       </div>
     </header>
-  )
+  );
 }

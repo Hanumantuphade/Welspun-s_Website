@@ -1,9 +1,14 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Image from "next/image"
-import { Star, Filter, Grid, List } from "lucide-react"
+"use client";
+import { Product } from "@/types";
+import { useEffect, useState } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import { Star, Filter, Grid, List } from "lucide-react";
+import { useCart } from "@/app/context/CartContext";
 
 export default function BedPage() {
+  const { addToCart } = useCart();
 
   const productImages = [
     "/images/bedSection/bed1.jpeg",
@@ -18,21 +23,30 @@ export default function BedPage() {
     "/images/bedSection/bed10.jpeg",
     "/images/bedSection/bed11.jpeg",
     "/images/bedSection/bed12.jpeg",
-  ]
+  ];
 
+  const [products, setProducts] = useState<Product[]>([]);
 
+  useEffect(() => {
+    const generatedProducts = Array.from({ length: 12 }, (_, i) => ({
+      id: i + 1,
+      name: "Premium Bed Sheet Set",
+      price: 1999 + i * 200,
+      originalPrice: 2999 + i * 300,
+      rating: +(4 + Math.random()).toFixed(1),
+      reviews: Math.floor(Math.random() * 200) + 50,
+      image: productImages[i],
+      colors: ["White", "Blue", "Gray"],
+      sizes: ["Single", "Double", "Queen", "King"],
+    }));
+    setProducts(generatedProducts);
+  }, []);
 
-  const products = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    name: `Premium Bed Sheet Set `,
-    price: 1999 + i * 200,
-    originalPrice: 2999 + i * 300,
-    rating: 4.2 + Math.random() * 0.8,
-    reviews: Math.floor(Math.random() * 200) + 50,
-    image: productImages[i], // Set unique image from array
-    colors: ["White", "Blue", "Gray"],
-    sizes: ["Single", "Double", "Queen", "King"],
-  }))
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-20 text-gray-600">Loading products...</div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -44,88 +58,79 @@ export default function BedPage() {
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-sm">
-            <span className="text-gray-500">Home</span>
-            <span className="mx-2 text-gray-400">/</span>
+        <div className="max-w-7xl mx-auto px-4">
+          <nav className="text-sm text-gray-500">
+            Home <span className="mx-2 text-gray-400">/</span>
             <span className="text-amber-900 font-medium">Bed</span>
           </nav>
         </div>
       </div>
 
-      {/* Page Header */}
-      <div className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">Bed Collection</h1>
-          <p className="text-gray-600">Premium bedding essentials for your comfort</p>
+      {/* Page Heading */}
+      <div className="py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-3xl font-light text-gray-900 mb-2">
+            Bed Collection
+          </h1>
+          <p className="text-gray-600">
+            Premium bedding essentials for your comfort
+          </p>
         </div>
       </div>
 
-      {/* Filters and Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
+          <div className="lg:w-64">
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
+                <Filter className="h-4 w-4 mr-2" /> Filters
               </h3>
 
-              {/* Price Range */}
+              {/* Price Filter */}
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  <label className="flex items-center">
+                {[
+                  "Under ₹1000",
+                  "₹1000 - ₹2000",
+                  "₹2000 - ₹3000",
+                  "Above ₹3000",
+                ].map((range, i) => (
+                  <label key={i} className="flex items-center mb-2">
                     <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Under ₹1000</span>
+                    <span className="text-sm">{range}</span>
                   </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹1000 - ₹2000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹2000 - ₹3000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Above ₹3000</span>
-                  </label>
-                </div>
+                ))}
               </div>
 
-              {/* Size */}
+              {/* Size Filter */}
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Size</h4>
-                <div className="space-y-2">
-                  {["Single", "Double", "Queen", "King"].map((size) => (
-                    <label key={size} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{size}</span>
-                    </label>
-                  ))}
-                </div>
+                {["Single", "Double", "Queen", "King"].map((size) => (
+                  <label key={size} className="flex items-center mb-2">
+                    <input type="checkbox" className="mr-2" />
+                    <span className="text-sm">{size}</span>
+                  </label>
+                ))}
               </div>
 
-              {/* Color */}
-              <div className="mb-6">
+              {/* Color Filter */}
+              <div>
                 <h4 className="font-medium mb-3">Color</h4>
-                <div className="space-y-2">
-                  {["White", "Blue", "Gray", "Beige", "Pink"].map((color) => (
-                    <label key={color} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{color}</span>
-                    </label>
-                  ))}
-                </div>
+                {["White", "Blue", "Gray", "Beige", "Pink"].map((color) => (
+                  <label key={color} className="flex items-center mb-2">
+                    <input type="checkbox" className="mr-2" />
+                    <span className="text-sm">{color}</span>
+                  </label>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Products Grid */}
+          {/* Product Grid */}
           <div className="flex-1">
-            {/* Sort and View Options */}
+            {/* Sort Options */}
             <div className="flex justify-between items-center mb-6">
               <p className="text-gray-600">{products.length} products found</p>
               <div className="flex items-center space-x-4">
@@ -136,7 +141,7 @@ export default function BedPage() {
                   <option>Customer Rating</option>
                   <option>Newest First</option>
                 </select>
-                <div className="flex border border-gray-300 rounded-md">
+                <div className="flex border border-gray-300 rounded-md overflow-hidden">
                   <button className="p-2 bg-amber-900 text-white">
                     <Grid className="h-4 w-4" />
                   </button>
@@ -147,59 +152,71 @@ export default function BedPage() {
               </div>
             </div>
 
-            {/* Products Grid */}
+            {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
+              {products.map((product: Product) => (
                 <div key={product.id} className="group cursor-pointer">
-                  <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
-                    <div className="aspect-square relative">
-                      <Image
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
+                  <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800"
+                        onClick={() =>
+                          addToCart({
+                            ...product,
+                            size: product.sizes[0],
+                            color: product.colors[0],
+                            quantity: 1,
+                          })
+                        }
+                      >
                         Add to Cart
                       </button>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-                      {product.name}
-                    </h3>
+                  <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                    {product.name}
+                  </h3>
 
-                    <div className="flex items-center space-x-1">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-600">({product.reviews})</span>
-                    </div>
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < Math.floor(product.rating)
+                            ? "text-yellow-400 fill-current"
+                            : "text-gray-300"
+                        }`}
+                      />
+                    ))}
+                    <span className="text-sm text-gray-600">
+                      ({product.reviews})
+                    </span>
+                  </div>
 
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">₹{product.price}</span>
-                      <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
-                    </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-lg font-semibold text-gray-900">
+                      ₹{product.price}
+                    </span>
+                    <span className="text-sm text-gray-500 line-through">
+                      ₹{product.originalPrice}
+                    </span>
+                  </div>
 
-                    <div className="flex space-x-1">
-                      {product.colors.slice(0, 3).map((color) => (
-                        <div
-                          key={color}
-                          className="w-4 h-4 rounded-full border border-gray-300"
-                          style={{ backgroundColor: color.toLowerCase() }}
-                        />
-                      ))}
-                    </div>
+                  <div className="flex space-x-1">
+                    {product.colors.map((color: string) => (
+                      <div
+                        key={color}
+                        className="w-4 h-4 rounded-full border"
+                        style={{ backgroundColor: color.toLowerCase() }}
+                      ></div>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -208,17 +225,19 @@ export default function BedPage() {
             {/* Pagination */}
             <div className="flex justify-center mt-12">
               <div className="flex space-x-2">
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
+                <button className="px-3 py-2 border rounded-md text-gray-600 hover:bg-gray-50">
                   Previous
                 </button>
-                <button className="px-3 py-2 bg-amber-900 text-white rounded-md">1</button>
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
+                <button className="px-3 py-2 bg-amber-900 text-white rounded-md">
+                  1
+                </button>
+                <button className="px-3 py-2 border rounded-md text-gray-600 hover:bg-gray-50">
                   2
                 </button>
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
+                <button className="px-3 py-2 border rounded-md text-gray-600 hover:bg-gray-50">
                   3
                 </button>
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
+                <button className="px-3 py-2 border rounded-md text-gray-600 hover:bg-gray-50">
                   Next
                 </button>
               </div>
@@ -229,5 +248,5 @@ export default function BedPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
