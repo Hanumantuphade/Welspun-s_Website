@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">SPACES</div>
+              <div className="bg-red-600 text-white px-3 py-1 text-sm font-bold tracking-wide">Swarattan store</div>
               <div className="text-xs text-gray-400 ml-2 font-medium">FABRIC OF HAPPY HOMES</div>
             </div>
             <p className="text-gray-300 mb-6 text-sm leading-relaxed">
