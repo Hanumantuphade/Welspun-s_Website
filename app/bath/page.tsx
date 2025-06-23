@@ -6,21 +6,19 @@ import { Star, Filter, Grid, List } from "lucide-react"
 export default function BathPage() {
 
   const productImages = [
-    "/images/bathSection/bt1.jpeg",
-    "/images/bathSection/bt2.jpeg",
-    "/images/bathSection/bt3.jpeg",
-    "/images/bathSection/bt4.jpeg",
-    "/images/bathSection/bt5.jpeg",
-    "/images/bathSection/bt6.jpeg",
-    "/images/bathSection/bt7.jpeg",
-    "/images/bathSection/bt8.jpeg",
-    "/images/bathSection/bt9.jpeg",
-    "/images/bathSection/bt10.jpeg",
-    "/images/bathSection/bt11.jpeg",
-    "/images/bathSection/bt12.jpeg",
+    "/images/bathSection/BT1.png",
+    "/images/bathSection/BT2.png",
+    "/images/bathSection/BT3.png",
+    "/images/bathSection/BT4.png",
+    "/images/bathSection/BT5.png",
+    "/images/bathSection/BT6.png",
+    "/images/bathSection/BT7.png",
+    "/images/bathSection/B8.jpeg",
+    "/images/bathSection/BT8.jpg",
+    
   ]
 
-  const products = Array.from({ length: 12 }, (_, i) => ({
+  const products = Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     name: `Premium Bath Towel Set ${i + 1}`,
     price: 899 + i * 150,

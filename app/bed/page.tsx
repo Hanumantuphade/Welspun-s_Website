@@ -11,18 +11,18 @@ export default function BedPage() {
   const { addToCart } = useCart();
 
   const productImages = [
-    "/images/bedSection/bed1.jpeg",
-    "/images/bedSection/bed2.jpeg",
-    "/images/bedSection/bed3.jpeg",
-    "/images/bedSection/bed4.jpeg",
-    "/images/bedSection/bed5.jpeg",
-    "/images/bedSection/bed6.jpeg",
-    "/images/bedSection/bed7.jpeg",
-    "/images/bedSection/bed8.jpeg",
-    "/images/bedSection/bed9.jpeg",
-    "/images/bedSection/bed10.jpeg",
-    "/images/bedSection/bed11.jpeg",
-    "/images/bedSection/bed12.jpeg",
+    "/images/bedSection/b1.png",
+    "/images/bedSection/b2.png",
+    "/images/bedSection/b3.png",
+    "/images/bedSection/b4.png",
+    "/images/bedSection/b5.png",
+    "/images/bedSection/b6.jpeg",
+    "/images/bedSection/b7.png",
+    "/images/bedSection/b8.png",
+    "/images/bedSection/b9.png",
+    "/images/bedSection/b10.png",
+    "/images/bedSection/b11.png",
+    "/images/bedSection/b12.png",
   ];
 
   const [products, setProducts] = useState<Product[]>([]);

@@ -7,18 +7,16 @@ export default function MattressPage() {
 
 
   const productImages = [
-    "/images/MattressSection/mt1.jpeg",
-    "/images/MattressSection/mt2.jpeg",
-    "/images/MattressSection/mt3.jpeg",
-    "/images/MattressSection/mt4.jpeg",
-    "/images/MattressSection/mt5.jpeg",
-    "/images/MattressSection/mt6.jpeg",
-    "/images/MattressSection/mt7.jpeg",
-    "/images/MattressSection/mt8.jpeg",
+    "/images/MattressSection/M1.png",
+    "/images/MattressSection/M2.png",
+    "/images/MattressSection/M3.png",
+    "/images/MattressSection/M4.png",
+    "/images/MattressSection/M5.png",
+    "/images/MattressSection/M6.png",
    
   ]
 
-  const products = Array.from({ length: 8 }, (_, i) => ({
+  const products = Array.from({ length: 6 }, (_, i) => ({
     id: i + 1,
     name: `Premium Mattress ${i + 1}`,
     price: 8999 + i * 1000,
