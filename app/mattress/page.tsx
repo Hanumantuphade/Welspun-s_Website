@@ -198,18 +198,7 @@ export default function MattressPage() {
               ))}
             </div>
 
-            {/* Pagination */}
-            <div className="flex justify-center mt-12">
-              <div className="flex space-x-2">
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
-                  Previous
-                </button>
-                <button className="px-3 py-2 bg-amber-900 text-white rounded-md">1</button>
-                <button className="px-3 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">
-                  Next
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
