@@ -6,24 +6,21 @@ import { Star, Filter, Grid, List } from "lucide-react"
 export default function RugsPage() {
 
   const productImages = [
-    "/images/rugsSection/rg1.jpeg",
-    "/images/rugsSection/rg2.jpeg",
-    "/images/rugsSection/rg3.jpeg",
-    "/images/rugsSection/rg4.jpeg",
-    "/images/rugsSection/rg5.jpeg",
-    "/images/rugsSection/rg6.jpeg",
-    "/images/rugsSection/rg7.jpeg",
-    "/images/rugsSection/rg8.jpeg",
-    "/images/rugsSection/rg9.jpeg",
-    "/images/rugsSection/rg10.jpeg",
-    "/images/rugsSection/rg11.jpeg",
-    "/images/rugsSection/rg12.jpeg",
-    "/images/rugsSection/rg13.jpeg",
-    "/images/rugsSection/rg14.jpeg",
-    "/images/rugsSection/rg15.jpeg",
+    "/images/rugsSection/R1.png",
+    "/images/rugsSection/R2.png",
+    "/images/rugsSection/R3.png",
+    "/images/rugsSection/R4.png",
+    "/images/rugsSection/R5.png",
+    "/images/rugsSection/R6.png",
+    "/images/rugsSection/R7.png",
+    "/images/rugsSection/R8.png",
+    "/images/rugsSection/R9.png",
+    "/images/rugsSection/R10.png",
+    "/images/rugsSection/R11.png",
+    "/images/rugsSection/R12.png",
   ]
 
-  const products = Array.from({ length: 15 }, (_, i) => ({
+  const products = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
     name: `Designer Rug ${i + 1}`,
     price: 1299 + i * 200,

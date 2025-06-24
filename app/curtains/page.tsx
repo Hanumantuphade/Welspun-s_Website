@@ -7,19 +7,18 @@ export default function CurtainsPage() {
 
 
   const productImages = [
-    "/images/CurtainSection/c1.jpeg",
-    "/images/CurtainSection/c2.jpeg",
-    "/images/CurtainSection/c3.jpeg",
-    "/images/CurtainSection/c4.jpeg",
-    "/images/CurtainSection/c5.jpeg",
-    "/images/CurtainSection/c6.jpeg",
-    "/images/CurtainSection/c7.jpeg",
-    "/images/CurtainSection/c8.jpeg",
-    "/images/CurtainSection/c9.jpeg",
-    "/images/CurtainSection/c10.jpeg",
+    "/images/CurtainSection/C1.png",
+    "/images/CurtainSection/C2.png",
+    "/images/CurtainSection/C3.png",
+    "/images/CurtainSection/C4.png",
+    "/images/CurtainSection/C5.png",
+    "/images/CurtainSection/C6.png",
+    "/images/CurtainSection/C7.png",
+    "/images/CurtainSection/C8.png",
+    "/images/CurtainSection/C9.png",
 
   ]
-  const products = Array.from({ length: 10 }, (_, i) => ({
+  const products = Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     name: `Premium Curtain Set ${i + 1}`,
     price: 1599 + i * 250,
