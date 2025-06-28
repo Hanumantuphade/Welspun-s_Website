@@ -1,5 +1,3 @@
-// furniture/types.ts
-
 export interface Product {
   id: number;
   name: string;
@@ -8,12 +6,12 @@ export interface Product {
   rating: number;
   reviews: number;
   image: string;
+  images: string[];
   colors: string[];
   sizes: string[];
-}
-
-export interface CartItem extends Product {
-  quantity: number;
-  size: string;
-  color: string;
+  description: string;
+  returnPolicy: string;
+  careInstructions: string;
+  manufactureDetail: string;
+  category: string; // ✅ make sure 'category' is included here
 }

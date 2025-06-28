@@ -1,11 +1,14 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Image from "next/image"
-import { Star, Filter, Grid, List } from "lucide-react"
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import { Star, Filter, Grid, List } from "lucide-react";
+import { Product } from "@/types";
 
 export default function CurtainsPage() {
-
-
   const productImages = [
     "/images/CurtainSection/C1.png",
     "/images/CurtainSection/C2.png",
@@ -16,19 +19,175 @@ export default function CurtainsPage() {
     "/images/CurtainSection/C7.png",
     "/images/CurtainSection/C8.png",
     "/images/CurtainSection/C9.png",
+  ];
 
-  ]
-  const products = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    name: `Premium Curtain Set ${i + 1}`,
-    price: 1599 + i * 250,
-    originalPrice: 2299 + i * 350,
-    rating: 4.2 + Math.random() * 0.8,
-    reviews: Math.floor(Math.random() * 100) + 35,
-    image: productImages[i], // Set unique image from array
-    sizes: ["Small (4x5)", "Medium (5x7)", "Large (7x9)", "Extra Large (9x12)"],
-    types: ["Blackout", "Sheer", "Semi-Sheer", "Thermal"],
-  }))
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const generatedProducts: Product[] = [
+      {
+        id: 1,
+        name: "Elegant Grey Blackout Curtain",
+        price: 1799,
+        originalPrice: 2299,
+        rating: 4.5,
+        reviews: 110,
+        image: productImages[0],
+        images: [],
+        colors: ["Grey", "Charcoal"],
+        sizes: ["4x5 ft", "5x7 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 2,
+        name: "Floral Sheer Window Curtain",
+        price: 1299,
+        originalPrice: 1599,
+        rating: 4.2,
+        reviews: 85,
+        image: productImages[1],
+        images: [],
+        colors: ["White", "Pink"],
+        sizes: ["4x5 ft", "5x7 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 3,
+        name: "Premium Brown Semi-Sheer Curtain",
+        price: 1599,
+        originalPrice: 1999,
+        rating: 4.6,
+        reviews: 95,
+        image: productImages[2],
+        images: [],
+        colors: ["Brown"],
+        sizes: ["5x7 ft", "7x9 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 4,
+        name: "Royal Blue Thermal Blackout Curtain",
+        price: 1899,
+        originalPrice: 2499,
+        rating: 4.8,
+        reviews: 130,
+        image: productImages[3],
+        images: [],
+        colors: ["Royal Blue"],
+        sizes: ["5x7 ft", "7x9 ft", "9x12 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 5,
+        name: "Classic Beige Decorative Curtain",
+        price: 1499,
+        originalPrice: 1799,
+        rating: 4.3,
+        reviews: 70,
+        image: productImages[4],
+        images: [],
+        colors: ["Beige"],
+        sizes: ["4x5 ft", "5x7 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 6,
+        name: "Luxury Velvet Blackout Curtain",
+        price: 2499,
+        originalPrice: 2999,
+        rating: 4.9,
+        reviews: 160,
+        image: productImages[5],
+        images: [],
+        colors: ["Dark Green"],
+        sizes: ["5x7 ft", "7x9 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 7,
+        name: "Soft Pink Sheer Curtain",
+        price: 1199,
+        originalPrice: 1499,
+        rating: 4.1,
+        reviews: 55,
+        image: productImages[6],
+        images: [],
+        colors: ["Pink"],
+        sizes: ["4x5 ft", "5x7 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 8,
+        name: "Modern Grey Semi-Sheer Curtain",
+        price: 1399,
+        originalPrice: 1799,
+        rating: 4.4,
+        reviews: 95,
+        image: productImages[7],
+        images: [],
+        colors: ["Grey"],
+        sizes: ["5x7 ft", "7x9 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+      {
+        id: 9,
+        name: "Golden Decorative Living Room Curtain",
+        price: 1699,
+        originalPrice: 2099,
+        rating: 4.7,
+        reviews: 120,
+        image: productImages[8],
+        images: [],
+        colors: ["Gold"],
+        sizes: ["5x7 ft", "7x9 ft", "9x12 ft"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "curtains",
+      },
+    ];
+
+    setProducts(generatedProducts);
+  }, []);
+
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-20 text-gray-600">Loading products...</div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -40,25 +199,28 @@ export default function CurtainsPage() {
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-sm">
-            <span className="text-gray-500">Home</span>
-            <span className="mx-2 text-gray-400">/</span>
+        <div className="max-w-7xl mx-auto px-4">
+          <nav className="text-sm text-gray-500">
+            Home <span className="mx-2 text-gray-400">/</span>
             <span className="text-amber-900 font-medium">Curtains</span>
           </nav>
         </div>
       </div>
 
-      {/* Page Header */}
-      <div className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">Curtains Collection</h1>
-          <p className="text-gray-600">Elegant curtains to enhance your home decor</p>
+      {/* Page Heading */}
+      <div className="py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-3xl font-light text-gray-900 mb-2">
+            Curtains Collection
+          </h1>
+          <p className="text-gray-600">
+            Elegant curtains to enhance your home decor
+          </p>
         </div>
       </div>
 
-      {/* Filters and Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="lg:w-64 flex-shrink-0">
@@ -72,22 +234,12 @@ export default function CurtainsPage() {
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Price Range</h4>
                 <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Under ₹1,500</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹1,500 - ₹3,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹3,000 - ₹5,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Above ₹5,000</span>
-                  </label>
+                  {["Under ₹1,500", "₹1,500 - ₹3,000", "₹3,000 - ₹5,000", "Above ₹5,000"].map(range => (
+                    <label key={range} className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-sm">{range}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
 
@@ -95,7 +247,7 @@ export default function CurtainsPage() {
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Type</h4>
                 <div className="space-y-2">
-                  {["Blackout", "Sheer", "Semi-Sheer", "Thermal", "Decorative"].map((type) => (
+                  {["Blackout", "Sheer", "Semi-Sheer", "Thermal", "Decorative"].map(type => (
                     <label key={type} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
                       <span className="text-sm">{type}</span>
@@ -108,7 +260,7 @@ export default function CurtainsPage() {
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Room</h4>
                 <div className="space-y-2">
-                  {["Living Room", "Bedroom", "Kitchen", "Bathroom", "Office"].map((room) => (
+                  {["Living Room", "Bedroom", "Kitchen", "Bathroom", "Office"].map(room => (
                     <label key={room} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
                       <span className="text-sm">{room}</span>
@@ -119,9 +271,8 @@ export default function CurtainsPage() {
             </div>
           </div>
 
-          {/* Products Grid */}
+          {/* Product Grid */}
           <div className="flex-1">
-            {/* Sort and View Options */}
             <div className="flex justify-between items-center mb-6">
               <p className="text-gray-600">{products.length} products found</p>
               <div className="flex items-center space-x-4">
@@ -143,60 +294,57 @@ export default function CurtainsPage() {
               </div>
             </div>
 
-            {/* Products Grid */}
+            {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product.id} className="group cursor-pointer">
-                  <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
-                    <div className="aspect-square relative">
+                <Link
+                  key={product.id}
+                  href={`/product/${product.category}/${product.id}`}
+                >
+                  <div className="group cursor-pointer">
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
                       <Image
-                        src={product.image || "/placeholder.svg"}
+                        src={product.image}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
                     <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
                       {product.name}
                     </h3>
-
                     <div className="flex items-center space-x-1">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-600">({product.reviews})</span>
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating)
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                      <span className="text-sm text-gray-600">
+                        ({product.reviews})
+                      </span>
                     </div>
-
                     <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">₹{product.price}</span>
-                      <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+                      <span className="text-lg font-semibold text-gray-900">
+                        ₹{product.price}
+                      </span>
+                      <span className="text-sm text-gray-500 line-through">
+                        ₹{product.originalPrice}
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-
-           
           </div>
         </div>
       </div>
 
       <Footer />
     </div>
-  )
+  );
 }

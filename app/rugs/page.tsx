@@ -1,36 +1,217 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Image from "next/image"
-import { Star, Filter, Grid, List } from "lucide-react"
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import Link from "next/link";
+import { Star, Filter, Grid, List } from "lucide-react";
+import { Product } from "@/types";
 
 export default function RugsPage() {
-
-  const productImages = [
-    "/images/rugsSection/R1.png",
-    "/images/rugsSection/R2.png",
-    "/images/rugsSection/R3.png",
-    "/images/rugsSection/R4.png",
-    "/images/rugsSection/R5.png",
-    "/images/rugsSection/R6.png",
-    "/images/rugsSection/R7.png",
-    "/images/rugsSection/R8.png",
-    "/images/rugsSection/R9.png",
-    "/images/rugsSection/R10.png",
-    "/images/rugsSection/R11.png",
-    "/images/rugsSection/R12.png",
-  ]
-
-  const products = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    name: `Designer Rug ${i + 1}`,
-    price: 1299 + i * 200,
-    originalPrice: 1899 + i * 300,
-    rating: 4.0 + Math.random() * 1.0,
-    reviews: Math.floor(Math.random() * 120) + 25,
-    image: productImages[i], // Set unique image from array
-    sizes: ["Small (3x5)", "Medium (5x7)", "Large (8x10)", "Extra Large (9x12)"],
-    patterns: ["Geometric", "Floral", "Abstract", "Traditional"],
-  }))
+  const generatedProducts: Product[] = [
+    {
+      id: 1,
+      name: "Geometric Pattern Rug",
+      price: 1499,
+      originalPrice: 1999,
+      rating: 4.2,
+      reviews: 80,
+      image: "/images/rugsSection/R1.png",
+      images: [],
+      colors: ["Beige", "Brown"],
+      sizes: ["Small (3x5)", "Medium (5x7)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 2,
+      name: "Floral Design Rug",
+      price: 1699,
+      originalPrice: 2299,
+      rating: 4.5,
+      reviews: 95,
+      image: "/images/rugsSection/R2.png",
+      images: [],
+      colors: ["Red", "Beige"],
+      sizes: ["Medium (5x7)", "Large (8x10)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 3,
+      name: "Traditional Carpet Rug",
+      price: 1899,
+      originalPrice: 2499,
+      rating: 4.4,
+      reviews: 110,
+      image: "/images/rugsSection/R3.png",
+      images: [],
+      colors: ["Maroon", "Gold"],
+      sizes: ["Large (8x10)", "Extra Large (9x12)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 4,
+      name: "Modern Abstract Rug",
+      price: 1799,
+      originalPrice: 2399,
+      rating: 4.3,
+      reviews: 70,
+      image: "/images/rugsSection/R4.png",
+      images: [],
+      colors: ["Grey", "Blue"],
+      sizes: ["Small (3x5)", "Medium (5x7)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 5,
+      name: "Classic Persian Rug",
+      price: 2499,
+      originalPrice: 3299,
+      rating: 4.7,
+      reviews: 150,
+      image: "/images/rugsSection/R5.png",
+      images: [],
+      colors: ["Red", "Navy"],
+      sizes: ["Large (8x10)", "Extra Large (9x12)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 6,
+      name: "Minimalist Grey Rug",
+      price: 1399,
+      originalPrice: 1899,
+      rating: 4.1,
+      reviews: 65,
+      image: "/images/rugsSection/R6.png",
+      images: [],
+      colors: ["Grey"],
+      sizes: ["Small (3x5)", "Medium (5x7)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 7,
+      name: "Striped Area Rug",
+      price: 1599,
+      originalPrice: 2099,
+      rating: 4.3,
+      reviews: 75,
+      image: "/images/rugsSection/R7.png",
+      images: [],
+      colors: ["Brown", "Beige"],
+      sizes: ["Medium (5x7)", "Large (8x10)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 8,
+      name: "Bold Abstract Rug",
+      price: 1899,
+      originalPrice: 2599,
+      rating: 4.5,
+      reviews: 85,
+      image: "/images/rugsSection/R8.png",
+      images: [],
+      colors: ["Black", "White"],
+      sizes: ["Large (8x10)", "Extra Large (9x12)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 9,
+      name: "Elegant Floral Rug",
+      price: 1699,
+      originalPrice: 2299,
+      rating: 4.4,
+      reviews: 95,
+      image: "/images/rugsSection/R9.png",
+      images: [],
+      colors: ["Cream", "Pink"],
+      sizes: ["Medium (5x7)", "Large (8x10)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 10,
+      name: "Vintage Persian Rug",
+      price: 2499,
+      originalPrice: 3299,
+      rating: 4.8,
+      reviews: 160,
+      image: "/images/rugsSection/R10.png",
+      images: [],
+      colors: ["Red", "Beige"],
+      sizes: ["Large (8x10)", "Extra Large (9x12)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 11,
+      name: "Contemporary Rug",
+      price: 1799,
+      originalPrice: 2399,
+      rating: 4.2,
+      reviews: 78,
+      image: "/images/rugsSection/R11.png",
+      images: [],
+      colors: ["Grey", "Blue"],
+      sizes: ["Small (3x5)", "Medium (5x7)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+    {
+      id: 12,
+      name: "Luxury Designer Rug",
+      price: 2999,
+      originalPrice: 3999,
+      rating: 4.9,
+      reviews: 180,
+      image: "/images/rugsSection/R12.png",
+      images: [],
+      colors: ["Beige", "Gold"],
+      sizes: ["Large (8x10)", "Extra Large (9x12)"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "rugs",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -74,22 +255,12 @@ export default function RugsPage() {
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Price Range</h4>
                 <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Under ₹1,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹1,000 - ₹2,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹2,000 - ₹5,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Above ₹5,000</span>
-                  </label>
+                  {["Under ₹1,000", "₹1,000 - ₹2,000", "₹2,000 - ₹5,000", "Above ₹5,000"].map((range) => (
+                    <label key={range} className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-sm">{range}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
 
@@ -105,19 +276,6 @@ export default function RugsPage() {
                   ))}
                 </div>
               </div>
-
-              {/* Pattern */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Pattern</h4>
-                <div className="space-y-2">
-                  {["Geometric", "Floral", "Abstract", "Traditional", "Modern"].map((pattern) => (
-                    <label key={pattern} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{pattern}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -125,7 +283,7 @@ export default function RugsPage() {
           <div className="flex-1">
             {/* Sort and View Options */}
             <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">{products.length} products found</p>
+              <p className="text-gray-600">{generatedProducts.length} products found</p>
               <div className="flex items-center space-x-4">
                 <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
                   <option>Sort by: Featured</option>
@@ -147,58 +305,58 @@ export default function RugsPage() {
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <div key={product.id} className="group cursor-pointer">
-                  <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
-                    <div className="aspect-square relative">
-                      <Image
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-                      {product.name}
-                    </h3>
-
-                    <div className="flex items-center space-x-1">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                            }`}
-                          />
-                        ))}
+              {generatedProducts.map((product) => (
+                <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
+                  <div className="group cursor-pointer">
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
+                      <div className="aspect-square relative">
+                        <Image
+                          src={product.image || "/placeholder.svg"}
+                          alt={product.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <span className="text-sm text-gray-600">({product.reviews})</span>
+                      <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
+                          Add to Cart
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">₹{product.price}</span>
-                      <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+                    <div className="space-y-2">
+                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                        {product.name}
+                      </h3>
+
+                      <div className="flex items-center space-x-1">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 ${
+                                i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-sm text-gray-600">({product.reviews})</span>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <span className="text-lg font-semibold text-gray-900">₹{product.price}</span>
+                        <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-
-           
           </div>
         </div>
       </div>
 
       <Footer />
     </div>
-  )
+  );
 }

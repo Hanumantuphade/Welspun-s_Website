@@ -3,7 +3,6 @@ import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";
 import { Search, Heart, User, ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import NavigationDropdown from "./navigation-dropdown";
 import SearchOverlay from "./search-overlay";
 import LoginPopup from "./login-popup";
 import CartDropdown from "./cart-dropdown";
@@ -19,6 +18,7 @@ export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const navItems = [
+    { name: "Bed", href: "/bed" }, // ✅ Changed Bed to normal link
     { name: "Bath", href: "/bath" },
     { name: "Mattress", href: "/mattress" },
     { name: "Rugs", href: "/rugs" },
@@ -26,14 +26,6 @@ export default function Header() {
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-  ];
-
-  const bedDropdownItems = [
-    { name: "Bed Sheets", href: "/bed/sheets" },
-    { name: "Blankets", href: "/bed/blankets" },
-    { name: "Duvet Covers", href: "/bed/duvet-covers" },
-    { name: "Pillows", href: "/bed/pillows" },
-    { name: "Mattress Protectors", href: "/bed/mattress-protectors" },
   ];
 
   useEffect(() => {
@@ -47,13 +39,12 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex justify-center items-center">
-              <img src="/logo.jpeg"  alt="Logo" className="h-10   w-[200px]" />
+              <img src="/logo.jpeg" alt="Logo" className="h-10 w-[200px]" />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            <NavigationDropdown title="Bed" items={bedDropdownItems} />
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -96,8 +87,7 @@ export default function Header() {
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="absolute -top-2 -right-2 bg-amber-900 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
-                  {cartItems?.reduce((sum, item) => sum + item.quantity, 0) ||
-                    0}
+                  {cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0}
                 </span>
               </button>
               <CartDropdown
@@ -126,13 +116,6 @@ export default function Header() {
         {mounted && isMenuOpen && (
           <div className="lg:hidden border-t border-gray-100 py-4">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/bed"
-                className="text-gray-600 hover:text-amber-900 text-sm font-medium transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Bed
-              </Link>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -146,6 +129,7 @@ export default function Header() {
             </nav>
           </div>
         )}
+
         <SearchOverlay
           isOpen={isSearchOpen}
           onClose={() => setIsSearchOpen(false)}

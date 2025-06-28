@@ -1,11 +1,14 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Image from "next/image"
-import { Star, Filter, Grid, List } from "lucide-react"
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import { Star, Filter, Grid, List } from "lucide-react";
+import { Product } from "@/types";
 
 export default function MattressPage() {
-
-
   const productImages = [
     "/images/MattressSection/M1.png",
     "/images/MattressSection/M2.png",
@@ -13,20 +16,124 @@ export default function MattressPage() {
     "/images/MattressSection/M4.png",
     "/images/MattressSection/M5.png",
     "/images/MattressSection/M6.png",
-   
-  ]
+  ];
 
-  const products = Array.from({ length: 6 }, (_, i) => ({
-    id: i + 1,
-    name: `Premium Mattress ${i + 1}`,
-    price: 8999 + i * 1000,
-    originalPrice: 12999 + i * 1500,
-    rating: 4.3 + Math.random() * 0.7,
-    reviews: Math.floor(Math.random() * 150) + 30,
-    image: productImages[i], // Set unique image from array
-    sizes: ["Single", "Double", "Queen", "King"],
-    firmness: ["Soft", "Medium", "Firm"],
-  }))
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const generatedProducts: Product[] = [
+      {
+        id: 1,
+        name: "Comfort Plus Orthopedic Mattress",
+        price: 9999,
+        originalPrice: 12999,
+        rating: 4.5,
+        reviews: 120,
+        image: productImages[0],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 2,
+        name: "Luxury Memory Foam Mattress",
+        price: 14999,
+        originalPrice: 18999,
+        rating: 4.8,
+        reviews: 210,
+        image: productImages[1],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 3,
+        name: "Premium Spring Mattress",
+        price: 11999,
+        originalPrice: 15999,
+        rating: 4.2,
+        reviews: 95,
+        image: productImages[2],
+        images: [],
+        colors: ["Beige"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 4,
+        name: "Ultra Plush Latex Mattress",
+        price: 19999,
+        originalPrice: 24999,
+        rating: 4.6,
+        reviews: 180,
+        image: productImages[3],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 5,
+        name: "Dual Comfort Reversible Mattress",
+        price: 8999,
+        originalPrice: 12999,
+        rating: 4.4,
+        reviews: 150,
+        image: productImages[4],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 6,
+        name: "Cool Gel Memory Foam Mattress",
+        price: 17999,
+        originalPrice: 21999,
+        rating: 4.9,
+        reviews: 250,
+        image: productImages[5],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+    ];
+
+    setProducts(generatedProducts);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -50,8 +157,12 @@ export default function MattressPage() {
       {/* Page Header */}
       <div className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">Mattress Collection</h1>
-          <p className="text-gray-600">Premium mattresses for the perfect night's sleep</p>
+          <h1 className="text-3xl font-light text-gray-900 mb-2">
+            Mattress Collection
+          </h1>
+          <p className="text-gray-600">
+            Premium mattresses for the perfect night's sleep
+          </p>
         </div>
       </div>
 
@@ -70,22 +181,17 @@ export default function MattressPage() {
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Price Range</h4>
                 <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Under ₹10,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹10,000 - ₹20,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">₹20,000 - ₹30,000</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
-                    <span className="text-sm">Above ₹30,000</span>
-                  </label>
+                  {[
+                    "Under ₹10,000",
+                    "₹10,000 - ₹20,000",
+                    "₹20,000 - ₹30,000",
+                    "Above ₹30,000",
+                  ].map((range) => (
+                    <label key={range} className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-sm">{range}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
 
@@ -144,64 +250,77 @@ export default function MattressPage() {
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product.id} className="group cursor-pointer">
-                  <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
-                    <div className="aspect-square relative">
-                      <Image
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">Free Delivery</span>
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-                      {product.name}
-                    </h3>
-
-                    <div className="flex items-center space-x-1">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                            }`}
-                          />
-                        ))}
+                <Link
+                  key={product.id}
+                  href={`/product/${product.category}/${product.id}`}
+                >
+                  <div className="group cursor-pointer">
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
+                      <div className="aspect-square relative">
+                        <Image
+                          src={product.image || "/placeholder.svg"}
+                          alt={product.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <span className="text-sm text-gray-600">({product.reviews})</span>
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">
+                          Free Delivery
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
+                          Add to Cart
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">₹{product.price.toLocaleString()}</span>
-                      <span className="text-sm text-gray-500 line-through">
-                        ₹{product.originalPrice.toLocaleString()}
-                      </span>
-                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                        {product.name}
+                      </h3>
 
-                    <div className="text-sm text-gray-600">Available in: {product.sizes.join(", ")}</div>
+                      <div className="flex items-center space-x-1">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 ${
+                                i < Math.floor(product.rating)
+                                  ? "text-yellow-400 fill-current"
+                                  : "text-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-sm text-gray-600">
+                          ({product.reviews})
+                        </span>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <span className="text-lg font-semibold text-gray-900">
+                          ₹{product.price.toLocaleString()}
+                        </span>
+                        <span className="text-sm text-gray-500 line-through">
+                          ₹{product.originalPrice.toLocaleString()}
+                        </span>
+                      </div>
+
+                      <div className="text-sm text-gray-600">
+                        Available in: {product.sizes.join(", ")}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-
-            
           </div>
         </div>
       </div>
 
       <Footer />
     </div>
-  )
+  );
 }
