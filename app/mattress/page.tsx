@@ -19,12 +19,16 @@ export default function MattressPage() {
   ];
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+
+  const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
   useEffect(() => {
     const generatedProducts: Product[] = [
       {
         id: 22,
-        name: " Luxury Mattress (8 inch height)",
+        name: "Luxury Mattress (8 inch height)",
         price: 9999,
         originalPrice: 12999,
         rating: 4.5,
@@ -33,7 +37,6 @@ export default function MattressPage() {
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -51,7 +54,6 @@ export default function MattressPage() {
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -69,7 +71,6 @@ export default function MattressPage() {
         images: [],
         colors: ["Beige"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -87,7 +88,6 @@ export default function MattressPage() {
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -105,7 +105,6 @@ export default function MattressPage() {
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -123,7 +122,6 @@ export default function MattressPage() {
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],
-
         description: "",
         returnPolicy: "",
         careInstructions: "",
@@ -133,7 +131,55 @@ export default function MattressPage() {
     ];
 
     setProducts(generatedProducts);
+    setFilteredProducts(generatedProducts); // initially show all
   }, []);
+
+  // Handle Price Range change
+  const handlePriceRangeChange = (range: string) => {
+    setSelectedPriceRanges((prev) =>
+      prev.includes(range)
+        ? prev.filter((r) => r !== range)
+        : [...prev, range]
+    );
+  };
+
+  // Handle Size change
+  const handleSizeChange = (size: string) => {
+    setSelectedSizes((prev) =>
+      prev.includes(size)
+        ? prev.filter((s) => s !== size)
+        : [...prev, size]
+    );
+  };
+
+  // Apply filters
+  useEffect(() => {
+    let filtered = products;
+
+    // Filter by price ranges
+    if (selectedPriceRanges.length > 0) {
+      filtered = filtered.filter((product) =>
+        selectedPriceRanges.some((range) => {
+          const price = product.price;
+          if (range === "Under ₹10,000") return price < 10000;
+          if (range === "₹10,000 - ₹20,000")
+            return price >= 10000 && price <= 20000;
+          if (range === "₹20,000 - ₹30,000")
+            return price >= 20000 && price <= 30000;
+          if (range === "Above ₹30,000") return price > 30000;
+        })
+      );
+    }
+
+    // Filter by sizes
+    if (selectedSizes.length > 0) {
+      filtered = filtered.filter((product) =>
+        product.sizes.some((size) => selectedSizes.includes(size))
+      );
+    }
+
+    setFilteredProducts(filtered);
+  }, [selectedPriceRanges, selectedSizes, products]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -188,7 +234,12 @@ export default function MattressPage() {
                     "Above ₹30,000",
                   ].map((range) => (
                     <label key={range} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
+                      <input
+                        type="checkbox"
+                        className="mr-2"
+                        checked={selectedPriceRanges.includes(range)}
+                        onChange={() => handlePriceRangeChange(range)}
+                      />
                       <span className="text-sm">{range}</span>
                     </label>
                   ))}
@@ -201,25 +252,32 @@ export default function MattressPage() {
                 <div className="space-y-2">
                   {["Single", "Double", "Queen", "King"].map((size) => (
                     <label key={size} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
+                      <input
+                        type="checkbox"
+                        className="mr-2"
+                        checked={selectedSizes.includes(size)}
+                        onChange={() => handleSizeChange(size)}
+                      />
                       <span className="text-sm">{size}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* Firmness */}
-              <div className="mb-6">
+              {/* Firmness - no functionality added yet as data is missing */}
+              {/* <div className="mb-6">
                 <h4 className="font-medium mb-3">Firmness</h4>
                 <div className="space-y-2">
                   {["Soft", "Medium", "Firm", "Extra Firm"].map((firmness) => (
                     <label key={firmness} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{firmness}</span>
+                      <input type="checkbox" className="mr-2" disabled />
+                      <span className="text-sm text-gray-400">
+                        {firmness}
+                      </span>
                     </label>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -227,7 +285,9 @@ export default function MattressPage() {
           <div className="flex-1">
             {/* Sort and View Options */}
             <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">{products.length} products found</p>
+              <p className="text-gray-600">
+                {filteredProducts.length} products found
+              </p>
               <div className="flex items-center space-x-4">
                 <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
                   <option>Sort by: Featured</option>
@@ -249,7 +309,7 @@ export default function MattressPage() {
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
@@ -270,9 +330,9 @@ export default function MattressPage() {
                         </span>
                       </div>
                       <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
+                        {/* <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
                           Add to Cart
-                        </button>
+                        </button> */}
                       </div>
                     </div>
 
