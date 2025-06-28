@@ -10,12 +10,12 @@ import { Product } from "@/types";
 
 export default function MattressPage() {
   const productImages = [
-    "/images/MattressSection/M1.png",
-    "/images/MattressSection/M2.png",
-    "/images/MattressSection/M3.png",
-    "/images/MattressSection/M4.png",
-    "/images/MattressSection/M5.png",
-    "/images/MattressSection/M6.png",
+    "/images/MattressSection/mat1/m1.png",
+    "/images/MattressSection/mat2/m1.png",
+    "/images/MattressSection/mat3/m1.png",
+    "/images/MattressSection/mat4/m1.png",
+    "/images/MattressSection/mat5/m1.png",
+    "/images/MattressSection/mat6/m1.png",
   ];
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -23,8 +23,8 @@ export default function MattressPage() {
   useEffect(() => {
     const generatedProducts: Product[] = [
       {
-        id: 1,
-        name: "Comfort Plus Orthopedic Mattress",
+        id: 22,
+        name: " Luxury Mattress (8 inch height)",
         price: 9999,
         originalPrice: 12999,
         rating: 4.5,
@@ -41,8 +41,8 @@ export default function MattressPage() {
         category: "mattress",
       },
       {
-        id: 2,
-        name: "Luxury Memory Foam Mattress",
+        id: 23,
+        name: "Mattress (6 inch height)",
         price: 14999,
         originalPrice: 18999,
         rating: 4.8,
@@ -59,8 +59,8 @@ export default function MattressPage() {
         category: "mattress",
       },
       {
-        id: 3,
-        name: "Premium Spring Mattress",
+        id: 24,
+        name: "Yours'n'Mine Medium-Firm Mattress (6 inch height)",
         price: 11999,
         originalPrice: 15999,
         rating: 4.2,
@@ -77,8 +77,8 @@ export default function MattressPage() {
         category: "mattress",
       },
       {
-        id: 4,
-        name: "Ultra Plush Latex Mattress",
+        id: 25,
+        name: "Firm & Fab Mattress (6 inch height)",
         price: 19999,
         originalPrice: 24999,
         rating: 4.6,
@@ -95,8 +95,8 @@ export default function MattressPage() {
         category: "mattress",
       },
       {
-        id: 5,
-        name: "Dual Comfort Reversible Mattress",
+        id: 26,
+        name: "Solid White Polyester Double Mattress Protector - Softshield",
         price: 8999,
         originalPrice: 12999,
         rating: 4.4,
@@ -113,8 +113,8 @@ export default function MattressPage() {
         category: "mattress",
       },
       {
-        id: 6,
-        name: "Cool Gel Memory Foam Mattress",
+        id: 27,
+        name: "Yours'N Mine Soft-Medium Luxury Mattress (8 inch height)",
         price: 17999,
         originalPrice: 21999,
         rating: 4.9,

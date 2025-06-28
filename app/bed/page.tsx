@@ -27,212 +27,23 @@ export default function BedPage() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const generatedProducts = [
-      {
-        id: 1,
-        name: "Dark Green 100% Cotton Bedsheet",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[0],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 2,
-        name: "Light Blue 100% Cotton Bedsheet",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[1],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 3,
-        name: "Light Blue 100% Cotton Bedsheet",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[2],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 4,
-        name: "Light Brown 100% Cotton Fitted Elastic Bedsheet",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[3],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 5,
-        name: "Geometric Beige Polycotton Fitted King Harmony",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[4],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 6,
-        name: "Light Blue 100% Cotton Fitted Elastic Bedsheet",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[5],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 7,
-        name: "Disney Mixed Princess Lilac - Light Violet 100% Cotton Shell Single Quilt",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[6],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 8,
-        name: "Geometric Dark Grey 100% Cotton Double Quilt",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[7],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 9,
-        name: "Tonalelgence Geometric Grey Microfiber Shell Double Quilt",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[8],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 10,
-        name: "Essentials 100% Cotton Double Quilt, 144 TC, Solid, Light Blue",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[9],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 11,
-        name: "Essentials 100% Cotton Double Quilt, 144 TC, Geometric, Blue",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[10],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-      {
-        id: 12,
-        name: "Essentials 100% Cotton Double Quilt, 144 TC, Floral, Light Aqua",
-        price: 3799,
-        originalPrice: 4799,
-        rating: 4.8,
-        reviews: 240,
-        image: productImages[11],
-        images: [],
-        colors: ["White"],
-        sizes: ["King"],
-        description: "",
-        returnPolicy: "",
-        careInstructions: "",
-        manufactureDetail: "",
-        category: "bed",
-      },
-    ];
+    const generatedProducts = productImages.map((img, index) => ({
+      id: index + 1,
+      name: `Sample Bed Product ${index + 1}`,
+      price: 3799,
+      originalPrice: 4799,
+      rating: 4.8,
+      reviews: 240,
+      image: img,
+      images: [],
+      colors: ["White"],
+      sizes: ["King"],
+      description: "",
+      returnPolicy: "",
+      careInstructions: "",
+      manufactureDetail: "",
+      category: "bed",
+    }));
     setProducts(generatedProducts);
   }, []);
 
@@ -244,6 +55,7 @@ export default function BedPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Promo Bar */}
       <div className="bg-amber-900 text-white text-center py-2 text-sm font-medium">
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
       </div>
@@ -251,7 +63,7 @@ export default function BedPage() {
       <Header />
 
       {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
+      <div className="bg-gray-50 py-3">
         <div className="max-w-7xl mx-auto px-4">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
@@ -261,9 +73,9 @@ export default function BedPage() {
       </div>
 
       {/* Page Heading */}
-      <div className="py-8">
+      <div className="py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-light text-gray-900 mb-2">
             Bed Collection
           </h1>
           <p className="text-gray-600">
@@ -338,10 +150,10 @@ export default function BedPage() {
           {/* Product Grid */}
           <div className="flex-1">
             {/* Sort Options */}
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
               <p className="text-gray-600">{products.length} products found</p>
-              <div className="flex items-center space-x-4">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
+              <div className="flex items-center space-x-4 w-full sm:w-auto">
+                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm w-full sm:w-auto">
                   <option>Sort by: Featured</option>
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
@@ -362,46 +174,47 @@ export default function BedPage() {
             {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product.id}>
-                  <Link href={`/product/${product.category}/${product.id}`}>
-                    <div className="group cursor-pointer">
-                      <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-                        {product.name}
-                      </h3>
-                      <div className="flex items-center space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={`${product.id}-star-${i}`} // 🔑 Unique key combining product.id and index
-                            className={`h-4 w-4 ${
-                              i < Math.floor(product.rating)
-                                ? "text-yellow-400 fill-current"
-                                : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                        <span className="text-sm text-gray-600">
-                          ({product.reviews})
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-lg font-semibold text-gray-900">
-                          ₹{product.price}
-                        </span>
-                        <span className="text-sm text-gray-500 line-through">
-                          ₹{product.originalPrice}
-                        </span>
-                      </div>
+                <Link
+                  key={product.id}
+                  href={`/product/${product.category}/${product.id}`}
+                >
+                  <div className="group cursor-pointer">
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                  </Link>
-                </div>
+                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                      {product.name}
+                    </h3>
+                    <div className="flex items-center space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={`${product.id}-star-${i}`}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating)
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                      <span className="text-sm text-gray-600">
+                        ({product.reviews})
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg font-semibold text-gray-900">
+                        ₹{product.price}
+                      </span>
+                      <span className="text-sm text-gray-500 line-through">
+                        ₹{product.originalPrice}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
