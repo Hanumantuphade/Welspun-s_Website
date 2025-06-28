@@ -6,7 +6,7 @@ export default function CategorySection() {
     {
       id: 1,
       name: "Bedroom",
-      image: "/images/bedSection/b2.png",
+      image: "/images/bedSection/bed1/b1.png",
       description: "Comfortable bedding essentials",
       href: "/bed",
     },
@@ -20,7 +20,7 @@ export default function CategorySection() {
     {
       id: 3,
       name: "Bathroom",
-      image: "/images/bathSection/BT3.png",
+      image: "/images/bathSection/bath1/b1.png",
       description: "Luxury bath accessories",
       href: "/bath",
     },
