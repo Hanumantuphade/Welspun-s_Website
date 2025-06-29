@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import { Star, Filter, Grid, List } from "lucide-react";
+import { Star } from "lucide-react";
 import { Product } from "@/types";
 
 export default function BathPage() {
@@ -27,7 +27,7 @@ export default function BathPage() {
     const generatedProducts: Product[] = [
       {
         id: 13,
-        name: "Spectrum Blue 100% Cotton Hand Towe",
+        name: "Spectrum Blue 100% Cotton Hand Towel",
         price: 499,
         originalPrice: 699,
         rating: 4.5,
@@ -78,7 +78,7 @@ export default function BathPage() {
       },
       {
         id: 16,
-        name: "Grape Fruit-Red 2 Piece 100% Cotton Hand Towel Set ",
+        name: "Grape Fruit-Red 2 Piece 100% Cotton Hand Towel Set",
         price: 1199,
         originalPrice: 1499,
         rating: 4.0,
@@ -146,7 +146,7 @@ export default function BathPage() {
       },
       {
         id: 20,
-        name: "Poorak Luxury White Free Size Bath Robe  (1 bathrobe for women, For: Women, Luxury White)",
+        name: "Poorak Luxury White Free Size Bath Robe (1 bathrobe for women, For: Women, Luxury White)",
         price: 999,
         originalPrice: 1299,
         rating: 4.7,
@@ -163,7 +163,7 @@ export default function BathPage() {
       },
       {
         id: 21,
-        name: "Poorak Pink Free Size Bath Robe  (1 bathrobe for women, For: Women, Pink)",
+        name: "Poorak Pink Free Size Bath Robe (1 bathrobe for women, For: Women, Pink)",
         price: 999,
         originalPrice: 1299,
         rating: 4.7,
@@ -196,153 +196,91 @@ export default function BathPage() {
 
       <Header />
 
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <nav className="text-sm text-gray-500">
-            Home <span className="mx-2 text-gray-400">/</span>
-            <span className="text-amber-900 font-medium">Bath</span>
-          </nav>
-        </div>
-      </div>
-
-      {/* Page Heading */}
-      <div className="py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">
-            Bath Collection
-          </h1>
-          <p className="text-gray-600">
-            Luxury bath essentials for your daily comfort
-          </p>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </h3>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  {["Under ₹500", "₹500 - ₹1000", "₹1000 - ₹1500", "Above ₹1500"].map(range => (
-                    <label key={range} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{range}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Product Type */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Product Type</h4>
-                <div className="space-y-2">
-                  {["Towels", "Bath Mats", "Shower Curtains", "Bath Robes", "Accessories"].map(type => (
-                    <label key={type} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{type}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Material */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Material</h4>
-                <div className="space-y-2">
-                  {["Cotton", "Bamboo", "Microfiber", "Linen"].map(material => (
-                    <label key={material} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{material}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
+      <section>
+        {/* Breadcrumb */}
+        <div className="bg-gray-50 py-3 ">
+          <div className="max-w-7xl mx-auto px-4">
+            <nav className="text-sm text-center text-gray-500">
+              Home <span className="mx-2 text-gray-400">/</span>
+              <span className="text-amber-900 font-medium">Bath</span>
+            </nav>
           </div>
+        </div>
 
-          {/* Product Grid */}
-          <div className="flex-1">
-            {/* Sort Options */}
-            <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">{products.length} products found</p>
-              <div className="flex items-center space-x-4">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                  <option>Newest First</option>
-                </select>
-                <div className="flex border border-gray-300 rounded-md">
-                  <button className="p-2 bg-amber-900 text-white">
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button className="p-2 text-gray-600">
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
+        {/* Background Image with Overlay and Text */}
+        <div className="relative h-[400px] flex items-center justify-center text-center">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-black/50 z-10" />
+            <img
+              src="/images/bathSection/hero.png"
+              alt="page"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-20  text-white px-4">
+            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Luxury Bath Collection</h1>
+            <p className="text-gray-100 ">
+              <span className="text-xl">Create a calming sanctuary in your bathroom with our premium
+              collection.</span>  <br /> <span className="text-lg">From absorbent towels to cosy robes, each piece offers
+              ultimate comfort.</span>  <br />  Relax, unwind, and treat yourself to spa-level
+              luxury every day.
+            </p>
+          </div>
+        </div>
 
-            {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/product/${product.category}/${product.id}`}
-                >
-                  <div className="group cursor-pointer">
-                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-                      {product.name}
-                    </h3>
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < Math.floor(product.rating)
-                              ? "text-yellow-400 fill-current"
-                              : "text-gray-300"
-                          }`}
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 pt-10 pb-16">
+          <div className="flex flex-col lg:flex-row gap-8">
+            <div className="flex-1">
+              <div className="grid grid-cols-1 px-12 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((product) => (
+                  <Link
+                    key={product.id}
+                    href={`/product/${product.category}/${product.id}`}
+                  >
+                    <div className="group border-2 border-gray-100 cursor-pointer">
+                      <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                      ))}
-                      <span className="text-sm text-gray-600">
-                        ({product.reviews})
-                      </span>
+                      </div>
+                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                        {product.name}
+                      </h3>
+                      <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < Math.floor(product.rating)
+                                ? "text-yellow-400 fill-current"
+                                : "text-gray-300"
+                            }`}
+                          />
+                        ))}
+                        <span className="text-sm text-gray-600">
+                          ({product.reviews})
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-lg font-semibold text-gray-900">
+                          ₹{product.price}
+                        </span>
+                        <span className="text-sm text-gray-500 line-through">
+                          ₹{product.originalPrice}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        ₹{product.price}
-                      </span>
-                      <span className="text-sm text-gray-500 line-through">
-                        ₹{product.originalPrice}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <Footer />
     </div>

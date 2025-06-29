@@ -8,13 +8,13 @@ import { Product } from "@/types";
 export default function RugsPage() {
   const generatedProducts: Product[] = [
     {
-      id: 1,
-      name: "Geometric Pattern Rug",
+      id: 28,
+      name: "Beige Multilayer Texture Woven Carpet - Meraki",
       price: 1499,
       originalPrice: 1999,
       rating: 4.2,
       reviews: 80,
-      image: "/images/rugsSection/R1.png",
+      image: "/images/rugsSection/rg1/r1.png",
       images: [],
       colors: ["Beige", "Brown"],
       sizes: ["Small (3x5)", "Medium (5x7)"],
@@ -25,13 +25,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 2,
-      name: "Floral Design Rug",
+      id: 29,
+      name: "Blue Polyester Area Rug - Blissful",
       price: 1699,
       originalPrice: 2299,
       rating: 4.5,
       reviews: 95,
-      image: "/images/rugsSection/R2.png",
+      image: "/images/rugsSection/rg2/r1.png",
       images: [],
       colors: ["Red", "Beige"],
       sizes: ["Medium (5x7)", "Large (8x10)"],
@@ -42,13 +42,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 3,
-      name: "Traditional Carpet Rug",
+      id: 30,
+      name: "Gold Multilayer Texture Soft Woven Carpet",
       price: 1899,
       originalPrice: 2499,
       rating: 4.4,
       reviews: 110,
-      image: "/images/rugsSection/R3.png",
+      image: "/images/rugsSection/rg3/r1.png",
       images: [],
       colors: ["Maroon", "Gold"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
@@ -59,13 +59,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 4,
-      name: "Modern Abstract Rug",
+      id: 31,
+      name: "D Brown Multilayer Texture Woven Carpet - Meraki ",
       price: 1799,
       originalPrice: 2399,
       rating: 4.3,
       reviews: 70,
-      image: "/images/rugsSection/R4.png",
+      image: "/images/rugsSection/rg4/r1.png",
       images: [],
       colors: ["Grey", "Blue"],
       sizes: ["Small (3x5)", "Medium (5x7)"],
@@ -76,13 +76,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 5,
-      name: "Classic Persian Rug",
+      id: 32,
+      name: "Rose Plush Feel Woven Carpet - Nesta ",
       price: 2499,
       originalPrice: 3299,
       rating: 4.7,
       reviews: 150,
-      image: "/images/rugsSection/R5.png",
+      image: "/images/rugsSection/rg5/r1.png",
       images: [],
       colors: ["Red", "Navy"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
@@ -93,13 +93,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 6,
-      name: "Minimalist Grey Rug",
+      id: 33,
+      name: "Plush Feel Red Polypropylene Runner - Idika",
       price: 1399,
       originalPrice: 1899,
       rating: 4.1,
       reviews: 65,
-      image: "/images/rugsSection/R6.png",
+      image: "/images/rugsSection/rg6/r1.png",
       images: [],
       colors: ["Grey"],
       sizes: ["Small (3x5)", "Medium (5x7)"],
@@ -110,13 +110,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 7,
-      name: "Striped Area Rug",
+      id: 34,
+      name: "Unwinders Nylon Runner-Dark Brown",
       price: 1599,
       originalPrice: 2099,
       rating: 4.3,
       reviews: 75,
-      image: "/images/rugsSection/R7.png",
+      image: "/images/rugsSection/rg7/r1.png",
       images: [],
       colors: ["Brown", "Beige"],
       sizes: ["Medium (5x7)", "Large (8x10)"],
@@ -127,13 +127,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 8,
-      name: "Bold Abstract Rug",
+      id: 35,
+      name: "Luxury Cushlon Drylon Runner - Teal",
       price: 1899,
       originalPrice: 2599,
       rating: 4.5,
       reviews: 85,
-      image: "/images/rugsSection/R8.png",
+      image: "/images/rugsSection/rg8/r1.png",
       images: [],
       colors: ["Black", "White"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
@@ -144,13 +144,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 9,
-      name: "Elegant Floral Rug",
+      id: 36,
+      name: "Unwinders Nylon Runner-Beige",
       price: 1699,
       originalPrice: 2299,
       rating: 4.4,
       reviews: 95,
-      image: "/images/rugsSection/R9.png",
+      image: "/images/rugsSection/rg9/r1.png",
       images: [],
       colors: ["Cream", "Pink"],
       sizes: ["Medium (5x7)", "Large (8x10)"],
@@ -161,13 +161,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 10,
-      name: "Vintage Persian Rug",
+      id: 37,
+      name: "Cream Polyester Runner - Blissful",
       price: 2499,
       originalPrice: 3299,
       rating: 4.8,
       reviews: 160,
-      image: "/images/rugsSection/R10.png",
+      image: "/images/rugsSection/rg10/r1.png",
       images: [],
       colors: ["Red", "Beige"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
@@ -178,13 +178,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 11,
-      name: "Contemporary Rug",
+      id: 38,
+      name: "Luxury Cushlon Drylon Foot Mats Large - Red",
       price: 1799,
       originalPrice: 2399,
       rating: 4.2,
       reviews: 78,
-      image: "/images/rugsSection/R11.png",
+      image: "/images/rugsSection/rg11/r1.png",
       images: [],
       colors: ["Grey", "Blue"],
       sizes: ["Small (3x5)", "Medium (5x7)"],
@@ -195,13 +195,13 @@ export default function RugsPage() {
       category: "rugs",
     },
     {
-      id: 12,
-      name: "Luxury Designer Rug",
+      id: 39,
+      name: "Unwinders Nylon Foot Door Small-Dark Red",
       price: 2999,
       originalPrice: 3999,
       rating: 4.9,
       reviews: 180,
-      image: "/images/rugsSection/R12.png",
+      image: "/images/rugsSection/rg12/r1.png",
       images: [],
       colors: ["Beige", "Gold"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
@@ -234,7 +234,7 @@ export default function RugsPage() {
 
       {/* Page Header */}
       <div className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-12 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-light text-gray-900 mb-2">Rugs Collection</h1>
           <p className="text-gray-600">Beautiful rugs to transform your living spaces</p>
         </div>
@@ -244,67 +244,14 @@ export default function RugsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </h3>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  {["Under ₹1,000", "₹1,000 - ₹2,000", "₹2,000 - ₹5,000", "Above ₹5,000"].map((range) => (
-                    <label key={range} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{range}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Size */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Size</h4>
-                <div className="space-y-2">
-                  {["Small (3x5)", "Medium (5x7)", "Large (8x10)", "Extra Large (9x12)"].map((size) => (
-                    <label key={size} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{size}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Products Grid */}
           <div className="flex-1">
-            {/* Sort and View Options */}
-            <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">{generatedProducts.length} products found</p>
-              <div className="flex items-center space-x-4">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                  <option>Newest First</option>
-                </select>
-                <div className="flex border border-gray-300 rounded-md">
-                  <button className="p-2 bg-amber-900 text-white">
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button className="p-2 text-gray-600">
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
+           
 
             {/* Products Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 px-12 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {generatedProducts.map((product) => (
                 <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
                   <div className="group cursor-pointer">
@@ -317,11 +264,7 @@ export default function RugsPage() {
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <button className="w-full bg-amber-900 text-white py-2 rounded-md hover:bg-amber-800 transition-colors">
-                          Add to Cart
-                        </button>
-                      </div>
+                      
                     </div>
 
                     <div className="space-y-2">
