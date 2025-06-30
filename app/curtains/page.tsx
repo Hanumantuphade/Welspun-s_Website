@@ -10,15 +10,15 @@ import { Product } from "@/types";
 
 export default function CurtainsPage() {
   const productImages = [
-    "/images/CurtainSection/C1.png",
-    "/images/CurtainSection/C2.png",
-    "/images/CurtainSection/C3.png",
-    "/images/CurtainSection/C4.png",
-    "/images/CurtainSection/C5.png",
-    "/images/CurtainSection/C6.png",
-    "/images/CurtainSection/C7.png",
-    "/images/CurtainSection/C8.png",
-    "/images/CurtainSection/C9.png",
+    "/images/CurtainSection/cr1/c1.png",
+    "/images/CurtainSection/cr2/c1.png",
+    "/images/CurtainSection/cr3/c1.png",
+    "/images/CurtainSection/cr4/c1.png",
+    "/images/CurtainSection/cr5/c1.png",
+    "/images/CurtainSection/cr6/c1.png",
+    "/images/CurtainSection/cr7/c1.png",
+    "/images/CurtainSection/cr8/c1.png",
+    "/images/CurtainSection/cr9/c1.png",
   ];
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -207,20 +207,27 @@ export default function CurtainsPage() {
         </div>
       </div>
 
-      {/* Page Heading */}
-      <div className="py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">
-            Curtains Collection
-          </h1>
-          <p className="text-gray-600">
-            Elegant curtains to enhance your home decor
-          </p>
+      {/* Background Image with Overlay and Text */}
+      <div className="relative h-[400px] flex items-center justify-center text-center">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-black/50 z-10" />
+            <img
+              src="/images/CurtainSection/hero.png"
+              alt="page"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-20  text-white px-4">
+            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Decor Curtains Collection</h1>
+            <p className="text-gray-100 ">
+              <span className="text-xl">Complete your décor with curtains that blend beauty and function.
+              </span>  <br /> <span className="text-lg">Sheer, blackout, and textured styles for every room.</span>  <br /> Add a touch of luxury and comfort to your space.
+            </p>
+          </div>
         </div>
-      </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 pb-16">
+      <div className="max-w-7xl mx-auto pt-10 px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="lg:w-64 flex-shrink-0">
@@ -273,29 +280,10 @@ export default function CurtainsPage() {
 
           {/* Product Grid */}
           <div className="flex-1">
-            <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">{products.length} products found</p>
-              <div className="flex items-center space-x-4">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                  <option>Newest First</option>
-                </select>
-                <div className="flex border border-gray-300 rounded-md">
-                  <button className="p-2 bg-amber-900 text-white">
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button className="p-2 text-gray-600">
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
+            
 
             {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
                 <Link
                   key={product.id}

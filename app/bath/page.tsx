@@ -200,7 +200,7 @@ export default function BathPage() {
         {/* Breadcrumb */}
         <div className="bg-gray-50 py-3 ">
           <div className="max-w-7xl mx-auto px-4">
-            <nav className="text-sm text-center text-gray-500">
+            <nav className="text-sm  text-gray-500">
               Home <span className="mx-2 text-gray-400">/</span>
               <span className="text-amber-900 font-medium">Bath</span>
             </nav>

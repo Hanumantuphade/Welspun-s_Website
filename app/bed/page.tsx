@@ -72,20 +72,26 @@ export default function BedPage() {
         </div>
       </div>
 
-      {/* Page Heading */}
-      <div className="py-6">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl font-light text-gray-900 mb-2">
-            Bed Collection
-          </h1>
-          <p className="text-gray-600">
-            Premium bedding essentials for your comfort
-          </p>
+       {/* Background Image with Overlay and Text */}
+       <div className="relative h-[400px] flex items-center justify-center text-center">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-black/50 z-10" />
+            <img
+              src="/images/bedSection/hero.png"
+              alt="page"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-20  text-white px-4">
+            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Luxury Bed Collection</h1>
+            <p className="text-gray-100 ">
+              <span className="text-xl">Elevate your bedroom with our premium bedding range.</span>  <br /> <span className="text-lg">Experience ultra-soft fabrics and timeless designs crafted for your comfort.</span>  <br /> Sleep beautifully and wake refreshed every day.
+            </p>
+          </div>
         </div>
-      </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 pb-16">
+      <div className="max-w-7xl pt-10 mx-auto px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="lg:w-64 flex-shrink-0">
@@ -149,28 +155,6 @@ export default function BedPage() {
 
           {/* Product Grid */}
           <div className="flex-1">
-            {/* Sort Options */}
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-              <p className="text-gray-600">{products.length} products found</p>
-              <div className="flex items-center space-x-4 w-full sm:w-auto">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm w-full sm:w-auto">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                  <option>Newest First</option>
-                </select>
-                <div className="flex border border-gray-300 rounded-md">
-                  <button className="p-2 bg-amber-900 text-white">
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button className="p-2 text-gray-600">
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
             {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (

@@ -232,16 +232,27 @@ export default function RugsPage() {
         </div>
       </div>
 
-      {/* Page Header */}
-      <div className="py-8 bg-white">
-        <div className="max-w-7xl mx-12 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">Rugs Collection</h1>
-          <p className="text-gray-600">Beautiful rugs to transform your living spaces</p>
+      {/* Background Image with Overlay and Text */}
+      <div className="relative h-[400px] flex items-center justify-center text-center">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-black/50 z-10" />
+            <img
+              src="/images/rugsSection/hero.png"
+              alt="page"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-20  text-white px-4">
+            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Premium Rugs Collection</h1>
+            <p className="text-gray-100 ">
+              <span className="text-xl">Discover rugs crafted for comfort and lasting beauty.
+              </span>  <br /> <span className="text-lg">BSoft underfoot with designs that elevate any space.</span>  <br /> Bring warmth, texture, and elegance to your home.
+            </p>
+          </div>
         </div>
-      </div>
 
       {/* Filters and Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 pt-10 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           

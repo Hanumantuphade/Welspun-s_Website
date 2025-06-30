@@ -200,20 +200,27 @@ export default function MattressPage() {
         </div>
       </div>
 
-      {/* Page Header */}
-      <div className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">
-            Mattress Collection
-          </h1>
-          <p className="text-gray-600">
-            Premium mattresses for the perfect night's sleep
-          </p>
+      {/* Background Image with Overlay and Text */}
+      <div className="relative h-[400px] flex items-center justify-center text-center">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-black/50 z-10" />
+            <img
+              src="/images/MattressSection/hero.png"
+              alt="page"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-20  text-white px-4">
+            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Comfort Mattress Collection</h1>
+            <p className="text-gray-100 ">
+              <span className="text-xl">Upgrade your sleep with mattresses designed for ultimate comfort.
+              </span>  <br /> <span className="text-lg">Balanced support and plush cushioning for peaceful nights.</span>  <br /> Experience the difference of quality sleep every day.
+            </p>
+          </div>
         </div>
-      </div>
 
       {/* Filters and Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl pt-10 mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="lg:w-64 flex-shrink-0">
@@ -264,48 +271,13 @@ export default function MattressPage() {
                 </div>
               </div>
 
-              {/* Firmness - no functionality added yet as data is missing */}
-              {/* <div className="mb-6">
-                <h4 className="font-medium mb-3">Firmness</h4>
-                <div className="space-y-2">
-                  {["Soft", "Medium", "Firm", "Extra Firm"].map((firmness) => (
-                    <label key={firmness} className="flex items-center">
-                      <input type="checkbox" className="mr-2" disabled />
-                      <span className="text-sm text-gray-400">
-                        {firmness}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div> */}
             </div>
           </div>
 
           {/* Products Grid */}
           <div className="flex-1">
-            {/* Sort and View Options */}
-            <div className="flex justify-between items-center mb-6">
-              <p className="text-gray-600">
-                {filteredProducts.length} products found
-              </p>
-              <div className="flex items-center space-x-4">
-                <select className="border border-gray-300 rounded-md px-3 py-2 text-sm">
-                  <option>Sort by: Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                  <option>Newest First</option>
-                </select>
-                <div className="flex border border-gray-300 rounded-md">
-                  <button className="p-2 bg-amber-900 text-white">
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button className="p-2 text-gray-600">
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
+            
+            
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
