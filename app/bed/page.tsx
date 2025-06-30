@@ -78,7 +78,7 @@ export default function BedPage() {
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
               src="/images/bedSection/hero.png"
-              alt="page"
+              alt="page" 
               className="w-full h-full object-cover"
             />
           </div>
