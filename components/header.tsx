@@ -25,6 +25,7 @@ export default function Header() {
     { name: "Curtains", href: "/curtains" },
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
+    { name: "Flooring", href: "/flooring" },
     { name: "Contact", href: "/contact" },
   ];
 
