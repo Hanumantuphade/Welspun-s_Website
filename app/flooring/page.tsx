@@ -2,11 +2,25 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import Link from "next/link";
-import { Filter, Star } from "lucide-react";
-import { Product } from "@/types";
+import {  Star } from "lucide-react";
+
+type FlooringProduct = {
+  id: number;
+  name: string;
+  price: number;
+  originalPrice: number;
+  rating: number;
+  reviews: number;
+  image: string;
+  colors?: string[];
+  sizes?: string[];
+  description: string;
+  category: string;
+  collection?: string;
+};
 
 // Sample Pexels images (ensure proper use per Pexels license :contentReference[oaicite:1]{index=1})
-const flooringProducts: Product[] = [
+const flooringProducts: FlooringProduct[] = [
   // Existing SPC products (101–104)…
 
   // --- Multistile™ Tiles ---
@@ -599,7 +613,7 @@ export default function FlooringPage() {
       </div>
 
       {/* Products Grid */}
-<div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div className="max-w-7xl mx-auto px-4 md:mx-10 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {flooringProducts.map((prod) => (
     <Link key={prod.id} href={`/product/${prod.category}/${prod.id}`}>
       <div className="group cursor-pointer border rounded-lg overflow-hidden transition-shadow hover:shadow-md">

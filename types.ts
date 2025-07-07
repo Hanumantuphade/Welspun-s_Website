@@ -13,7 +13,6 @@ export interface Product {
   returnPolicy: string;
   careInstructions: string;
   manufactureDetail: string;
-  index: number;
-  slug: string;
+  collection?: string;
   category: string; // ✅ make sure 'category' is included here
 }
