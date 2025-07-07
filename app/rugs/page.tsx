@@ -215,7 +215,7 @@ export default function RugsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-amber-900 text-white text-center py-2 text-sm font-medium">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
       </div>
 
@@ -233,7 +233,7 @@ export default function RugsPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[400px] flex items-center justify-center text-center">
+      <div className="relative h-[450px] mt-6 flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img

@@ -7,35 +7,35 @@ import { useState, useEffect, useCallback } from "react";
 const slides = [
   {
     id: 1,
-    image: "/hero-towels-fathers.webp",
+    image: "/Hero/hero1.png",
     title: "Celebrate Comfort",
     subtitle: "This Father's Day",
     offer: "SHOP FOR ₹1999 & GET A TOWEL WORTH ₹999 FREE",
   },
   {
     id: 2,
-    image: "/hero-bed-comfort.webp",
+    image: "/Hero/hero2.jpeg",
     title: "Comfort Deals",
     subtitle: "Discover The Spaces Bed Collection",
     offer: "Bedsheets • Quilts • Blankets • Kids Bed Sets",
   },
   {
     id: 3,
-    image: "/hero-bath-collection.webp",
+    image: "/Hero/hero3.png",
     title: "Comfort Deals",
     subtitle: "Discover The Spaces Bath Collection",
     offer: "Towels • Towel Sets • Bathrobes • Bath mats",
   },
   {
     id: 4,
-    image: "/hero-bathrobe.webp",
+    image: "/Hero/hero4.png",
     title: "Celebrate Comfort",
     subtitle: "This Father's Day",
     offer: "SHOP FOR ₹3000 & GET A BATHROBE WORTH ₹2599 FREE",
   },
   {
     id: 5,
-    image: "/hero-pillows.webp",
+    image: "/Hero/hero5.jpeg",
     title: "Cloud-Like Comfort",
     subtitle: "Awaits",
     offer: "2 QUILTED MICRO PILLOWS FOR ₹999",
@@ -89,7 +89,7 @@ export default function HeroSection() {
 
   return (
     <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-      {/* Hero Images */}
+      {/* Slides */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -104,7 +104,7 @@ export default function HeroSection() {
             className="object-cover"
             priority={index === 0}
           />
-          {/* Text Overlay */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4">
             <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
               {slide.title}
@@ -119,21 +119,21 @@ export default function HeroSection() {
         </div>
       ))}
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows
       <button
         onClick={prevSlide}
-        className="absolute left-3 sm:left-6 top-1/2 transform -translate-y-1/2 bg-amber-900 hover:bg-amber-800 text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
+        className="absolute left-3 sm:left-6 top-1/2 transform-translate-y-1/2 bg-transparent text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+        <ChevronLeft className="h-4 w-4 text-black sm:h-5 sm:w-5" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-3 sm:right-6 top-1/2 transform -translate-y-1/2 bg-amber-900 hover:bg-amber-800 text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
+        className="absolute right-3 sm:right-6 top-1/2 transform-translate-y-1/2 bg-black hover:bg-slate-200 text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
         aria-label="Next slide"
       >
         <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-      </button>
+      </button> */}
 
       {/* Slide Indicators */}
       <div className="absolute bottom-3 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">

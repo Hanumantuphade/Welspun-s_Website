@@ -593,10 +593,21 @@ const flooringProducts: FlooringProduct[] = [
 export default function FlooringPage() {
   return (
     <div className="min-h-screen bg-white">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+        Buy Products worth Rs. 1999/- get a Free Florring Rs. 999/-
+      </div>
       <Header />
+      <div className="bg-gray-50 py-4">
+        <div className="max-w-7xl mx-auto px-4">
+          <nav className="text-sm text-gray-500">
+            Home <span className="mx-2 text-gray-400">/</span>
+            <span className="text-amber-900 font-medium">Curtains</span>
+          </nav>
+        </div>
+      </div>
 
       {/* Hero with Pexels background */}
-      <div className="relative h-[300px] flex items-center justify-center bg-gray-50 text-center">
+      <div className="relative h-[450px] mt-5 flex items-center justify-center text-center">
         <img
           src="https://images.pexels.com/photos/1376487/pexels-photo-1376487.jpeg"
           alt="Modern wood flooring"

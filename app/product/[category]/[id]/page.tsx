@@ -31,7 +31,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
-      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+      <div className="max-w-7xl mx-auto mt-20 px-4 py-6 sm:py-8 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
         {/* LEFT: Product Images */}
         <div>
           {/* Big image */}
@@ -103,7 +103,7 @@ export default function ProductDetailPage() {
             Inclusive of all taxes. Shipping calculated at checkout.
           </p>
 
-          {/* Color options */}
+          {/* Color options
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Color
@@ -116,7 +116,7 @@ export default function ProductDetailPage() {
                 ></div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Stock alert */}
           <div className="mb-6 text-orange-600 font-semibold flex items-center gap-2">

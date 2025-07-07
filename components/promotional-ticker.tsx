@@ -20,7 +20,7 @@ export default function PromotionalTicker() {
   }, [])
 
   return (
-    <div className="bg-amber-900 text-white py-2 overflow-hidden relative">
+    <div className="bg-gray-900 text-white py-2 overflow-hidden relative">
       <div className="animate-marquee whitespace-nowrap">
         <span className="text-sm font-medium mx-4">{promotionalMessages[currentMessage]}</span>
       </div>

@@ -56,7 +56,7 @@ export default function BedPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Promo Bar */}
-      <div className="bg-amber-900 text-white text-center py-2 text-sm font-medium">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
       </div>
 
@@ -73,7 +73,7 @@ export default function BedPage() {
       </div>
 
        {/* Background Image with Overlay and Text */}
-       <div className="relative h-[400px] flex items-center  justify-center text-center">
+       <div className="relative h-[450px] flex items-center mt-6  justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img

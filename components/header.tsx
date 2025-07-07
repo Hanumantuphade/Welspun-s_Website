@@ -23,9 +23,9 @@ export default function Header() {
     { name: "Mattress", href: "/mattress" },
     { name: "Rugs", href: "/rugs" },
     { name: "Curtains", href: "/curtains" },
+     { name: "Flooring", href: "/flooring" },
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
-    { name: "Flooring", href: "/flooring" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -34,18 +34,22 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-white/80 backdrop-blur shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <header className=" backdrop-blur absolute md:top-10 top-12 left-0 w-full z-50 bg-transparent shadow-sm border-b border-gray-100  ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0  flex items-center  sm:space-x-4">
             <Link href="/" className="flex justify-center items-center">
               <img
-                src="/logo.jpeg"
+                src="/About.jpeg"
                 alt="Logo"
-                className="h-10 w-[150px] sm:w-[180px] md:w-[200px]"
+                className="h-14 sm:w-14 rounded-full md:w-14"
               />
             </Link>
+            <div className=" hidden md:block text-xl bg-gradient-to-br from-purple-400 to bg-pink-500 bg-clip-text text-transparent py-1 font-bold tracking-wide">
+                Swarattan store
+              </div>
+             
           </div>
 
           {/* Desktop Navigation */}
@@ -54,7 +58,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-amber-900 text-sm font-medium transition-colors duration-200"
+                className="text-black hover:text-red-600 text-[15px] font-medium transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -62,7 +66,7 @@ export default function Header() {
           </nav>
 
           {/* Right side icons */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-2  sm:space-x-4">
             <button
               className="text-gray-600 hover:text-amber-900 transition-colors duration-200"
               aria-label="Search"
@@ -125,7 +129,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-amber-900 text-sm font-medium transition-colors duration-200 px-4 py-2"
+                  className="text-black hover:text-amber-900 text-[16px] font-medium transition-colors duration-200 px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
