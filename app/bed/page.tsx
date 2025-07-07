@@ -73,7 +73,7 @@ export default function BedPage() {
       </div>
 
        {/* Background Image with Overlay and Text */}
-       <div className="relative h-[400px] flex items-center justify-center text-center">
+       <div className="relative h-[400px] flex items-center  justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
@@ -91,67 +91,9 @@ export default function BedPage() {
         </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl pt-10 mx-auto px-4 pb-16">
+      <div className="max-w-7xl pt-10 mx-10 px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </h3>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  {[
-                    "Under ₹1000",
-                    "₹1000 - ₹2000",
-                    "₹2000 - ₹3000",
-                    "Above ₹3000",
-                  ].map((range) => (
-                    <label key={range} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{range}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Product Type */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Product Type</h4>
-                <div className="space-y-2">
-                  {[
-                    "Bedsheets",
-                    "Blankets",
-                    "Duvet Covers",
-                    "Pillows",
-                    "Mattress Protectors",
-                  ].map((type) => (
-                    <label key={type} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{type}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Material */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Material</h4>
-                <div className="space-y-2">
-                  {["Cotton", "Satin", "Silk", "Linen"].map((material) => (
-                    <label key={material} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{material}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+         
 
           {/* Product Grid */}
           <div className="flex-1">
@@ -162,8 +104,8 @@ export default function BedPage() {
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
                 >
-                  <div className="group cursor-pointer">
-                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                  <div className="group border-2 border-gray-200 cursor-pointer">
+                    <div className="relative bg-gray-100  overflow-hidden mb-4 aspect-square">
                       <Image
                         src={product.image}
                         alt={product.name}

@@ -229,17 +229,17 @@ export default function BathPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 pt-10 pb-16">
+        <div className="max-w-7xl md:mx-10 px-4 pt-10 pb-16">
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1">
-              <div className="grid grid-cols-1 md:px-12 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products.map((product) => (
                   <Link
                     key={product.id}
                     href={`/product/${product.category}/${product.id}`}
                   >
-                    <div className="group border-2 border-gray-100 cursor-pointer">
-                      <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                    <div className="group border-2 border-gray-200 cursor-pointer">
+                      <div className="relative bg-gray-100 overflow-hidden mb-4 aspect-square">
                         <Image
                           src={product.image}
                           alt={product.name}

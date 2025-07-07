@@ -227,61 +227,12 @@ export default function CurtainsPage() {
         </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto pt-10 px-4 pb-16">
+      <div className="max-w-7xl md:mx-10 pt-10 px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </h3>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  {["Under ₹1,500", "₹1,500 - ₹3,000", "₹3,000 - ₹5,000", "Above ₹5,000"].map(range => (
-                    <label key={range} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{range}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Type */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Type</h4>
-                <div className="space-y-2">
-                  {["Blackout", "Sheer", "Semi-Sheer", "Thermal", "Decorative"].map(type => (
-                    <label key={type} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{type}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Room */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Room</h4>
-                <div className="space-y-2">
-                  {["Living Room", "Bedroom", "Kitchen", "Bathroom", "Office"].map(room => (
-                    <label key={room} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm">{room}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+        
 
           {/* Product Grid */}
           <div className="flex-1">
-            
-
             {/* Product Cards */}
             <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
@@ -289,8 +240,8 @@ export default function CurtainsPage() {
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
                 >
-                  <div className="group cursor-pointer">
-                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4 aspect-square">
+                  <div className="group border-2 border-gray-200 cursor-pointerr">
+                    <div className="relative bg-gray-100  overflow-hidden mb-4 aspect-square">
                       <Image
                         src={product.image}
                         alt={product.name}

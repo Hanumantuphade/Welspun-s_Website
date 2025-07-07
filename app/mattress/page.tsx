@@ -219,66 +219,11 @@ export default function MattressPage() {
           </div>
         </div>
 
-      {/* Filters and Products */}
-      <div className="max-w-7xl pt-10 mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl pt-10 md:mx-10 px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </h3>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
-                <div className="space-y-2">
-                  {[
-                    "Under ₹10,000",
-                    "₹10,000 - ₹20,000",
-                    "₹20,000 - ₹30,000",
-                    "Above ₹30,000",
-                  ].map((range) => (
-                    <label key={range} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        className="mr-2"
-                        checked={selectedPriceRanges.includes(range)}
-                        onChange={() => handlePriceRangeChange(range)}
-                      />
-                      <span className="text-sm">{range}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Size */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Size</h4>
-                <div className="space-y-2">
-                  {["Single", "Double", "Queen", "King"].map((size) => (
-                    <label key={size} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        className="mr-2"
-                        checked={selectedSizes.includes(size)}
-                        onChange={() => handleSizeChange(size)}
-                      />
-                      <span className="text-sm">{size}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+         
           {/* Products Grid */}
           <div className="flex-1">
-            
-            
-
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((product) => (
@@ -286,8 +231,8 @@ export default function MattressPage() {
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
                 >
-                  <div className="group cursor-pointer">
-                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <div className="group border-2 border-gray-200 cursor-pointer">
+                    <div className="relative bg-gray-100  overflow-hidden mb-4">
                       <div className="aspect-square relative">
                         <Image
                           src={product.image || "/placeholder.svg"}
@@ -340,9 +285,9 @@ export default function MattressPage() {
                         </span>
                       </div>
 
-                      <div className="text-sm text-gray-600">
+                      {/* <div className="text-sm text-gray-600">
                         Available in: {product.sizes.join(", ")}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </Link>

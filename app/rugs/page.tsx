@@ -223,7 +223,7 @@ export default function RugsPage() {
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl md:mx-10 px-4 sm:px-6 lg:px-8">
           <nav className="text-sm">
             <span className="text-gray-500">Home</span>
             <span className="mx-2 text-gray-400">/</span>
@@ -265,8 +265,8 @@ export default function RugsPage() {
             <div className="grid grid-cols-1 px-12 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {generatedProducts.map((product) => (
                 <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
-                  <div className="group cursor-pointer">
-                    <div className="relative bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <div className="group border-2 border-gray-200 cursor-pointer">
+                    <div className="relative bg-gray-200 overflow-hidden mb-4">
                       <div className="aspect-square relative">
                         <Image
                           src={product.image || "/placeholder.svg"}
