@@ -13,7 +13,7 @@ export default function CategorySection() {
     {
       id: 2,
       name: "Living Room",
-      image: "/images/CurtainSection/C4.png",
+      image: "/images/CurtainSection/cr1/c1.png",
       description: "Stylish home decor",
       href: "/curtains",
     },

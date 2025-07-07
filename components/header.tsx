@@ -1,4 +1,5 @@
 "use client";
+
 import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";
 import { Search, Heart, User, ShoppingCart, Menu, X } from "lucide-react";
@@ -6,7 +7,6 @@ import { useState, useEffect } from "react";
 import SearchOverlay from "./search-overlay";
 import LoginPopup from "./login-popup";
 import CartDropdown from "./cart-dropdown";
-import { Product } from "@/types";
 
 export default function Header() {
   const { cartItems } = useCart();
@@ -18,7 +18,7 @@ export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const navItems = [
-    { name: "Bed", href: "/bed" }, // ✅ Changed Bed to normal link
+    { name: "Bed", href: "/bed" },
     { name: "Bath", href: "/bath" },
     { name: "Mattress", href: "/mattress" },
     { name: "Rugs", href: "/rugs" },
@@ -34,13 +34,17 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <header className="bg-white/80 backdrop-blur shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex justify-center items-center">
-              <img src="/logo.jpeg" alt="Logo" className="h-10 w-[200px]" />
+              <img
+                src="/logo.jpeg"
+                alt="Logo"
+                className="h-10 w-[150px] sm:w-[180px] md:w-[200px]"
+              />
             </Link>
           </div>
 
@@ -58,7 +62,7 @@ export default function Header() {
           </nav>
 
           {/* Right side icons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <button
               className="text-gray-600 hover:text-amber-900 transition-colors duration-200"
               aria-label="Search"
@@ -87,7 +91,7 @@ export default function Header() {
                 onClick={() => setIsCartOpen(!isCartOpen)}
               >
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-amber-900 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
+                <span className="absolute -top-2 -right-2 bg-amber-900 text-white text-[10px] rounded-full min-w-[16px] h-4 flex items-center justify-center font-medium">
                   {cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0}
                 </span>
               </button>
@@ -116,12 +120,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {mounted && isMenuOpen && (
           <div className="lg:hidden border-t border-gray-100 py-4">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-amber-900 text-sm font-medium transition-colors duration-200"
+                  className="text-gray-600 hover:text-amber-900 text-sm font-medium transition-colors duration-200 px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
