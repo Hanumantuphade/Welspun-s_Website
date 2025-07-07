@@ -38,7 +38,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         {/* Mobile layout */}
         <div className="block md:hidden space-y-8">
           {/* Brand section */}
@@ -158,7 +158,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:col-span-4">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:col-span-4">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
                 <h3 className="font-semibold mb-4 text-amber-400">
@@ -182,8 +182,8 @@ export default function Footer() {
         </div>
 
         {/* Social Media & Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 mt-5 pt-4">
+          <div className="flex flex-col md:flex-row justify-center items-center">
             {/* Social Media */}
             <div className="flex space-x-4 mb-4 md:mb-0">
               <Link
@@ -212,12 +212,13 @@ export default function Footer() {
               </Link>
             </div>
 
-            {/* Copyright */}
-            <div className="text-gray-400 text-sm text-center md:text-right">
-              <p>&copy; 2024 Spaces. All rights reserved.</p>
-              <p className="mt-1">Made with ❤️ in India</p>
-            </div>
+           
           </div>
+           {/* Copyright */}
+            <div className="text-gray-400 mt-2 text-sm text-center ">
+              <p>&copy; 2024 Spaces. All rights reserved.</p>
+              {/* <p className="mt-1">Made with ❤️ in India</p> */}
+            </div>
         </div>
       </div>
     </footer>
