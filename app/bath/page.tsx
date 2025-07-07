@@ -208,7 +208,7 @@ export default function BathPage() {
         </div>
 
         {/* Background Image with Overlay and Text */}
-        <div className="relative h-[450px] flex items-center mt-6  justify-center text-center">
+        <div className="relative h-[420px] flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img

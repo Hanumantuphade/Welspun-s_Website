@@ -208,7 +208,7 @@ export default function CurtainsPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[450px] mt-6 flex items-center justify-center text-center">
+      <div className="relative h-[420px] flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img

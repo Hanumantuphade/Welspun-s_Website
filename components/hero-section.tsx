@@ -1,6 +1,5 @@
 "use client";
-
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
@@ -8,37 +7,52 @@ const slides = [
   {
     id: 1,
     image: "/Hero/hero1.png",
-    title: "Celebrate Comfort",
-    subtitle: "This Father's Day",
-    offer: "SHOP FOR ₹1999 & GET A TOWEL WORTH ₹999 FREE",
+    title: "Experience Unmatched Comfort",
+    subtitle1:
+      "Discover our premium mattresses crafted for deep, restful sleep every night.",
+    subtitle2:
+      "Choose from our collection to find the perfect balance of comfort and support.",
+    // href: "/mattresses/page.tsx",
   },
   {
     id: 2,
     image: "/Hero/hero2.jpeg",
-    title: "Comfort Deals",
-    subtitle: "Discover The Spaces Bed Collection",
-    offer: "Bedsheets • Quilts • Blankets • Kids Bed Sets",
+    title: "Style Your Windows Beautifully",
+    subtitle1:
+      "Discover our elegant curtain collection to enhance every room’s ambiance.",
+    subtitle2:
+      "From sheer to blackout, find curtains that combine function with style.",
+    // href: "/curtains",
   },
   {
     id: 3,
     image: "/Hero/hero3.png",
-    title: "Comfort Deals",
-    subtitle: "Discover The Spaces Bath Collection",
-    offer: "Towels • Towel Sets • Bathrobes • Bath mats",
+    title: "Wrap Yourself in Softness",
+    subtitle1:
+      " Explore our luxurious bedsheets crafted for ultimate comfort and style.",
+    subtitle2:
+      "From pure cotton to rich blends, explore options that suit your sleep needs.",
+    // href: "/bed",
   },
   {
     id: 4,
     image: "/Hero/hero4.png",
-    title: "Celebrate Comfort",
-    subtitle: "This Father's Day",
-    offer: "SHOP FOR ₹3000 & GET A BATHROBE WORTH ₹2599 FREE",
+    title: "Refresh, Relax, Renew",
+    subtitle1:
+      "From plush towels to cosy robes, find everything to elevate your bath routine.",
+    subtitle2:
+      "Explore elegant and absorbent bath essentials designed for comfort.",
+    // href: "/bath",
   },
   {
     id: 5,
     image: "/Hero/hero5.jpeg",
-    title: "Cloud-Like Comfort",
-    subtitle: "Awaits",
-    offer: "2 QUILTED MICRO PILLOWS FOR ₹999",
+    title: "Add Warmth Underfoot",
+    subtitle1:
+      "Discover rugs that blend comfort, style, and craftsmanship for every space.",
+    subtitle2:
+      "Explore our premium rug collection to enhance every room’s ambiance.",
+    // href: "/rugs",
   },
 ];
 
@@ -77,7 +91,7 @@ export default function HeroSection() {
         <div className="absolute inset-0">
           <Image
             src={slides[0].image || "/placeholder.svg"}
-            alt={`${slides[0].title} ${slides[0].subtitle}`}
+            alt={`${slides[0].title} ${slides[0].subtitle1}`}
             fill
             className="object-cover"
             priority
@@ -88,7 +102,7 @@ export default function HeroSection() {
   }
 
   return (
-    <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+    <div className=" relative md:-top-[65px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -99,22 +113,36 @@ export default function HeroSection() {
         >
           <Image
             src={slide.image || "/placeholder.svg"}
-            alt={`${slide.title} ${slide.subtitle}`}
+            alt={`${slide.title} ${slide.subtitle1}`}
             fill
             className="object-cover"
             priority={index === 0}
           />
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4">
-            <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+            <h2 className="text-white text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
               {slide.title}
             </h2>
-            <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mt-2">
-              {slide.subtitle}
+            <p className="text-gray-300 text-lg sm:text-base md:text-lg lg:text-xl mt-2">
+              {slide.subtitle1}
             </p>
-            <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg mt-1">
-              {slide.offer}
+            <span className=" hidden md:block text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg mt-1">
+              {slide.subtitle2}
             </span>
+            <div className="flex flex-wrap mt-7 gap-4">
+              <Link
+                href="/about"
+                className="btn bg-white text-primary-800 hover:bg-primary-50 hover:text-primary-900 transition-all p-3 rounded-lg duration-300"
+              >
+                View Our Products
+              </Link>
+              <Link
+                href="/contact"
+                className="btn border-2 border-white text-white hover:bg-white hover:text-black transition-all p-3 rounded-lg duration-300"
+              >
+                Get In Touch
+              </Link>
+            </div>
           </div>
         </div>
       ))}

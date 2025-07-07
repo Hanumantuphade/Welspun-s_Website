@@ -607,7 +607,7 @@ export default function FlooringPage() {
       </div>
 
       {/* Hero with Pexels background */}
-      <div className="relative h-[450px] mt-5 flex items-center justify-center text-center">
+      <div className="relative h-[420px] flex items-center justify-center text-center">
         <img
           src="https://images.pexels.com/photos/1376487/pexels-photo-1376487.jpeg"
           alt="Modern wood flooring"
