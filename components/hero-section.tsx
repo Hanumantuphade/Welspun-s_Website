@@ -17,21 +17,23 @@ const slides = [
   {
     id: 2,
     image: "/Hero/hero2.jpeg",
-    title: "Style Your Windows Beautifully",
+    title: "Transform Your Space with Elegant Flooring",
     subtitle1:
-      "Discover our elegant curtain collection to enhance every room’s ambiance.",
+      "Explore our premium flooring collections designed to elevate every corner of your home.",
     subtitle2:
-      "From sheer to blackout, find curtains that combine function with style.",
+      "From modern laminates to timeless wooden textures, find the perfect flooring to match your style.",
+
     // href: "/curtains",
   },
   {
     id: 3,
     image: "/Hero/hero3.png",
-    title: "Wrap Yourself in Softness",
+    title: "Add Warmth Underfoot",
     subtitle1:
-      " Explore our luxurious bedsheets crafted for ultimate comfort and style.",
+      "Discover rugs that blend comfort, style, and craftsmanship for every space.",
     subtitle2:
-      "From pure cotton to rich blends, explore options that suit your sleep needs.",
+      "Explore our premium rug collection to enhance every room’s ambiance.",
+
     // href: "/bed",
   },
   {
@@ -46,12 +48,23 @@ const slides = [
   },
   {
     id: 5,
-    image: "/Hero/hero5.jpeg",
-    title: "Add Warmth Underfoot",
+    image: "/Hero/hero5.png",
+    title: "Style Your Windows Beautifully",
     subtitle1:
-      "Discover rugs that blend comfort, style, and craftsmanship for every space.",
+      "Discover our elegant curtain collection to enhance every room’s ambiance.",
     subtitle2:
-      "Explore our premium rug collection to enhance every room’s ambiance.",
+      "From sheer to blackout, find curtains that combine function with style.",
+
+    // href: "/rugs",
+  },
+  {
+    id: 6,
+    image: "/Hero/hero6.png",
+    title: "Wrap Yourself in Softness",
+    subtitle1:
+      " Explore our luxurious bedsheets crafted for ultimate comfort and style.",
+    subtitle2:
+      "From pure cotton to rich blends, explore options that suit your sleep needs.",
     // href: "/rugs",
   },
 ];

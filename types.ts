@@ -1,3 +1,13 @@
+export interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+  size?: string;
+  color?: string;
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -14,5 +24,5 @@ export interface Product {
   careInstructions: string;
   manufactureDetail: string;
   collection?: string;
-  category: string; // ✅ make sure 'category' is included here
+  category: string;
 }
