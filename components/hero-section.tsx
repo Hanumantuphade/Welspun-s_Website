@@ -87,7 +87,7 @@ export default function HeroSection() {
 
   if (!mounted) {
     return (
-      <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden bg-gray-100">
+      <div className="relative h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden bg-gray-100">
         <div className="absolute inset-0">
           <Image
             src={slides[0].image || "/placeholder.svg"}

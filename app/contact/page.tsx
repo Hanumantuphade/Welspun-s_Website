@@ -8,7 +8,7 @@ export default function ContactPage() {
 
     
     <div className="min-h-screen bg-white">
-      <div className="bg-amber-900 text-white text-center py-2 text-sm font-medium">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
       </div>
 
