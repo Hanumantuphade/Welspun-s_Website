@@ -212,7 +212,7 @@ export default function CurtainsPage() {
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
-              src="/images/CurtainSection/hero.png"
+              src="/images/CurtainSection/hero1.png"
               alt="page"
               className="w-full h-full object-cover"
             />
