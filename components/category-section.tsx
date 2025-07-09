@@ -24,6 +24,27 @@ export default function CategorySection() {
       description: "Luxury bath accessories",
       href: "/bath",
     },
+    {
+      id: 4,
+      name: "Flooring",
+      image: "/ct.jpeg",
+      description: "Elegant flooring collections ",
+      href: "/flooring  ",
+    },
+    {
+      id: 5,
+      name: "Rugs",
+      image: "/images/rugsSection/rg1/r1.png",
+      description: "Premium rugs collection ",
+      href: "/rugs",
+    },
+    {
+      id: 6,
+      name: "Mattresses",
+      image: "/images/MattressSection/ct.jpeg",
+      description: "Premium comfort mattresses",
+      href: "/mattress",
+    },
   ]
 
   return (

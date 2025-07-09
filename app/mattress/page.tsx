@@ -16,6 +16,8 @@ export default function MattressPage() {
     "/images/MattressSection/mat4/m1.png",
     "/images/MattressSection/mat5/m1.png",
     "/images/MattressSection/mat6/m1.png",
+    "/images/MattressSection/mat7/m1.jpeg",
+
   ];
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -119,6 +121,23 @@ export default function MattressPage() {
         rating: 4.9,
         reviews: 250,
         image: productImages[5],
+        images: [],
+        colors: ["White"],
+        sizes: ["Single", "Double", "Queen", "King"],
+        description: "",
+        returnPolicy: "",
+        careInstructions: "",
+        manufactureDetail: "",
+        category: "mattress",
+      },
+      {
+        id: 70,
+        name: "Yours'N Mine Soft-Medium Luxury Mattress (6 inch height)",
+        price: 17999,
+        originalPrice: 21999,
+        rating: 4.9,
+        reviews: 250,
+        image: productImages[6],
         images: [],
         colors: ["White"],
         sizes: ["Single", "Double", "Queen", "King"],

@@ -26,8 +26,8 @@ export default function CurtainsPage() {
   useEffect(() => {
     const generatedProducts: Product[] = [
       {
-        id: 1,
-        name: "Elegant Grey Blackout Curtain",
+        id: 40,
+        name: "Elegant Floral Print Room Darkening Curtains Set of 2 DS427B",
         price: 1799,
         originalPrice: 2299,
         rating: 4.5,
@@ -43,8 +43,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 2,
-        name: "Floral Sheer Window Curtain",
+        id: 41,
+        name: "Blooming Vines Floral Midnight Blue Heavy Satin Blackout Curtains Set Of 2 - (DS428A)",
         price: 1299,
         originalPrice: 1599,
         rating: 4.2,
@@ -60,8 +60,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 3,
-        name: "Premium Brown Semi-Sheer Curtain",
+        id: 42,
+        name: "Summer Blush Floral Chestnut Pink Sheer Curtain Set of 2 - DS607",
         price: 1599,
         originalPrice: 1999,
         rating: 4.6,
@@ -77,8 +77,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 4,
-        name: "Royal Blue Thermal Blackout Curtain",
+        id: 43,
+        name: "Morning Dew Floral Glossy Grape Purple Sheer Curtain Set of 2 - DS605",
         price: 1899,
         originalPrice: 2499,
         rating: 4.8,
@@ -94,8 +94,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 5,
-        name: "Classic Beige Decorative Curtain",
+        id: 44,
+        name: "Elegant Floral Print Room Darkening Curtains Set of 2 DS357A",
         price: 1499,
         originalPrice: 1799,
         rating: 4.3,
@@ -111,8 +111,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 6,
-        name: "Luxury Velvet Blackout Curtain",
+        id: 45,
+        name: "Diverse Parade Geometric Slate Grey Heavy Satin Blackout Curtains Set Of 2 - (DS523D)",
         price: 2499,
         originalPrice: 2999,
         rating: 4.9,
@@ -128,8 +128,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 7,
-        name: "Soft Pink Sheer Curtain",
+        id: 46,
+        name: "Elegant Plain Print Sheer Semi Transparent Curtain - Set of 2 -PSHEERWHT",
         price: 1199,
         originalPrice: 1499,
         rating: 4.1,
@@ -145,8 +145,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 8,
-        name: "Modern Grey Semi-Sheer Curtain",
+        id: 47,
+        name: "Bloomscape Floral Vanilla Beige Heavy Satin Blackout Curtain Set of 2 - DS614",
         price: 1399,
         originalPrice: 1799,
         rating: 4.4,
@@ -162,8 +162,8 @@ export default function CurtainsPage() {
         category: "curtains",
       },
       {
-        id: 9,
-        name: "Golden Decorative Living Room Curtain",
+        id: 48,
+        name: "Elegant Ombre Print Room Darkening Curtain - Set of 2 - DSFRDM1",
         price: 1699,
         originalPrice: 2099,
         rating: 4.7,
