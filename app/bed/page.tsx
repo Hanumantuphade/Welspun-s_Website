@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import { Star, Filter, Grid, List } from "lucide-react";
+import { Star } from "lucide-react";
 
 export default function BedPage() {
   const productImages = [
@@ -64,7 +64,7 @@ export default function BedPage() {
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-3">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="w-full max-w-full mx-auto px-2">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
             <span className="text-sky-600 font-medium">Bed</span>
@@ -82,18 +82,18 @@ export default function BedPage() {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative z-20  text-white px-4">
+        <div className="relative z-20 text-white px-2">
           <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">
             Luxury Bed Collection
           </h1>
-          <p className="text-gray-100 ">
+          <p className="text-gray-100">
             <span className="text-xl">
               Elevate your bedroom with our premium bedding range.
             </span>{" "}
             <br />{" "}
             <span className="text-lg">
-              Experience ultra-soft fabrics and timeless designs crafted for
-              your comfort.
+              Experience ultra-soft fabrics and timeless designs crafted for your
+              comfort.
             </span>{" "}
             <br /> Sleep beautifully and wake refreshed every day.
           </p>
@@ -101,19 +101,18 @@ export default function BedPage() {
       </div>
 
       {/* Main Content */}
-      <div className="w-full max-w-screen-xl mx-auto pt-10 px-4 pb-16">
+      <div className="w-full max-w-full mx-auto pt-10 px-2 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Product Grid */}
           <div className="flex-1">
-            {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 lg:gap-12 xl:gap-12 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
               {products.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
                 >
                   <div className="group border-2 border-gray-200 cursor-pointer">
-                    <div className="relative bg-gray-100  overflow-hidden mb-4 aspect-square">
+                    <div className="relative bg-gray-100 overflow-hidden mb-4 aspect-square">
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -159,3 +158,4 @@ export default function BedPage() {
     </div>
   );
 }
+d
