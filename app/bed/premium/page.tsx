@@ -31,7 +31,7 @@ const premiumProducts = [
 
 export default function PremiumBedsheetsPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-6 ">
+    <div className="min-h-screen bg-white max-w-7xl mx-auto px-4 pb-6 ">
       <Header />
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-3">
