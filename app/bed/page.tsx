@@ -106,7 +106,7 @@ export default function BedPage() {
           {/* Product Grid */}
           <div className="flex-1">
             {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 lg:gap-12 xl:gap-12 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 lg:gap-12 xl:gap-12 gap-6">
               {products.map((product) => (
                 <Link
                   key={product.id}
