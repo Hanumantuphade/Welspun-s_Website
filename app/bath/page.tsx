@@ -229,10 +229,10 @@ export default function BathPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-7xl md:mx-10 px-4 pt-10 pb-16">
+        <div className="w-full max-w-full mx-auto pt-10 px-12 pb-16">
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1">
-              <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
                 {products.map((product) => (
                   <Link
                     key={product.id}

@@ -252,7 +252,7 @@ export default function RugsPage() {
         </div>
 
       {/* Filters and Products */}
-      <div className="max-w-7xl md:mx-10 px-4 pt-10 pb-16">
+      <div className="w-full max-w-full mx-auto pt-10 px-12 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           
@@ -262,7 +262,7 @@ export default function RugsPage() {
            
 
             {/* Products Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
               {generatedProducts.map((product) => (
                 <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
                   <div className="group border-2 border-gray-200 cursor-pointer">
