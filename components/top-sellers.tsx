@@ -11,7 +11,7 @@ const topSellerSlides = [
     title: "FLORA COLLECTION",
     subtitle: "Elegant floral patterns for your bedroom",
     buttonText: "SHOP NOW",
-    href: "/bed",
+    href: "/bed/premium",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const topSellerSlides = [
     title: "PREMIUM COTTON",
     subtitle: "Soft and comfortable bedding essentials",
     buttonText: "SHOP NOW",
-    href: "/bed",
+    href: "/bed/premium",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const topSellerSlides = [
     title: "LUXURY COLLECTION",
     subtitle: "Transform your bedroom into a luxury suite",
     buttonText: "SHOP NOW",
-    href: "/bed",
+    href: "/bed/premium",
   },
 ];
 
