@@ -73,7 +73,7 @@ export default function BedPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[410px] lg:h-[430px] xl:h-[500px] flex items-center justify-center text-center">
+      <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/50 z-10" />
           <img
@@ -86,16 +86,17 @@ export default function BedPage() {
           <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">
             Luxury Bed Collection
           </h1>
-          <p className="text-gray-100">
-            <span className="text-xl">
+          <p className="text-gray-100 space-y-2">
+            <span className="text-xl block">
               Elevate your bedroom with our premium bedding range.
-            </span>{" "}
-            <br />{" "}
-            <span className="text-lg">
-              Experience ultra-soft fabrics and timeless designs crafted for your
-              comfort.
-            </span>{" "}
-            <br /> Sleep beautifully and wake refreshed every day.
+            </span>
+            <span className="text-lg hidden md:block">
+              Experience ultra-soft fabrics and timeless designs crafted for
+              your comfort.
+            </span>
+            <span className="hidden md:block">
+              Sleep beautifully and wake refreshed every day.
+            </span>
           </p>
         </div>
       </div>

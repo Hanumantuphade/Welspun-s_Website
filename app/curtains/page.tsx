@@ -208,7 +208,7 @@ export default function CurtainsPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[420px] flex items-center justify-center text-center">
+      <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
@@ -221,7 +221,7 @@ export default function CurtainsPage() {
             <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Decor Curtains Collection</h1>
             <p className="text-gray-100 ">
               <span className="text-xl">Complete your décor with curtains that blend beauty and function.
-              </span>  <br /> <span className="text-lg">Sheer, blackout, and textured styles for every room.</span>  <br /> Add a touch of luxury and comfort to your space.
+              </span>  <span className="text-lg hidden md:block">Sheer, blackout, and textured styles for every room.</span>   <span className="hidden md:block">Add a touch of luxury and comfort to your space.</span> 
             </p>
           </div>
         </div>

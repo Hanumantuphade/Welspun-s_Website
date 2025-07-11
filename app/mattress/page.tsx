@@ -220,7 +220,7 @@ export default function MattressPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[420px]  flex items-center justify-center text-center">
+      <div className="relative h-[410px] lg:h-[420px] xl:h-[500px]  flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
@@ -233,7 +233,7 @@ export default function MattressPage() {
             <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Comfort Mattress Collection</h1>
             <p className="text-gray-100 ">
               <span className="text-xl">Upgrade your sleep with mattresses designed for ultimate comfort.
-              </span>  <br /> <span className="text-lg">Balanced support and plush cushioning for peaceful nights.</span>  <br /> Experience the difference of quality sleep every day.
+              </span>  <span className="text-lg hidden md:block">Balanced support and plush cushioning for peaceful nights.</span>   <span className="hidden md:block">Experience the difference of quality sleep every day.</span> 
             </p>
           </div>
         </div>
