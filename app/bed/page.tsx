@@ -73,7 +73,7 @@ export default function BedPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[440px] flex items-center justify-center text-center">
+      <div className="relative h-[410px] lg:h-[430px] xl:h-[500px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/50 z-10" />
           <img
