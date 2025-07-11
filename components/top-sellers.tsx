@@ -53,7 +53,7 @@ export default function TopSellers() {
         </div>
 
         {/* Slider Container */}
-        <div className="relative h-[400px] md:h-[420px] lg:h-[500px] xl:h[500px] overflow-hidden rounded-lg">
+        <div className="relative h-[400px] lg:h-[430px] xl:h[500px] overflow-hidden rounded-lg">
           {/* Slides */}
           {topSellerSlides.map((slide, index) => (
             <div
