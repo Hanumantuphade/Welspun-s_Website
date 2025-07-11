@@ -72,29 +72,37 @@ export default function BedPage() {
         </div>
       </div>
 
-       {/* Background Image with Overlay and Text */}
-       <div className="relative h-[440px] flex items-center justify-center text-center">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/50 z-10" />
-            <img
-              src="/images/bedSection/hero.png"
-              alt="page" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative z-20  text-white px-4">
-            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Luxury Bed Collection</h1>
-            <p className="text-gray-100 ">
-              <span className="text-xl">Elevate your bedroom with our premium bedding range.</span>  <br /> <span className="text-lg">Experience ultra-soft fabrics and timeless designs crafted for your comfort.</span>  <br /> Sleep beautifully and wake refreshed every day.
-            </p>
-          </div>
+      {/* Background Image with Overlay and Text */}
+      <div className="relative h-[440px] flex items-center justify-center text-center">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <img
+            src="/images/bedSection/hero.png"
+            alt="page"
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div className="relative z-20  text-white px-4">
+          <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">
+            Luxury Bed Collection
+          </h1>
+          <p className="text-gray-100 ">
+            <span className="text-xl">
+              Elevate your bedroom with our premium bedding range.
+            </span>{" "}
+            <br />{" "}
+            <span className="text-lg">
+              Experience ultra-soft fabrics and timeless designs crafted for
+              your comfort.
+            </span>{" "}
+            <br /> Sleep beautifully and wake refreshed every day.
+          </p>
+        </div>
+      </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl pt-10 px-4 pb-16">
+      <div className="w-full max-w-screen-xl mx-auto pt-10 px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-         
-
           {/* Product Grid */}
           <div className="flex-1">
             {/* Product Cards */}
