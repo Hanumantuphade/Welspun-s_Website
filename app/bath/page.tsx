@@ -202,7 +202,7 @@ export default function BathPage() {
           <div className="max-w-7xl mx-auto px-4">
             <nav className="text-sm  text-gray-500">
               Home <span className="mx-2 text-gray-400">/</span>
-              <span className="text-amber-900 font-medium">Bath</span>
+              <span className="text-sky-600 font-medium">Bath</span>
             </nav>
           </div>
         </div>

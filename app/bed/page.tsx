@@ -67,13 +67,13 @@ export default function BedPage() {
         <div className="max-w-7xl mx-auto px-4">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
-            <span className="text-amber-900 font-medium">Bed</span>
+            <span className="text-sky-600 font-medium">Bed</span>
           </nav>
         </div>
       </div>
 
        {/* Background Image with Overlay and Text */}
-       <div className="relative h-[420px] flex items-center justify-center text-center">
+       <div className="relative h-[440px] flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/50 z-10" />
             <img
@@ -98,7 +98,7 @@ export default function BedPage() {
           {/* Product Grid */}
           <div className="flex-1">
             {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
               {products.map((product) => (
                 <Link
                   key={product.id}

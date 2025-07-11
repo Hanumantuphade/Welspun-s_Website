@@ -1,13 +1,13 @@
-"use client"
-
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
-import { useState, useCallback } from "react"
+"use client";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { useState, useCallback } from "react";
 
 const topSellerSlides = [
   {
     id: 1,
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/topSeller/s1.jpeg",
     title: "FLORA COLLECTION",
     subtitle: "Elegant floral patterns for your bedroom",
     buttonText: "SHOP NOW",
@@ -15,7 +15,7 @@ const topSellerSlides = [
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/topSeller/s2.jpeg",
     title: "PREMIUM COTTON",
     subtitle: "Soft and comfortable bedding essentials",
     buttonText: "SHOP NOW",
@@ -23,41 +23,33 @@ const topSellerSlides = [
   },
   {
     id: 3,
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/topSeller/s3.jpeg",
     title: "LUXURY COLLECTION",
     subtitle: "Transform your bedroom into a luxury suite",
     buttonText: "SHOP NOW",
     href: "/bed",
   },
-  {
-    id: 4,
-    image: "/placeholder.svg?height=400&width=800",
-    title: "MODERN DESIGNS",
-    subtitle: "Contemporary patterns for modern homes",
-    buttonText: "SHOP NOW",
-    href: "/bed",
-  },
-]
+];
 
 export default function TopSellers() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % topSellerSlides.length)
-  }, [])
+    setCurrentSlide((prev) => (prev + 1) % topSellerSlides.length);
+  }, []);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + topSellerSlides.length) % topSellerSlides.length)
-  }, [])
-
-  const currentSlideData = topSellerSlides[currentSlide] || topSellerSlides[0]
+    setCurrentSlide((prev) => (prev - 1 + topSellerSlides.length) % topSellerSlides.length);
+  }, []);
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-light text-amber-900 tracking-wide mb-4">TOP SELLERS</h2>
+          <h2 className="text-4xl font-light text-amber-900 tracking-wide mb-4">
+            TOP SELLERS
+          </h2>
         </div>
 
         {/* Slider Container */}
@@ -70,16 +62,26 @@ export default function TopSellers() {
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
             >
-              <Image src={slide.image || "/placeholder.svg"} alt={slide.title} fill className="object-cover" />
+              <Image
+                src={slide.image || "/placeholder.svg"}
+                alt={slide.title}
+                fill
+                className="object-cover"
+              />
 
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                 <div className="text-center text-white">
-                  <h3 className="text-3xl md:text-4xl font-light mb-4 tracking-wide">{currentSlideData.title}</h3>
-                  <p className="text-lg mb-8 opacity-90">{currentSlideData.subtitle}</p>
-                  <button className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-none font-medium tracking-wide transition-colors duration-200">
-                    {currentSlideData.buttonText}
-                  </button>
+                  <h3 className="text-3xl md:text-4xl font-light mb-4 tracking-wide">
+                    {slide.title}
+                  </h3>
+                  <p className="text-lg mb-8 opacity-90">{slide.subtitle}</p>
+                  <Link
+                    href={slide.href}
+                    className="inline-block bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-none font-medium tracking-wide transition-colors duration-200"
+                  >
+                    {slide.buttonText}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -103,5 +105,5 @@ export default function TopSellers() {
         </div>
       </div>
     </section>
-  )
+  );
 }

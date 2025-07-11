@@ -98,7 +98,7 @@ export default function HeroSection() {
 
   if (!mounted) {
     return (
-      <div className="relative h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden bg-gray-100">
+      <div className="relative h-[200px] sm:max-h-screen md:max-h-screen lg:max-h-screen overflow-hidden bg-gray-100">
         <div className="absolute inset-0">
           <Image
             src={slides[0].image || "/placeholder.svg"}
@@ -113,80 +113,65 @@ export default function HeroSection() {
   }
 
   return (
-    <div className=" relative md:-top-[65px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-      {/* Slides */}
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={slide.image || "/placeholder.svg"}
-            alt={`${slide.title} ${slide.subtitle1}`}
-            fill
-            className="object-cover"
-            priority={index === 0}
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4">
-            <h2 className="text-white text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
-              {slide.title}
-            </h2>
-            <p className="text-gray-300 text-lg sm:text-base md:text-lg lg:text-xl mt-2">
-              {slide.subtitle1}
-            </p>
-            <span className=" hidden md:block text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg mt-1">
-              {slide.subtitle2}
-            </span>
-            <div className="flex flex-wrap mt-7 gap-4">
-              <Link
-                href={currentSlideData.go} // dynamic path here
-                className="btn bg-white text-primary-800 hover:bg-primary-50 hover:text-primary-900 transition-all p-3 rounded-lg duration-300"
-              >
-                View Our Products
-              </Link>
-              <Link
-                href="/contact"
-                className="btn border-2 border-white text-white hover:bg-white hover:text-black transition-all p-3 rounded-lg duration-300"
-              >
-                Get In Touch
-              </Link>
-            </div>
+  <div className="relative md:-top-[65px] lg:-top-[65px] h-screen overflow-hidden">
+    {/* Slides */}
+    {slides.map((slide, index) => (
+      <div
+        key={slide.id}
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          index === currentSlide ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Image
+          src={slide.image || "/placeholder.svg"}
+          alt={`${slide.title} ${slide.subtitle1}`}
+          fill
+          className="object-cover"
+          priority={index === 0}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4">
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
+            {slide.title}
+          </h2>
+          <p className="text-gray-300 text-lg sm:text-xl md:text-2xl lg:text-3xl mt-2">
+            {slide.subtitle1}
+          </p>
+          <span className="hidden md:block text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mt-1">
+            {slide.subtitle2}
+          </span>
+          <div className="flex flex-wrap mt-7 gap-4">
+            <Link
+              href={currentSlideData.go}
+              className="btn bg-white text-primary-800 hover:bg-primary-50 hover:text-primary-900 transition-all p-3 rounded-lg duration-300"
+            >
+              View Our Products
+            </Link>
+            <Link
+              href="/contact"
+              className="btn border-2 border-white text-white hover:bg-white hover:text-black transition-all p-3 rounded-lg duration-300"
+            >
+              Get In Touch
+            </Link>
           </div>
         </div>
-      ))}
-
-      {/* Navigation Arrows
-      <button
-        onClick={prevSlide}
-        className="absolute left-3 sm:left-6 top-1/2 transform-translate-y-1/2 bg-transparent text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-4 w-4 text-black sm:h-5 sm:w-5" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-3 sm:right-6 top-1/2 transform-translate-y-1/2 bg-black hover:bg-slate-200 text-white rounded-full p-2 sm:p-3 transition-colors duration-200 shadow-lg z-10"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-      </button> */}
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-3 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors duration-200 ${
-              index === currentSlide ? "bg-white" : "bg-white/50"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
+    ))}
+
+    {/* Slide Indicators */}
+    <div className="absolute bottom-3 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      {slides.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => goToSlide(index)}
+          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors duration-200 ${
+            index === currentSlide ? "bg-white" : "bg-white/50"
+          }`}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
     </div>
-  );
+  </div>
+);
+
 }

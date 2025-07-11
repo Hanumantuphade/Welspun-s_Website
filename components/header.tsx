@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import SearchOverlay from "./search-overlay";
 import LoginPopup from "./login-popup";
 import CartDropdown from "./cart-dropdown";
+import NavigationDropdown from "./navigation-dropdown"
 
 export default function Header() {
   const { cartItems } = useCart();
@@ -20,7 +21,7 @@ export default function Header() {
   const cartRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
-    { name: "Bed", href: "/bed" },
+    // { name: "Bed", href: "/bed" },
     { name: "Bath", href: "/bath" },
     { name: "Mattress", href: "/mattress" },
     { name: "Rugs", href: "/rugs" },
@@ -30,6 +31,10 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
+   const bedDropdownItems = [
+    { name: "premium BedSheets", href: "/bed/sheets" },
+    
+  ]
 
   // Close cart dropdown when clicking outside
   useEffect(() => {
@@ -48,7 +53,7 @@ export default function Header() {
   const totalQuantity = cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-transparent shadow-sm border-b border-gray-100">
+    <header className="sticky top-0 z-50 w-full bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
@@ -61,12 +66,13 @@ export default function Header() {
               />
             </Link>
             <span className="hidden md:block text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
-              Swarattan Store
+              Swarattan Homes
             </span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6">
+            <NavigationDropdown title="Bed"  items={bedDropdownItems}/>
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -141,12 +147,19 @@ export default function Header() {
         {mounted && isMenuOpen && (
           <div className="lg:hidden border-t border-gray-100 py-4">
             <nav className="flex flex-col space-y-2">
+               <Link
+                href="/bed"
+                className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Bed
+              </Link>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="px-4 py-2 text-[16px] font-medium text-gray-700 hover:text-amber-900 transition"
+                  className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition"
                 >
                   {item.name}
                 </Link>

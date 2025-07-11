@@ -45,7 +45,7 @@ export default function AboutPage() {
           <nav className="text-sm">
             <span className="text-gray-500">Home</span>
             <span className="mx-2 text-gray-400">/</span>
-            <span className="text-amber-900 font-medium">About Us</span>
+            <span className="text-sky-600 font-medium">About Us</span>
           </nav>
         </div>
       </div>
