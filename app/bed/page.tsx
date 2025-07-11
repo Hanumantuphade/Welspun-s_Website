@@ -101,7 +101,7 @@ export default function BedPage() {
       </div>
 
       {/* Main Content */}
-      <div className="w-full max-w-screen-xl mx-auto pt-10 lg:pt-2 xl:pt:2 px-4 pb-16">
+      <div className="w-full max-w-screen-xl mx-auto pt-10 lg:pt-2 xl:pt-2 px-4 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Product Grid */}
           <div className="flex-1">
