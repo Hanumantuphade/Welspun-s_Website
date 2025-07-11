@@ -26,16 +26,52 @@ const premiumProducts = [
     price: "₹2499",
     description: "Transform your bedroom into a luxury suite",
   },
+  {
+  id: 4,
+  name: "PREMIUM COMFORT",
+  image: "/topSeller/s4.jpg",
+  price: "₹2999",
+  description: "Experience unmatched comfort with our premium collection",
+},
+{
+  id: 5,
+  name: "ELEGANT DESIGNS",
+  image: "/topSeller/s5.jpg",
+  price: "₹1999",
+  description: "Upgrade your decor with elegant bedsheet designs",
+},
+{
+  id: 6,
+  name: "SOFT TOUCH",
+  image: "/topSeller/s6.jpg",
+  price: "₹1799",
+  description: "Feel the softness of our ultra-smooth fabrics",
+},
+{
+  id: 7,
+  name: "ROYAL COLLECTION",
+  image: "/topSeller/s7.jpg",
+  price: "₹3499",
+  description: "Bring home the royalty with this luxurious collection",
+},
+{
+  id: 8,
+  name: "EVERYDAY ESSENTIALS",
+  image: "/topSeller/s8.jpg",
+  price: "₹1499",
+  description: "Perfect essentials for everyday comfort and style",
+},
+
   // Add more products as needed
 ];
 
 export default function PremiumBedsheetsPage() {
   return (
-    <div className="min-h-screen bg-white max-w-7xl mx-auto px-4 pb-6 ">
+    <div className="min-h-screen bg-white max-w-full w-full mx-auto px-4 pb-6 ">
       <Header />
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-3">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-full w-full mx-auto px-4">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
             <span className="text-sky-600 font-medium">Bed</span>

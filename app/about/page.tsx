@@ -59,7 +59,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Creating beautiful, comfortable homes with premium quality
-              furnishings since 2010
+              furnishings
             </p>
           </div>
 
@@ -71,9 +71,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-gray-600">
                 <p>
                   Swarattan store began with a simple vision: to make premium
-                  home furnishings accessible to every Indian home. What started
-                  as a small family business has grown into one of India's most
-                  trusted home decor brands.
+                  home furnishings accessible to every Indian home.
                 </p>
                 <p>
                   We believe that your home should be a reflection of your
@@ -83,9 +81,7 @@ export default function AboutPage() {
                   every taste and budget.
                 </p>
                 <p>
-                  Today, we serve millions of customers across India, helping
-                  them transform their houses into homes they love. Our
-                  commitment to quality, affordability, and customer
+                  Our commitment to quality, affordability, and customer
                   satisfaction remains at the heart of everything we do.
                 </p>
               </div>
@@ -137,23 +133,21 @@ export default function AboutPage() {
       {/* Stats Section */}
       <div className="py-16 bg-amber-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold mb-2">10M+</div>
-              <div className="text-amber-100">Happy Customers</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            
             <div>
               <div className="text-4xl font-bold mb-2">5000+</div>
               <div className="text-amber-100">Products</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">500+</div>
-              <div className="text-amber-100">Cities Served</div>
+              <div className="text-4xl font-bold mb-2">3500+</div>
+              <div className="text-amber-100">Designs</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">14+</div>
-              <div className="text-amber-100">Years of Excellence</div>
+              <div className="text-4xl font-bold mb-2">4000+</div>
+              <div className="text-amber-100">Cities Served</div>
             </div>
+            
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
-      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+      <div className="max-w-full w-full mx-auto px-4 py-6 sm:py-8 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
         {/* LEFT: Product Images */}
         <div>
           <div
