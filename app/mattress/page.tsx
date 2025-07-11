@@ -238,7 +238,7 @@ export default function MattressPage() {
           </div>
         </div>
 
-      <div className="w-full max-w-full mx-auto pt-10 px-12 pb-16">
+      <div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
          
           {/* Products Grid */}

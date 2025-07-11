@@ -624,7 +624,7 @@ export default function FlooringPage() {
       </div>
 
       {/* Products Grid */}
-<div className="w-full max-w-full mx-auto pt-10 px-12 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
+<div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
   {flooringProducts.map((prod) => (
     <Link key={prod.id} href={`/product/${prod.category}/${prod.id}`}>
       <div className="group cursor-pointer border rounded-lg overflow-hidden transition-shadow hover:shadow-md">
