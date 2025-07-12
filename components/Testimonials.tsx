@@ -65,7 +65,7 @@ export default function TestimonialsSlider() {
       className="relative py-20 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/topSeller/hero.png')" }}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/60 "></div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* <h1 className="text-5xl md:text-5xl font-bold text-black mb-12 text-center"> Customer Testimonials</h1> */}
