@@ -52,7 +52,7 @@ export default function CategorySection() {
       <div className="max-w-full w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-light text-amber-900 tracking-wide">SHOP BY CATEGORY</h2>
+          <h2 className="text-4xl font-light text-gray-500 tracking-wide">SHOP BY CATEGORY</h2>
         </div>
 
         {/* Category Grid */}

@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   const footerLinks = {
@@ -60,15 +61,32 @@ export default function Footer() {
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-amber-400" />
-                <span>1800-123-4567</span>
+                <a
+                  href="tel:6284824078"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  6284824078
+                </a>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-amber-400" />
-                <span>support@spaces.in</span>
+                <a
+                  href="mailto:swarattanenterprises@gmail.com"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  swarattanenterprises@gmail.com
+                </a>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-amber-400" />
-                <span>Mumbai, India</span>
+                <a
+                  href="https://www.google.com/maps?ll=31.333845,75.633552&z=14&t=m&hl=en&gl=IN&mapclient=embed&q=Basant+Hills+Jalandhar,+Punjab+144009"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  Punjab, India
+                </a>
               </div>
             </div>
           </div>
@@ -141,7 +159,7 @@ export default function Footer() {
                   <p className="hidden md:block text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
                     Swarattan Homes
                   </p>
-                 
+
                   <p className="text-sm text-gray-200">For Your Own Best,</p>
                   <p className="text-sm text-gray-200">presenting The Best.</p>
                 </div>
@@ -156,16 +174,34 @@ export default function Footer() {
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-amber-400" />
- 
-                <span>6284824078</span>
+                <a
+                  href="tel:6284824078"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  6284824078
+                </a>
               </div>
+
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-amber-400" />
-                <span>support@spaces.in</span>
+                <a
+                  href="mailto:swarattanenterprises@gmail.com"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  swarattanenterprises@gmail.com
+                </a>
               </div>
+
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-amber-400" />
-                <span>Punjab, India</span>
+                <a
+                  href="https://www.google.com/maps?ll=31.333845,75.633552&z=14&t=m&hl=en&gl=IN&mapclient=embed&q=Basant+Hills+Jalandhar,+Punjab+144009"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  Punjab, India
+                </a>
               </div>
             </div>
           </div>
@@ -211,22 +247,22 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://wa.me/c/916284824078"
                 className="text-gray-400 hover:text-amber-400 transition-colors"
               >
-                <Twitter className="h-5 w-5" />
+                <FaWhatsapp className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="mailto:swarattanenterprises@gmail.com"
                 className="text-gray-400 hover:text-amber-400 transition-colors"
               >
-                <Youtube className="h-5 w-5" />
+                <Mail className="h-5 w-5" />
               </Link>
             </div>
           </div>
           {/* Copyright */}
           <div className="text-gray-400 mt-2 text-sm text-center ">
-            <p>&copy; 2024 Spaces. All rights reserved.</p>
+            <p>&copy; 2024 Swarattan. All rights reserved.</p>
             {/* <p className="mt-1">Made with ❤️ in India</p> */}
           </div>
         </div>

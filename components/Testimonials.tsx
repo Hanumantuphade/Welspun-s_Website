@@ -61,8 +61,12 @@ export default function TestimonialsSlider() {
   };
 
   return (
+    <>
+    <div className="text-center mb-12">
+      <h1 className="text-4xl font-light text-gray-400 tracking-wide mb-4" >CUSTOMER TESTIMONIALS</h1>
+    </div>
     <section
-      className="relative py-20 bg-cover bg-center bg-no-repeat"
+      className="relative mx-auto sm:px-6 lg:px-8 bg-cover py-12 bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/topSeller/hero.png')" }}
     >
       <div className="absolute inset-0 bg-black/60 "></div>
@@ -76,11 +80,11 @@ export default function TestimonialsSlider() {
         {/* Left Arrow */}
         <button
           onClick={handlePrev}
-          className=" hidden md:block absolute left-2 sm:left-2 md:-left-6 lg:-left-10 -m-3 top-56 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 sm:p-2 md:p-3 lg:p-4 shadow transition"
+          className=" hidden md:block absolute left-2 sm:left-2 md:-left-6 lg:-left-10 -m-3 top-56 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 rounded-full sm:p-2 md:p-3 lg:p-4 shadow transition"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 sm:h-6 sm:w-6 md:h-5 md:w-5 lg:h-5 lg:w-5"
+            className="h-5 w-5 sm:h-6 sm:w-5 md:h-5 md:w-5 lg:h-5 lg:w-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -159,5 +163,6 @@ export default function TestimonialsSlider() {
         </button>
       </div>
     </section>
+    </>
   );
 }

@@ -58,17 +58,22 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
           <div className="flex-shrink-0 flex items-center space-x-4">
-            <Link href="/" className="flex items-center">
-              <img
-                src="/About.jpeg"
-                alt="Logo"
-                className="h-12 w-12 rounded-full object-cover"
-              />
-            </Link>
-            <span className="hidden md:block text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
-              Swarattan Homes
-            </span>
-          </div>
+                <Link href="/" className="flex items-center">
+                  <img
+                    src="/About.jpeg"
+                    alt="Logo"
+                    className="h-14 w-14 rounded-full object-cover"
+                  />
+                </Link>
+                <div className="hidden lg:block">
+                  <p className="hidden md:block text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
+                    Swarattan Homes
+                  </p>
+                 
+                  <p className="text-sm text-gray-900">For Your Own Best,</p>
+                  <p className="text-sm text-gray-900">presenting The Best.</p>
+                </div>
+              </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6">
@@ -136,7 +141,7 @@ export default function Header() {
             <button
               onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="lg:hidden text-gray-600 hover:text-amber-900 transition"
+              className="lg:hidden text-black hover:text-red-500 transition"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

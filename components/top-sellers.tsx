@@ -47,7 +47,7 @@ export default function TopSellers() {
       <div className="max-w-full w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-light text-amber-900 tracking-wide mb-4">
+          <h2 className="text-4xl font-light text-gray-400 tracking-wide mb-4">
             TOP SELLERS
           </h2>
         </div>
@@ -90,14 +90,14 @@ export default function TopSellers() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-amber-900 hover:bg-amber-800 text-white rounded-full p-3 transition-colors duration-200 shadow-lg z-10"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-3 transition-colors duration-200 shadow-lg z-10"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-amber-900 hover:bg-amber-800 text-white rounded-full p-3 transition-colors duration-200 shadow-lg z-10"
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-3 transition-colors duration-200 shadow-lg z-10"
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5" />
