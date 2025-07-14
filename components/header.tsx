@@ -71,7 +71,7 @@ export default function Header() {
                   </p>
                  
                   <p className="text-sm text-gray-900">For Your Own Best,</p>
-                  <p className="text-sm text-gray-900">presenting The Best.</p>
+                  <p className="text-sm text-gray-900">Presenting The Best.</p>
                 </div>
               </div>
 

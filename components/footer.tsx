@@ -161,7 +161,7 @@ export default function Footer() {
                   </p>
 
                   <p className="text-sm text-gray-200">For Your Own Best,</p>
-                  <p className="text-sm text-gray-200">presenting The Best.</p>
+                  <p className="text-sm text-gray-200">Presenting The Best.</p>
                 </div>
               </div>
             </div>
