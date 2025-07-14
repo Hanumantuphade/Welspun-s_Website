@@ -10,12 +10,14 @@ import TopSellers from "@/components/top-sellers"
 import Footer from "@/components/footer"
 import PromotionalTicker from "@/components/promotional-ticker"
 import Testimonials from "@/components/Testimonials"
+import SocialSidebar from "@/components/SocialSidebar"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Scrolling promotional ticker */}
       <PromotionalTicker />
+      <SocialSidebar/>
 
       <Header />
       <HeroSection />
