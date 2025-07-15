@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import SearchOverlay from "./search-overlay";
 import LoginPopup from "./login-popup";
 import CartDropdown from "./cart-dropdown";
-import NavigationDropdown from "./navigation-dropdown"
+import NavigationDropdown from "./navigation-dropdown";
 
 export default function Header() {
   const { cartItems } = useCart();
@@ -21,9 +21,6 @@ export default function Header() {
   const cartRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
-    // { name: "Bed", href: "/bed" },
-    { name: "Bath", href: "/bath" },
-    { name: "Mattress", href: "/mattress" },
     { name: "Rugs", href: "/rugs" },
     { name: "Curtains", href: "/curtains" },
     { name: "Flooring", href: "/flooring" },
@@ -31,26 +28,58 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
-   const bedDropdownItems = [
-    { name: "premium BedSheets", href: "/bed/sheets" },
-    
-  ]
 
-  // Close cart dropdown when clicking outside
+  // Category data examples
+  const bedCategories = [
+    {
+      category: "Premium Bedsheets",
+      subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
+    },
+    {
+      category: "Simple Bedsheets",
+      subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
+    },
+  ];
+
+  const bathCategories = [
+    {
+      category: "Towels",
+      subcategories: ["Bath Towels", "Hand Towels", "Face Towels"],
+    },
+    {
+      category: "Bath Mats",
+      subcategories: ["Cotton Mats", "Microfiber Mats"],
+    },
+    {
+      category: "Bathrobes",
+      subcategories: ["Cotton Robes", "Microfiber Robes", "Luxury Robes"],
+    },
+  ];
+
+  const mattressCategories = [
+    {
+      category: "Luxury Mattress",
+      subcategories: ["Single", "Double", "Queen", "King"],
+    },
+    {
+      category: "therapedic Mattress",
+      subcategories: ["Single", "Double", "Queen", "King"],
+    },
+  ];
+
   useEffect(() => {
     setMounted(true);
-
     const handleClickOutside = (e: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
         setIsCartOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const totalQuantity = cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  const totalQuantity =
+    cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   return (
     <header className="sticky top-0 max-w-full z-50 w-full bg-transparent">
@@ -58,26 +87,45 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
           <div className="flex-shrink-0 flex items-center space-x-4">
-                <Link href="/" className="flex items-center">
-                  <img
-                    src="/About.jpeg"
-                    alt="Logo"
-                    className="h-14 w-14 rounded-full object-cover"
-                  />
-                </Link>
-                <div className="hidden lg:block">
-                  <p className="hidden md:block text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
-                    Swarattan Homes
-                  </p>
-                 
-                  <p className="text-sm text-gray-900">For Your Own Best,</p>
-                  <p className="text-sm text-gray-900">Presenting The Best.</p>
-                </div>
-              </div>
+            <Link href="/" className="flex items-center">
+              <img
+                src="/About.jpeg"
+                alt="Logo"
+                className="h-14 w-14 rounded-full object-cover"
+              />
+            </Link>
+            <div className="hidden lg:block">
+              <p className="text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
+                Swarattan Homes
+              </p>
+              <p className="text-sm text-gray-900">For Your Own Best,</p>
+              <p className="text-sm text-gray-900">Presenting The Best.</p>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6">
-            <NavigationDropdown title="Bed"  items={bedDropdownItems}/>
+            <NavigationDropdown
+              title="Bed"
+              href="/bed"
+              categories={bedCategories}
+              image="/topSeller/s17.jpg"
+            />
+
+            <NavigationDropdown
+              title="Bath"
+              href="/bath"
+              categories={bathCategories}
+              image="/images/bathSection/bath3/b1.png"
+            />
+
+            <NavigationDropdown
+              title="Mattress"
+              href="/mattress"
+              categories={mattressCategories}
+              image="/images/MattressSection/mat3/m1.png"
+            />
+
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -115,7 +163,7 @@ export default function Header() {
               <User className="h-5 w-5" />
             </button>
 
-            {/* Cart with dropdown */}
+            {/* Cart */}
             <div ref={cartRef} className="relative">
               <button
                 aria-label="Shopping cart"
@@ -129,8 +177,6 @@ export default function Header() {
                   </span>
                 )}
               </button>
-
-              {/* ✅ Updated: removed items={cartItems} */}
               <CartDropdown
                 isOpen={isCartOpen}
                 onClose={() => setIsCartOpen(false)}
@@ -143,7 +189,11 @@ export default function Header() {
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               className="lg:hidden text-black hover:text-red-500 transition"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -152,7 +202,7 @@ export default function Header() {
         {mounted && isMenuOpen && (
           <div className="lg:hidden border-t border-gray-100 py-4">
             <nav className="flex flex-col space-y-2">
-               <Link
+              <Link
                 href="/bed"
                 className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition"
                 onClick={() => setIsMenuOpen(false)}
@@ -174,8 +224,14 @@ export default function Header() {
         )}
 
         {/* Overlays */}
-        <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-        <LoginPopup isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+        <SearchOverlay
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
+        <LoginPopup
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
       </div>
     </header>
   );

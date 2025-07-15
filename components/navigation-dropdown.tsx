@@ -4,32 +4,25 @@ import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-interface DropdownItem {
-  name: string;
-  href: string;
-  subcategories?: string[];
+interface Category {
+  category: string;
+  subcategories: string[];
 }
 
 interface NavigationDropdownProps {
   title: string;
-  items: DropdownItem[];
+  href: string;
+  categories: Category[];
+  image?: string;
 }
 
 export default function NavigationDropdown({
   title,
-  items,
+  href,
+  categories,
+  image,
 }: NavigationDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const bedCategories = {
-    "Premium BedSheets": [
-      "NEW ARRIVALS",
-      "SINGLE",
-      "DOUBLE",
-      "LARGE",
-      "FITTED",
-    ],
-  };
 
   return (
     <div
@@ -38,7 +31,7 @@ export default function NavigationDropdown({
       onMouseLeave={() => setIsOpen(false)}
     >
       <Link
-        href="/bed"
+        href={href}
         className="text-black hover:text-orange-500 text-[17px] font-medium transition-colors duration-200 flex items-center"
       >
         {title}
@@ -46,30 +39,41 @@ export default function NavigationDropdown({
       </Link>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-[400px] bg-white border border-gray-200 rounded-lg shadow-xl z-50 p-6">
-          <div className="">
-            {/* Left side - Main categories */}
-            {Object.entries(bedCategories).map(([category, subcategories]) => (
-              <div key={category} className="space-y-2">
+        <div className="absolute top-full left-0 mt-2 w-[450px] bg-white border border-gray-200 rounded-lg shadow-xl z-50 p-6 grid grid-cols-2 gap-4">
+          <div className="space-y-4">
+            {categories.map((cat) => (
+              <div key={cat.category}>
                 <Link
-                  href="/bed/premium"
-                  className="font-thin text-gray-900 text-sm block transition-colors border-b border-gray-200 pb-1 hover:text-sky-600"
+                  href={`${href}/${cat.category.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="font-semibold text-gray-900 text-sm block transition-colors hover:text-sky-600 mb-1"
                 >
-                  {category}
+                  {cat.category}
                 </Link>
+                <ul className="pl-2 space-y-1">
+                  {cat.subcategories.map((sub) => (
+                    <li key={sub}>
+                      <Link
+                        href={`${href}/${sub.toLowerCase().replace(/\s+/g, "-")}`}
+                        className="text-gray-700 text-xs block transition-colors hover:text-sky-600"
+                      >
+                        {sub}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
-            {/* Right side - Featured image */}
-            <div className="col-span-1">
-              <div className="bg-gray-100 rounded-lg overflow-hidden h-48">
-                <img
-                  src="/topSeller/s1.jpeg"
-                  alt="Bed Collection"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
           </div>
+
+          {image && (
+            <div className="bg-gray-100 rounded-lg overflow-hidden h-48">
+              <img
+                src={image}
+                alt={`${title} Collection`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
