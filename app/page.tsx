@@ -29,7 +29,7 @@ export default function HomePage() {
       {/* <ShopTheLook /> */}
       {/* <PromotionalBanner /> */}
       {/* <Newsletter /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
