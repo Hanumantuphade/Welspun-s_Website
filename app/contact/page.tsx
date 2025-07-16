@@ -235,7 +235,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

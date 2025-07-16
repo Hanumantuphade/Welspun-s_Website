@@ -310,7 +310,7 @@ export default function RugsPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

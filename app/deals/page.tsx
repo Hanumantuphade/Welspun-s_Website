@@ -200,7 +200,7 @@ export default function DealsPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

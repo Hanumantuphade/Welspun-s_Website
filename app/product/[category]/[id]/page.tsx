@@ -131,7 +131,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -316,7 +316,7 @@ export default function MattressPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

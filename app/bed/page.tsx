@@ -155,7 +155,7 @@ export default function BedPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

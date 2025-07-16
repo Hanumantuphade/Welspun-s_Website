@@ -283,7 +283,7 @@ export default function CurtainsPage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

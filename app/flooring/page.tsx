@@ -665,7 +665,7 @@ export default function FlooringPage() {
 </div>
 
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

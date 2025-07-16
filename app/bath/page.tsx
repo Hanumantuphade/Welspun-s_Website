@@ -282,7 +282,7 @@ export default function BathPage() {
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
