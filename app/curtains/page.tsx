@@ -195,7 +195,7 @@ export default function CurtainsPage() {
         Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
       </div>
 
-      <Header />  
+      <Header />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-4">
@@ -208,29 +208,52 @@ export default function CurtainsPage() {
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/50 z-10" />
-            <img
-              src="/images/CurtainSection/hero1.png"
-              alt="page"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative z-20  text-white px-4">
-            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Decor Curtains Collection</h1>
-            <p className="text-gray-100 ">
-              <span className="text-xl">Complete your décor with curtains that blend beauty and function.
-              </span>  <span className="text-lg hidden md:block">Sheer, blackout, and textured styles for every room.</span>   <span className="hidden md:block">Add a touch of luxury and comfort to your space.</span> 
+      <div className="relative h-[400px] md:h-[450px] lg:h-[450px] xl:h-[500px] flex items-center justify-center text-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/CurtainSection/hero1.png"
+            alt="Decor Curtains"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60 backdrop-brightness-75 z-10" />
+        </div>
+
+        {/* Content Section */}
+        <div className="relative z-20 px-4 md:px-10 text-white max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-4xl font-semibold bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-4">
+            Decor Curtains Collection
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed mb-6">
+            Customised Décor Curtains, tailored to your exact size and style. <br />
+            <span className="text-sm text-gray-100"> Over 3400 premium designs in sheer, blackout, velvet, and more.</span>
+           
+          </p>
+
+          {/* Fabric List */}
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 md:p-6 text-left text-white shadow-lg max-w-2xl mx-auto">
+            <h2 className="text-lg md:text-xl font-semibold mb-3">
+              Available Fabrics
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 list-disc list-inside text-sm sm:text-base">
+              <li>Sheer</li>
+              <li>Velvet</li>
+              <li>White Out Satin</li>
+              <li>Matt Finish</li>
+              <li>Jacquard Finish</li>
+              <li>Suede</li>
+              <li>Twill</li>
+            </ul>
+            <p className="mt-3 text-lg italic text-gray-100">
+              Over 3400+ designs available
             </p>
           </div>
         </div>
+      </div>
 
       {/* Main Content */}
       <div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-        
-
           {/* Product Grid */}
           <div className="flex-1">
             {/* Product Cards */}
