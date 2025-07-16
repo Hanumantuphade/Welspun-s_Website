@@ -9,7 +9,7 @@ import TopSellers from "@/components/top-sellers"
 // import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
 import PromotionalTicker from "@/components/promotional-ticker"
-import Testimonials from "@/components/Testimonials"
+// import Testimonials from "@/components/Testimonials"
 import SocialSidebar from "@/components/SocialSidebar"
 
 export default function HomePage() {
@@ -23,7 +23,7 @@ export default function HomePage() {
       <HeroSection />
       <CategorySection />
       <TopSellers />
-      <Testimonials/>
+      {/* <Testimonials/> */}
       {/* <FeaturedProducts /> */}
       {/* <MattressSection /> */}
       {/* <ShopTheLook /> */}

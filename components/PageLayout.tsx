@@ -52,7 +52,7 @@ export default function PageLayout({
       </div>
 
       {/* Background Image with Overlay and Text */}
-      <div className="relative md:h-[440px] lg:h-[530px] flex items-center justify-center text-center">
+      <div className="relative h-[440px] md:h-[440px] lg:h-[530px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/50 z-10" />
           <img
@@ -67,7 +67,7 @@ export default function PageLayout({
           </h1>
           <p className="text-gray-100">
             <span className="text-xl">{heroSubtitle1}</span> <br />
-            <span className="text-lg">{heroSubtitle2}</span> <br />
+            <span className=" hidden md:block text-lg">{heroSubtitle2}</span> <br />
             <span className="hidden md:block">{heroSubtitle3}</span>
           </p>
         </div>

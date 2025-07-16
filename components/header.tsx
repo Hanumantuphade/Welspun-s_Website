@@ -33,12 +33,18 @@ export default function Header() {
   const bedCategories = [
     {
       category: "Premium Bedsheets",
-      subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
+      subcategories: [
+        "Double ",
+        "Single ",
+        "Fitted",
+        "blankets ",
+        "Comforters",
+      ],
     },
-    {
-      category: "Simple Bedsheets",
-      subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
-    },
+    // {
+    //   category: "Simple Bedsheets",
+    //   subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
+    // },
   ];
 
   const bathCategories = [
@@ -98,8 +104,8 @@ export default function Header() {
               <p className="text-xl font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-500 bg-clip-text">
                 Swarattan Homes
               </p>
-              <p className="text-sm text-gray-900">For Your Own Best,</p>
-              <p className="text-sm text-gray-900">Presenting The Best.</p>
+              <p className="text-sm text-gray-900">For Your Own Best</p>
+              <p className="text-sm text-gray-900">Presenting The Best</p>
             </div>
           </div>
 
@@ -109,7 +115,7 @@ export default function Header() {
               title="Bed"
               href="/bed"
               categories={bedCategories}
-              image="/topSeller/s17.jpg"
+              image="/topSeller/premium/s17.jpg"
             />
 
             <NavigationDropdown

@@ -37,7 +37,7 @@ export default function PremiumProductGrid({ products }: PremiumProductGridProps
             </p>
             <Link
               href="#"
-              className="inline-block mt-4 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition"
+              className="inline-block mt-4 bg-green-400 text-white px-4 py-2 rounded hover:bg-orange-700 transition"
             >
               View Details
             </Link>
