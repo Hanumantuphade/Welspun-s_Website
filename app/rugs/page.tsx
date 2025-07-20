@@ -1,15 +1,24 @@
+// app/rugs/page.tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import Link from "next/link";
 import { Star, Filter, Grid, List } from "lucide-react";
 import { Product } from "@/types";
 
 export default function RugsPage() {
-  const generatedProducts: Product[] = [
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Demo hardcoded products (remove these after adding real data)
+  const demoProducts: Product[] = [
     {
-      id: 28,
-      name: "Beige Multilayer Texture Woven Carpet - Meraki",
+      id: 991,
+      name: "Demo: Beige Multilayer Texture Woven Carpet - Meraki",
       price: 1499,
       originalPrice: 1999,
       rating: 4.2,
@@ -18,200 +27,98 @@ export default function RugsPage() {
       images: [],
       colors: ["Beige", "Brown"],
       sizes: ["Small (3x5)", "Medium (5x7)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
+      description: "Demo product - Premium multilayer texture woven carpet with elegant design",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Vacuum regularly, professional cleaning recommended",
+      manufactureDetail: "Made with high-quality materials",
       category: "rugs",
     },
     {
-      id: 29,
-      name: "Blue Polyester Area Rug - Blissful",
-      price: 1699,
-      originalPrice: 2299,
-      rating: 4.5,
-      reviews: 95,
-      image: "/images/rugsSection/rg2/r1.png",
-      images: [],
-      colors: ["Red", "Beige"],
-      sizes: ["Medium (5x7)", "Large (8x10)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 30,
-      name: "Gold Multilayer Texture Soft Woven Carpet",
-      price: 1899,
-      originalPrice: 2499,
-      rating: 4.4,
-      reviews: 110,
-      image: "/images/rugsSection/rg3/r1.png",
-      images: [],
-      colors: ["Maroon", "Gold"],
-      sizes: ["Large (8x10)", "Extra Large (9x12)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 31,
-      name: "D Brown Multilayer Texture Woven Carpet - Meraki ",
-      price: 1799,
-      originalPrice: 2399,
-      rating: 4.3,
-      reviews: 70,
-      image: "/images/rugsSection/rg4/r1.png",
-      images: [],
-      colors: ["Grey", "Blue"],
-      sizes: ["Small (3x5)", "Medium (5x7)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 32,
-      name: "Rose Plush Feel Woven Carpet - Nesta ",
+      id: 990,
+      name: "Demo: Rose Plush Feel Woven Carpet - Nesta",
       price: 2499,
       originalPrice: 3299,
       rating: 4.7,
       reviews: 150,
       image: "/images/rugsSection/rg5/r1.png",
       images: [],
-      colors: ["Red", "Navy"],
+      colors: ["Rose", "Pink"],
       sizes: ["Large (8x10)", "Extra Large (9x12)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 33,
-      name: "Plush Feel Red Polypropylene Runner - Idika",
-      price: 1399,
-      originalPrice: 1899,
-      rating: 4.1,
-      reviews: 65,
-      image: "/images/rugsSection/rg6/r1.png",
-      images: [],
-      colors: ["Grey"],
-      sizes: ["Small (3x5)", "Medium (5x7)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 34,
-      name: "Unwinders Nylon Runner-Dark Brown",
-      price: 1599,
-      originalPrice: 2099,
-      rating: 4.3,
-      reviews: 75,
-      image: "/images/rugsSection/rg7/r1.png",
-      images: [],
-      colors: ["Brown", "Beige"],
-      sizes: ["Medium (5x7)", "Large (8x10)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 35,
-      name: "Luxury Cushlon Drylon Runner - Teal",
-      price: 1899,
-      originalPrice: 2599,
-      rating: 4.5,
-      reviews: 85,
-      image: "/images/rugsSection/rg8/r1.png",
-      images: [],
-      colors: ["Black", "White"],
-      sizes: ["Large (8x10)", "Extra Large (9x12)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 36,
-      name: "Unwinders Nylon Runner-Beige",
-      price: 1699,
-      originalPrice: 2299,
-      rating: 4.4,
-      reviews: 95,
-      image: "/images/rugsSection/rg9/r1.png",
-      images: [],
-      colors: ["Cream", "Pink"],
-      sizes: ["Medium (5x7)", "Large (8x10)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 37,
-      name: "Cream Polyester Runner - Blissful",
-      price: 2499,
-      originalPrice: 3299,
-      rating: 4.8,
-      reviews: 160,
-      image: "/images/rugsSection/rg10/r1.png",
-      images: [],
-      colors: ["Red", "Beige"],
-      sizes: ["Large (8x10)", "Extra Large (9x12)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 38,
-      name: "Luxury Cushlon Drylon Foot Mats Large - Red",
-      price: 1799,
-      originalPrice: 2399,
-      rating: 4.2,
-      reviews: 78,
-      image: "/images/rugsSection/rg11/r1.png",
-      images: [],
-      colors: ["Grey", "Blue"],
-      sizes: ["Small (3x5)", "Medium (5x7)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
-      category: "rugs",
-    },
-    {
-      id: 39,
-      name: "Unwinders Nylon Foot Door Small-Dark Red",
-      price: 2999,
-      originalPrice: 3999,
-      rating: 4.9,
-      reviews: 180,
-      image: "/images/rugsSection/rg12/r1.png",
-      images: [],
-      colors: ["Beige", "Gold"],
-      sizes: ["Large (8x10)", "Extra Large (9x12)"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
+      description: "Demo product - Luxurious plush feel carpet with premium woven texture",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Spot clean or professional cleaning",
+      manufactureDetail: "Premium quality materials with soft texture",
       category: "rugs",
     },
   ];
+
+  useEffect(() => {
+    const fetchRugProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/rugs');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts = await response.json();
+        
+        // Combine API products with demo products
+        // Remove demoProducts from this line after you have real data
+        const allProducts = [...demoProducts, ...apiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching rug products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRugProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading rug products...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error && products.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <p className="text-red-600 mb-4">Error loading products: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -234,38 +141,66 @@ export default function RugsPage() {
 
       {/* Background Image with Overlay and Text */}
       <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/50 z-10" />
-            <img
-              src="/images/rugsSection/hero.png"
-              alt="page"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative z-20  text-white px-4">
-            <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">Premium Rugs Collection</h1>
-            <p className="text-gray-100 ">
-              <span className="text-xl">Discover rugs crafted for comfort and lasting beauty.
-              </span>  <span className="text-lg hidden md:block">BSoft underfoot with designs that elevate any space.</span>  <span className="hidden md:block">Bring warmth, texture, and elegance to your home.</span> 
-            </p>
-          </div>
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <img
+            src="/images/rugsSection/hero.png"
+            alt="Premium Rugs Collection"
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div className="relative z-20 text-white px-4">
+          <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">
+            Premium Rugs Collection
+          </h1>
+          <p className="text-gray-100">
+            <span className="text-xl">Discover rugs crafted for comfort and lasting beauty.</span>
+            <span className="text-lg hidden md:block">Soft underfoot with designs that elevate any space.</span>
+            <span className="hidden md:block">Bring warmth, texture, and elegance to your home.</span>
+          </p>
+        </div>
+      </div>
 
       {/* Filters and Products */}
       <div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          
-
           {/* Products Grid */}
           <div className="flex-1">
-           
+            {/* Show error message if there's an error but we have fallback products */}
+            {error && products.length > 0 && (
+              <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
+                <p className="text-yellow-800">
+                  <strong>Notice:</strong> Some products may not be up to date. {error}
+                </p>
+              </div>
+            )}
+
+            {/* Products count */}
+            <div className="mb-6">
+              <p className="text-gray-600">
+                Showing {products.length} rug product{products.length !== 1 ? 's' : ''}
+                {products.some(p => p.id >= 990) && (
+                  <span className="text-sm text-blue-600 ml-2">
+                    (Including demo products)
+                  </span>
+                )}
+              </p>
+            </div>
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
-              {generatedProducts.map((product) => (
+              {products.map((product) => (
                 <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
-                  <div className="group border-2 border-gray-200 cursor-pointer">
+                  <div className="group border-2 border-gray-200 cursor-pointer rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+                    {/* Demo product badge */}
+                    {product.id >= 990 && (
+                      <div className="relative">
+                        <span className="absolute top-2 left-2 z-10 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                          Demo
+                        </span>
+                      </div>
+                    )}
+                    
                     <div className="relative bg-gray-200 overflow-hidden mb-4">
                       <div className="aspect-square relative">
                         <Image
@@ -273,13 +208,16 @@ export default function RugsPage() {
                           alt={product.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/api/placeholder/300/300';
+                          }}
                         />
                       </div>
-                      
                     </div>
 
-                    <div className="space-y-2">
-                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                    <div className="p-4 space-y-2">
+                      <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors line-clamp-2">
                         {product.name}
                       </h3>
 
@@ -289,7 +227,9 @@ export default function RugsPage() {
                             <Star
                               key={i}
                               className={`h-4 w-4 ${
-                                i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                                i < Math.floor(product.rating) 
+                                  ? "text-yellow-400 fill-current" 
+                                  : "text-gray-300"
                               }`}
                             />
                           ))}
@@ -298,19 +238,59 @@ export default function RugsPage() {
                       </div>
 
                       <div className="flex items-center space-x-2">
-                        <span className="text-lg font-semibold text-gray-900">₹{product.price}</span>
-                        <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+                        <span className="text-lg font-semibold text-gray-900">
+                          ₹{product.price}
+                        </span>
+                        {product.originalPrice > product.price && (
+                          <span className="text-sm text-gray-500 line-through">
+                            ₹{product.originalPrice}
+                          </span>
+                        )}
+                        {product.originalPrice > product.price && (
+                          <span className="text-xs text-green-600 font-medium">
+                            {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Available sizes and colors */}
+                      <div className="text-xs text-gray-500 space-y-1">
+                        {product.sizes?.length > 0 && (
+                          <div>Sizes: {product.sizes.slice(0, 2).join(', ')}</div>
+                        )}
+                        {product.colors?.length > 0 && (
+                          <div>Colors: {product.colors.slice(0, 2).join(', ')}</div>
+                        )}
                       </div>
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
+
+            {/* No products message */}
+            {products.length === 0 && !loading && (
+              <div className="text-center py-20">
+                <div className="text-gray-400 mb-4">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No rugs found</h3>
+                <p className="text-gray-500 mb-4">Check back soon for new rug products!</p>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  Refresh Page
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

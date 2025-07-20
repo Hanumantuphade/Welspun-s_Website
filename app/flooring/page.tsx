@@ -1,671 +1,298 @@
+// app/flooring/page.tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import Link from "next/link";
-import {  Star } from "lucide-react";
-
-type FlooringProduct = {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice: number;
-  rating: number;
-  reviews: number;
-  image: string;
-  colors?: string[];
-  sizes?: string[];
-  description: string;
-  category: string;
-  collection?: string;
-};
-
-// Sample Pexels images (ensure proper use per Pexels license :contentReference[oaicite:1]{index=1})
-const flooringProducts: FlooringProduct[] = [
-  // Existing SPC products (101–104)…
-
-  // --- Multistile™ Tiles ---
-  {
-    id: 201,
-    name: "Tawny Hickory",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.2,
-    reviews: 30,
-    image: "https://cms.welspunflooring.com/uploads/HF_001586_41c77b4458.jpg",
-    colors: ["Tawny Hickory"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Tawny Hickory",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 202,
-    name: "Yellow Clay Oak",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.3,
-    reviews: 35,
-    image: "https://cms.welspunflooring.com/uploads/HF_001580_1_857adc0bec.png",
-    colors: ["Yellow Clay Oak"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Yellow Clay Oak",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 203,
-    name: "Harvest Harmony",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.4,
-    reviews: 28,
-    image:
-      "https://cms.welspunflooring.com/uploads/SHF_00182_ade1c2c241_b015c59303.jpg",
-    colors: ["Harvest Harmony"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Harvest Harmony",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 204,
-    name: "Dark Walnut",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.1,
-    reviews: 22,
-    image: "https://cms.welspunflooring.com/uploads/HF_001584_1_0426f149b3.png",
-    colors: ["Dark Walnut"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Dark Walnut",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 205,
-    name: "Whisker Oak",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.0,
-    reviews: 18,
-    image:
-      "https://cms.welspunflooring.com/uploads/HF_001578_HF_001580_99adecc4bd.jpg",
-    colors: ["Whisker Oak"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Whisker Oak",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 206,
-    name: "Evening Barley",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.3,
-    reviews: 20,
-    image: "https://cms.welspunflooring.com/uploads/HF_001582_1_972544b7ef.png",
-    colors: ["Evening Barley"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Evening Barley",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 207,
-    name: "Sun Baked Oak",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.2,
-    reviews: 24,
-    image: "https://cms.welspunflooring.com/uploads/HF_001583_1_8fa3a25f34.png",
-    colors: ["Sun Baked Oak"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Sun Baked Oak",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 208,
-    name: "Harbour Grey",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.4,
-    reviews: 29,
-    image:
-      "https://cms.welspunflooring.com/uploads/Harbour_grey_1_aa53a40ea9.jpg",
-    colors: ["Harbour Grey"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Harbour Grey",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 209,
-    name: "Cinnamon",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.1,
-    reviews: 16,
-    image: "https://cms.welspunflooring.com/uploads/HF_001579_bd14a54ba5.jpg",
-    colors: ["Cinnamon"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Cinnamon",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 210,
-    name: "Serenity Sunflower",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.5,
-    reviews: 31,
-    image: "https://cms.welspunflooring.com/uploads/HF_001588_1_b03ce753cd.png",
-    colors: ["Serenity Sunflower"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Serenity Sunflower",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 211,
-    name: "Brunette wood",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.3,
-    reviews: 21,
-    image: "https://cms.welspunflooring.com/uploads/HF_001581_1_e2ea2e394d.png",
-    colors: ["Brunette wood"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Brunette wood",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 212,
-    name: "Aged Oak",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.2,
-    reviews: 27,
-    image: "https://cms.welspunflooring.com/uploads/HF_001585_c5b1139804.jpg",
-    colors: ["Aged Oak"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Aged Oak",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-  {
-    id: 213,
-    name: "Java Wood",
-    price: 799,
-    originalPrice: 1099,
-    rating: 4.4,
-    reviews: 23,
-    image: "https://cms.welspunflooring.com/uploads/HF_001587_1_3cd6458d3a.png",
-    colors: ["Java Wood"],
-    sizes: ["600×600 mm"],
-    description: "Multistile™ Tile – Java Wood",
-    category: "flooring",
-    collection: "Multistile™ Tiles",
-  },
-
-  // --- Click‑N‑Lock® Wood – EDEN ---
-  {
-    id: 301,
-    name: "Silver Striped Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.5,
-    reviews: 48,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00386_ff419dbb6e.jpg",
-    colors: ["Silver Striped Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Silver Striped Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 302,
-    name: "Aged Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.4,
-    reviews: 41,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00381_d01a9ce892.jpg",
-    colors: ["Aged Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Aged Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 303,
-    name: "Cinnamon",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.3,
-    reviews: 38,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00380_80e9e2f803.jpg",
-    colors: ["Cinnamon"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Cinnamon",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 304,
-    name: "Wood Land Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.4,
-    reviews: 44,
-    image: "https://cms.welspunflooring.com/uploads/unnamed_c0664cea76.webp",
-    colors: ["Wood Land Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Wood Land Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 305,
-    name: "Golden Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.5,
-    reviews: 50,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00284_c83224aee5.jpg",
-    colors: ["Golden Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Golden Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 306,
-    name: "Natural Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.3,
-    reviews: 35,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00283_b746f53983.jpg",
-    colors: ["Natural Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Natural Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 307,
-    name: "Serenity Peach",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.4,
-    reviews: 29,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00176_2d0646314e.jpg",
-    colors: ["Serenity Peach"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Serenity Peach",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 308,
-    name: "Serenity Sunflower",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.5,
-    reviews: 32,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00175_de860e0ff0.jpg",
-    colors: ["Serenity Sunflower"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Serenity Sunflower",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 309,
-    name: "Cowboy Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.2,
-    reviews: 27,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00174_ad1240b0d4.jpg",
-    colors: ["Cowboy Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Cowboy Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 310,
-    name: "Iced Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.1,
-    reviews: 20,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00164_2032855144.jpg",
-    colors: ["Iced Oak"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Iced Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 311,
-    name: "Heartwood",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.3,
-    reviews: 34,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00150_adacc2aabd.jpg",
-    colors: ["Heartwood"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Heartwood",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 312,
-    name: "Tawny Hickory",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.4,
-    reviews: 28,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00149_ef04d3e9bf.jpg",
-    colors: ["Tawny Hickory"],
-    sizes: ["1200×200 mm"],
-    description: "EDEN – Tawny Hickory",
-    category: "flooring",
-    collection: "EDEN",
-  },
-
-  {
-    id: 313,
-    name: "Yellow Clay Oak",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.3,
-    reviews: 30,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00387_614c04184b.jpg",
-    description: "EDEN – Yellow Clay Oak",
-    category: "flooring",
-    collection: "EDEN",
-  },
-  {
-    id: 314,
-    name: "Brunette wood",
-    price: 999,
-    originalPrice: 1299,
-    rating: 4.2,
-    reviews: 25,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00379_4bf32679d1.jpg",
-    description: "EDEN – Brunette wood",
-    category: "flooring",
-    collection: "EDEN",
-  },
-
-  // --- Click‑N‑Lock® Wood – BLISS ---
-  {
-    id: 401,
-    name: "Brown Elm",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.4,
-    reviews: 32,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00378_17f75ca298.jpg",
-    description: "BLISS – Brown Elm",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 402,
-    name: "Natural Teak",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.3,
-    reviews: 28,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00287_948c2a15f5.jpg",
-    description: "BLISS – Natural Teak",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 403,
-    name: "Teak Brown",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.5,
-    reviews: 34,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00286_72ebe52e52.jpg",
-    description: "BLISS – Teak Brown",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 404,
-    name: "Copper Oak",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.4,
-    reviews: 30,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00184_4ae3775f1c.jpg",
-    description: "BLISS – Copper Oak",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 405,
-    name: "Harvest Harmony",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.3,
-    reviews: 29,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00182_ade1c2c241.jpg",
-    description: "BLISS – Harvest Harmony",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 406,
-    name: "Shaker Oak",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.2,
-    reviews: 27,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00181_37d97e7b7c.jpg",
-    description: "BLISS – Shaker Oak",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 407,
-    name: "Coastal Sand Oak",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.4,
-    reviews: 31,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00178_888ea270ae.jpg",
-    description: "BLISS – Coastal Sand Oak",
-    category: "flooring",
-    collection: "BLISS",
-  },
-  {
-    id: 408,
-    name: "Java Wood",
-    price: 1099,
-    originalPrice: 1399,
-    rating: 4.3,
-    reviews: 26,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00188_88aa2f2b49.jpg",
-    description: "BLISS – Java Wood",
-    category: "flooring",
-    collection: "BLISS",
-  },
-
-  // --- Click‑N‑Lock® Wood – ARISTO ---
-  {
-    id: 501,
-    name: "Whisker Oak",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.3,
-    reviews: 22,
-    image:"https://cms.welspunflooring.com/uploads/SHF_00171_bcec15f311.jpg",
-    description: "ARISTO – Whisker Oak",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 502,
-    name: "Rosid",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.2,
-    reviews: 19,
-    image: "https://cms.welspunflooring.com/uploads/Aristo_SHF_00151_001_0edd66ee3f.jpg",
-    description: "ARISTO – Rosid",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 503,
-    name: "Luisiann Laurel",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.1,
-    reviews: 18,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00148_1e34941d16.jpg",
-    description: "ARISTO – Luisiann Laurel",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 504,
-    name: "Almond",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.0,
-    reviews: 20,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00288_1_db631e30b5.jpg",
-    description: "ARISTO – Almond",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 505,
-    name: "Light Oak",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.3,
-    reviews: 23,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00282_070d61a2b6.jpg",
-    description: "ARISTO – Light Oak",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 506,
-    name: "Sea Salt",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.1,
-    reviews: 17,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00408_1_ba94c2b72a.jpg",
-    description: "ARISTO – Sea Salt",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-  {
-    id: 507,
-    name: "Surrender Skies",
-    price: 1199,
-    originalPrice: 1499,
-    rating: 4.2,
-    reviews: 15,
-    image: "https://cms.welspunflooring.com/uploads/SHF_00410_1_f66c2d0122.jpg",
-    description: "ARISTO – Surrender Skies",
-    category: "flooring",
-    collection: "ARISTO",
-  },
-];
+import { Star } from "lucide-react";
+import { Product } from "@/types";
 
 export default function FlooringPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Demo hardcoded products (remove these after adding real data)
+  const demoProducts: Product[] = [
+    {
+      id: 995,
+      name: "Demo: Tawny Hickory Multistile™ Tile",
+      price: 799,
+      originalPrice: 1099,
+      rating: 4.2,
+      reviews: 30,
+      image: "https://cms.welspunflooring.com/uploads/HF_001586_41c77b4458.jpg",
+      images: [],
+      colors: ["Tawny Hickory"],
+      sizes: ["600×600 mm"],
+      description: "Demo product - Multistile™ Tile with premium wood finish",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Easy maintenance with regular cleaning",
+      manufactureDetail: "Made with premium materials",
+      category: "flooring",
+    },
+    {
+      id: 994,
+      name: "Demo: Silver Striped Oak EDEN Collection",
+      price: 999,
+      originalPrice: 1299,
+      rating: 4.5,
+      reviews: 48,
+      image: "https://cms.welspunflooring.com/uploads/SHF_00386_ff419dbb6e.jpg",
+      images: [],
+      colors: ["Silver Striped Oak"],
+      sizes: ["1200×200 mm"],
+      description: "Demo product - EDEN Collection with Click-N-Lock® technology",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Water-resistant, easy to clean",
+      manufactureDetail: "Made with advanced flooring technology",
+      category: "flooring",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchFlooringProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/flooring');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts = await response.json();
+        
+        // Combine API products with demo products
+        // Remove demoProducts from this line after you have real data
+        const allProducts = [...demoProducts, ...apiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching flooring products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFlooringProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Flooring Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading flooring products...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error && products.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Flooring Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <p className="text-red-600 mb-4">Error loading products: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
-        Buy Products worth Rs. 1999/- get a Free Florring Rs. 999/-
+        Buy Products worth Rs. 1999/- get a Free Flooring Worth Rs. 999/-
       </div>
+
       <Header />
+
+      {/* Breadcrumb */}
       <div className="bg-gray-50 py-4">
         <div className="max-w-7xl mx-auto px-4">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
-            <span className="text-sky-600 font-medium">Curtains</span>
+            <span className="text-sky-600 font-medium">Flooring</span>
           </nav>
         </div>
       </div>
 
-      {/* Hero with Pexels background */}
+      {/* Hero Section */}
       <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
-        <img
-          src="/images/f1.jpeg"
-          alt="Modern wood flooring"
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-90"
-        />
-        <div className="relative z-10 px-6">
-          <h1 className="text-3xl md:text-4xl font-semibold mb-2">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/40 z-10" />
+          <img
+            src="/images/f1.jpeg"
+            alt="Modern wood flooring"
+            className="w-full h-full object-cover opacity-90"
+          />
+        </div>
+        <div className="relative z-20 px-6 text-white">
+          <h1 className="text-3xl md:text-4xl font-semibold mb-4 bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
             Styles that cater to different spaces and budgets
           </h1>
-          <p className="text-lg text-gray-700 mb-1">
+          <p className="text-lg text-gray-100 mb-2">
             Designs that impress the Earth as well
+          </p>
+          <p className="text-base text-gray-200">
+            Premium flooring solutions for every home
           </p>
         </div>
       </div>
 
-      {/* Products Grid */}
-<div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
-  {flooringProducts.map((prod) => (
-    <Link key={prod.id} href={`/product/${prod.category}/${prod.id}`}>
-      <div className="group cursor-pointer border rounded-lg overflow-hidden transition-shadow hover:shadow-md">
-        <div className="relative aspect-square bg-gray-100">
-          <Image
-            src={prod.image || "/placeholder.svg"}
-            alt={prod.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+      {/* Main Content */}
+      <div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16">
+        {/* Show error message if there's an error but we have fallback products */}
+        {error && products.length > 0 && (
+          <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded max-w-7xl mx-auto">
+            <p className="text-yellow-800">
+              <strong>Notice:</strong> Some products may not be up to date. {error}
+            </p>
+          </div>
+        )}
+
+        {/* Products count */}
+        <div className="mb-6 max-w-7xl mx-auto">
+          <p className="text-gray-600">
+            Showing {products.length} flooring product{products.length !== 1 ? 's' : ''}
+            {products.some(p => p.id >= 994) && (
+              <span className="text-sm text-blue-600 ml-2">
+                (Including demo products)
+              </span>
+            )}
+          </p>
         </div>
-        <div className="p-4 space-y-2">
-          <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
-            {prod.name}
-          </h3>
-          <p className="text-sm text-gray-600 line-clamp-2">{prod.description}</p>
-          <div className="flex items-center space-x-1">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`h-4 w-4 ${
-                    i < Math.floor(prod.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                  }`}
-                />
-              ))}
+
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
+          {products.map((product) => (
+            <Link key={product.id} href={`/product/${product.category}/${product.id}`}>
+              <div className="group cursor-pointer border-2 border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-amber-300">
+                {/* Demo product badge */}
+                {product.id >= 994 && (
+                  <div className="relative">
+                    <span className="absolute top-2 left-2 z-10 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                      Demo
+                    </span>
+                  </div>
+                )}
+                
+                <div className="relative aspect-square bg-gray-100">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/api/placeholder/300/300';
+                    }}
+                  />
+                </div>
+                
+                <div className="p-4 space-y-2">
+                  <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors line-clamp-2">
+                    {product.name}
+                  </h3>
+                  
+                  {product.description && (
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {product.description}
+                    </p>
+                  )}
+                  
+                  <div className="flex items-center space-x-1">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating) 
+                              ? "text-yellow-400 fill-current" 
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm text-gray-600">({product.reviews})</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <span className="text-lg font-semibold text-gray-900">
+                      ₹{product.price}
+                    </span>
+                    {product.originalPrice > product.price && (
+                      <span className="text-sm line-through text-gray-500">
+                        ₹{product.originalPrice}
+                      </span>
+                    )}
+                    {product.originalPrice > product.price && (
+                      <span className="text-xs text-green-600 font-medium">
+                        {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Available sizes/colors if present */}
+                  {(product.sizes?.length > 0 || product.colors?.length > 0) && (
+                    <div className="text-xs text-gray-500 space-y-1">
+                      {product.sizes?.length > 0 && (
+                        <div>Sizes: {product.sizes.slice(0, 2).join(', ')}</div>
+                      )}
+                      {product.colors?.length > 0 && (
+                        <div>Colors: {product.colors.slice(0, 2).join(', ')}</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* No products message */}
+        {products.length === 0 && !loading && (
+          <div className="text-center py-20">
+            <div className="text-gray-400 mb-4">
+              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 7v10c0 2.21 3.79 4 8 4s8-1.79 8-4V7c0-2.21-3.79-4-8-4S4 4.79 4 7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 7c0 2.21 3.79 4 8 4s8-1.79 8-4" />
+              </svg>
             </div>
-            <span className="text-sm text-gray-600">({prod.reviews})</span>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No flooring products found</h3>
+            <p className="text-gray-500 mb-4">Check back soon for new flooring options!</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Refresh Page
+            </button>
           </div>
-          <div className="flex items-baseline space-x-2">
-            <span className="text-lg font-semibold text-gray-900">₹{prod.price}</span>
-            <span className="text-sm line-through text-gray-500">₹{prod.originalPrice}</span>
-          </div>
-        </div>
+        )}
       </div>
-    </Link>
-  ))}
-</div>
 
-
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

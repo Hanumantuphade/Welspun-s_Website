@@ -1,242 +1,112 @@
+// app/bed/premium-bedsheets/page.tsx
 "use client";
 
-import Header from "@/components/header";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const premiumProducts = [
-  {
-    id: 1,
-    name: "Premium Cotton Bedsheet",
-    image: "/topSeller/premium/s1.jpeg",
-    price: "₹1499",
-    description: "Soft and elegant premium cotton bedsheet.",
-  },
-  {
-    id: 2,
-    name: "Luxury Floral Bedsheet",
-    image: "/topSeller/premium/s2.jpeg",
-    price: "₹1799",
-    description: "Luxury floral print bedsheet for elegance.",
-  },
-  {
-    id: 3,
-    name: "LUXURY COLLECTION",
-    image: "/topSeller/premium/s3.jpeg",
-    price: "₹2499",
-    description: "Transform your bedroom into a luxury suite",
-  },
-  {
-    id: 4,
-    name: "PREMIUM COMFORT",
-    image: "/topSeller/premium/s4.jpg",
-    price: "₹2999",
-    description: "Experience unmatched comfort with our premium collection",
-  },
-  {
-    id: 5,
-    name: "ELEGANT DESIGNS",
-    image: "/topSeller/premium/s5.jpg",
-    price: "₹1999",
-    description: "Upgrade your decor with elegant bedsheet designs",
-  },
-  {
-    id: 6,
-    name: "SOFT TOUCH",
-    image: "/topSeller/premium/s6.jpg",
-    price: "₹1799",
-    description: "Feel the softness of our ultra-smooth fabrics",
-  },
-  {
-    id: 7,
-    name: "ROYAL COLLECTION",
-    image: "/topSeller/premium/s7.jpg",
-    price: "₹3499",
-    description: "Bring home the royalty with this luxurious collection",
-  },
-  {
-    id: 8,
-    name: "EVERYDAY ESSENTIALS",
-    image: "/topSeller/premium/s8.jpg",
-    price: "₹1499",
-    description: "Perfect essentials for everyday comfort and style",
-  },
-  {
-    id: 9,
-    name: "MODERN GEOMETRIC",
-    image: "/topSeller/premium/s9.jpg",
-    price: "₹1899",
-    description: "Modern geometric patterns to elevate your room decor.",
-  },
-  {
-    id: 10,
-    name: "FLORAL DELIGHT",
-    image: "/topSeller/premium/s10.jpg",
-    price: "₹1599",
-    description: "Bright floral prints for a refreshing bedroom look.",
-  },
-  {
-    id: 11,
-    name: "ROYAL BLUE LUXURY",
-    image: "/topSeller/premium/s11.jpg",
-    price: "₹2799",
-    description: "Experience luxury with our royal blue bedsheet collection.",
-  },
-  {
-    id: 12,
-    name: "PASTEL BLISS",
-    image: "/topSeller/premium/s12.jpg",
-    price: "₹1699",
-    description: "Calming pastel shades for soothing sleep.",
-  },
-  {
-    id: 13,
-    name: "CLASSIC WHITE",
-    image: "/topSeller/premium/s13.jpg",
-    price: "₹1399",
-    description: "Elegant white bedsheet for timeless appeal.",
-  },
-  {
-    id: 14,
-    name: "CHECKERED STYLE",
-    image: "/topSeller/premium/s14.jpg",
-    price: "₹1499",
-    description: "Stylish checkered pattern for modern homes.",
-  },
-  {
-    id: 15,
-    name: "EARTHY BROWN",
-    image: "/topSeller/premium/s15.jpg",
-    price: "₹1599",
-    description: "Warm earthy tones for cosy bedrooms.",
-  },
-  {
-    id: 16,
-    name: "ELEGANT GREY",
-    image: "/topSeller/premium/s16.jpg",
-    price: "₹1799",
-    description: "Minimalistic grey bedsheet for urban decor.",
-  },
-  {
-    id: 17,
-    name: "SUNSHINE YELLOW",
-    image: "/topSeller/premium/s17.jpg",
-    price: "₹1699",
-    description: "Bright yellow bedsheet for cheerful mornings.",
-  },
-  {
-    id: 18,
-    name: "ROYAL MAROON",
-    image: "/topSeller/premium/s18.jpg",
-    price: "₹2299",
-    description: "Deep maroon shades for a royal bedroom feel.",
-  },
-  {
-    id: 19,
-    name: "TEAL TOUCH",
-    image: "/topSeller/premium/s19.jpg",
-    price: "₹1599",
-    description: "Teal coloured bedsheet for a vibrant look.",
-  },
-  {
-    id: 20,
-    name: "BLACK ELEGANCE",
-    image: "/topSeller/premium/s20.jpg",
-    price: "₹1999",
-    description: "Elegant black bedsheet for a bold statement.",
-  },
-  {
-    id: 21,
-    name: "RUSTIC CHARM",
-    image: "/topSeller/premium/s21.jpg",
-    price: "₹1899",
-    description: "Rustic prints for a vintage-inspired bedroom.",
-  },
-  {
-    id: 22,
-    name: "PEACH BLOSSOM",
-    image: "/topSeller/premium/s22.jpg",
-    price: "₹1799",
-    description: "Peach blossom prints for a delicate touch.",
-  },
-  {
-    id: 23,
-    name: "LUXURY SATIN",
-    image: "/topSeller/premium/s23.jpg",
-    price: "₹2999",
-    description: "Smooth satin bedsheet for ultimate luxury.",
-  },
-  {
-    id: 24,
-    name: "GOLDEN GRACE",
-    image: "/topSeller/premium/s24.jpg",
-    price: "₹2499",
-    description: "Add grace with this golden printed bedsheet.",
-  },
-  {
-    id: 25,
-    name: "NAVY PREMIUM",
-    image: "/topSeller/premium/s25.jpg",
-    price: "₹1899",
-    description: "Premium navy bedsheet for elegant interiors.",
-  },
-  {
-    id: 26,
-    name: "FOREST GREEN",
-    image: "/topSeller/premium/s26.jpg",
-    price: "₹1599",
-    description: "Forest green bedsheet for a refreshing vibe.",
-  },
-  {
-    id: 27,
-    name: "PURPLE ROYALTY",
-    image: "/topSeller/premium/s27.jpg",
-    price: "₹1999",
-    description: "Royal purple bedsheet for luxurious bedrooms.",
-  },
-  {
-    id: 28,
-    name: "SILVER SHINE",
-    image: "/topSeller/premium/s28.jpg",
-    price: "₹2799",
-    description: "Shimmering silver bedsheet for modern luxury.",
-  },
-  {
-    id: 29,
-    name: "COFFEE BROWN",
-    image: "/topSeller/premium/s29.jpg",
-    price: "₹1699",
-    description: "Rich coffee brown bedsheet for warm interiors.",
-  },
-  {
-    id: 30,
-    name: "CRIMSON RED",
-    image: "/topSeller/premium/s30.jpg",
-    price: "₹2199",
-    description: "Crimson red bedsheet for festive elegance.",
-  },
-  {
-    id: 31,
-    name: "IVORY CLASSIC",
-    image: "/topSeller/premium/s31.jpg",
-    price: "₹1499",
-    description: "Classic ivory bedsheet for timeless beauty.",
-  },
-  {
-    id: 32,
-    name: "OMBRE STYLE",
-    image: "/topSeller/premium/s32.jpg",
-    price: "₹1899",
-    description: "Ombre shaded bedsheet for a trendy look.",
-  },
-  // Add more products as needed
-];
-
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import { Star } from "lucide-react";
+import { Product } from "@/types";
 
 export default function PremiumBedsheetsPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Demo hardcoded products (remove these after adding real data)
+  const demoProducts: Product[] = [
+    {
+      id: 985,
+      name: "Demo: Premium Cotton Bedsheet",
+      price: 1499,
+      originalPrice: 1899,
+      rating: 4.6,
+      reviews: 150,
+      image: "/topSeller/premium/s1.jpeg",
+      images: ["/topSeller/premium/s1.jpeg"],
+      colors: ["White", "Cream"],
+      sizes: ["Double", "Queen", "King"],
+      description: "Soft and elegant premium cotton bedsheet with luxury finish",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Machine washable, gentle cycle",
+      manufactureDetail: "100% premium cotton with luxury weave",
+      category: "premium-bedsheets",
+    },
+    {
+      id: 984,
+      name: "Demo: Luxury Collection Bedsheet",
+      price: 2499,
+      originalPrice: 3199,
+      rating: 4.8,
+      reviews: 200,
+      image: "/topSeller/premium/s3.jpeg",
+      images: ["/topSeller/premium/s3.jpeg"],
+      colors: ["Royal Blue", "Golden"],
+      sizes: ["Queen", "King"],
+      description: "Transform your bedroom into a luxury suite with this premium collection",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Dry clean recommended for best results",
+      manufactureDetail: "Premium luxury fabric with gold threading",
+      category: "premium-bedsheets",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchPremiumProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/premium-bedsheets');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts = await response.json();
+        
+        // Combine API products with demo products
+        const allProducts = [...demoProducts, ...apiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching premium bedsheet products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPremiumProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading premium bedsheet products...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-white max-w-full w-full mx-auto px-4 pb-6 ">
+    <div className="min-h-screen bg-white max-w-full w-full mx-auto px-4 pb-6">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+        Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+      </div>
+
       <Header />
+
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-3">
         <div className="max-w-full w-full mx-auto px-4">
@@ -248,13 +118,14 @@ export default function PremiumBedsheetsPage() {
           </nav>
         </div>
       </div>
+
       {/* Background Image with Overlay and Text */}
-      <div className="relative md:h-[440px] lg:[530px] flex items-center justify-center text-center">
+      <div className="relative md:h-[440px] lg:h-[530px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/50 z-10" />
           <img
             src="/topSeller/hero1.png"
-            alt="page"
+            alt="Premium Bedsheet Collection"
             className="w-full h-full object-cover"
           />
         </div>
@@ -265,44 +136,144 @@ export default function PremiumBedsheetsPage() {
           <p className="text-gray-100">
             <span className="text-xl">
               Transform your bedroom with our luxurious bedsheet range.
-            </span>{" "}
-            <br />{" "}
+            </span>
+            <br />
             <span className="text-lg">
-              Discover ultra-soft fabrics and elegant designs for ultimate
-              comfort.
-            </span>{" "}
-            <br /> <span className="hidden md:block"> Drift into a peaceful sleep and wake up feeling refreshed.</span>
+              Discover ultra-soft fabrics and elegant designs for ultimate comfort.
+            </span>
+            <br />
+            <span className="hidden md:block">Drift into a peaceful sleep and wake up feeling refreshed.</span>
           </p>
         </div>
       </div>
-      <div className="grid pt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:px-12 gap-10">
-        {premiumProducts.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
-          >
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={400}
-              height={400}
-              className="object-cover w-full h-64"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-medium">{product.name}</h2>
-              <p className="text-gray-600">{product.description}</p>
-              <p className="text-orange-600 font-semibold mt-2">
-                {product.price}
-              </p>
-              <Link
-                href="#"
-                className="inline-block mt-4 bg-green-400 text-white px-4 py-2 rounded hover:bg-orange-700 transition"
-              >
-                View Details
-              </Link>
-            </div>
+
+      {/* Main Content */}
+      <div className="pt-10">
+        {/* Show error message if there's an error but we have fallback products */}
+        {error && products.length > 0 && (
+          <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
+            <p className="text-yellow-800">
+              <strong>Notice:</strong> Some products may not be up to date. {error}
+            </p>
           </div>
-        ))}
+        )}
+
+        {/* Products count */}
+        <div className="mb-6">
+          <p className="text-gray-600">
+            Showing {products.length} premium bedsheet product{products.length !== 1 ? 's' : ''}
+            {products.some(p => p.id >= 984) && (
+              <span className="text-sm text-blue-600 ml-2">
+                (Including demo products)
+              </span>
+            )}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:px-12 gap-10">
+          {products.map((product) => (
+            <Link
+              key={product.id}
+              href={`/product/${product.category}/${product.id}`}
+            >
+              <div className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-all duration-300">
+                {/* Demo product badge */}
+                {product.id >= 984 && (
+                  <div className="relative">
+                    <span className="absolute top-2 left-2 z-10 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                      Demo
+                    </span>
+                  </div>
+                )}
+                
+                <div className="relative">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={400}
+                    height={400}
+                    className="object-cover w-full h-64 hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/api/placeholder/400/400';
+                    }}
+                  />
+                </div>
+                
+                <div className="p-4">
+                  <h2 className="text-xl font-medium line-clamp-2 mb-2">{product.name}</h2>
+                  
+                  {product.description && (
+                    <p className="text-gray-600 text-sm line-clamp-2 mb-2">{product.description}</p>
+                  )}
+
+                  {/* Rating */}
+                  <div className="flex items-center space-x-1 mb-2">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating)
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm text-gray-600">({product.reviews})</span>
+                  </div>
+
+                  <div className="flex items-center space-x-2 mb-2">
+                    <p className="text-orange-600 font-semibold text-lg">
+                      ₹{product.price.toLocaleString()}
+                    </p>
+                    {product.originalPrice > product.price && (
+                      <>
+                        <span className="text-sm text-gray-500 line-through">
+                          ₹{product.originalPrice.toLocaleString()}
+                        </span>
+                        <span className="text-xs text-green-600 font-medium">
+                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Available sizes */}
+                  {product.sizes?.length > 0 && (
+                    <p className="text-xs text-gray-500 mb-3">
+                      Sizes: {product.sizes.slice(0, 3).join(', ')}
+                    </p>
+                  )}
+
+                  <button className="w-full bg-green-400 text-white px-4 py-2 rounded hover:bg-green-500 transition-colors font-medium">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* No products message */}
+        {products.length === 0 && !loading && (
+          <div className="text-center py-20">
+            <div className="text-gray-400 mb-4">
+              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No premium bedsheets found</h3>
+            <p className="text-gray-500 mb-4">Check back soon for new premium bedsheet products!</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Refresh Page
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

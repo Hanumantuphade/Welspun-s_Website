@@ -1,55 +1,122 @@
+// app/bed/page.tsx
 "use client";
 
-import Link from "next/link";
-import { Product } from "@/types";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { Product } from "@/types";
 
 export default function BedPage() {
-  const productImages = [
-    "/images/bedSection/bed1/b1.png",
-    "/images/bedSection/bed2/b1.png",
-    "/images/bedSection/bed3/b1.png",
-    "/images/bedSection/bed4/b1.png",
-    "/images/bedSection/bed5/b1.png",
-    "/images/bedSection/bed6/b1.png",
-    "/images/bedSection/bed7/b1.png",
-    "/images/bedSection/bed8/b1.png",
-    "/images/bedSection/bed9/b1.png",
-    "/images/bedSection/bed10/b1.png",
-    "/images/bedSection/bed11/b1.png",
-    "/images/bedSection/bed12/b1.png",
-  ];
-
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const generatedProducts = productImages.map((img, index) => ({
-      id: index + 1,
-      name: `Sample Bed Product ${index + 1}`,
+  // Demo hardcoded products (remove these after adding real data)
+  const demoProducts: Product[] = [
+    {
+      id: 989,
+      name: "Demo: Luxury Cotton Bedsheet Set",
       price: 3799,
       originalPrice: 4799,
       rating: 4.8,
       reviews: 240,
-      image: img,
-      images: [],
-      colors: ["White"],
-      sizes: ["King"],
-      description: "",
-      returnPolicy: "",
-      careInstructions: "",
-      manufactureDetail: "",
+      image: "/images/bedSection/bed1/b1.png",
+      images: ["/images/bedSection/bed1/b1.png"],
+      colors: ["White", "Cream"],
+      sizes: ["King", "Queen", "Double"],
+      description: "Demo product - Premium cotton bedsheet with luxury finish",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Machine washable, gentle cycle",
+      manufactureDetail: "Made with 100% premium cotton",
       category: "bed",
-    }));
-    setProducts(generatedProducts);
+    },
+    {
+      id: 988,
+      name: "Demo: Premium Comfort Bedsheet",
+      price: 2999,
+      originalPrice: 3999,
+      rating: 4.6,
+      reviews: 180,
+      image: "/images/bedSection/bed2/b1.png",
+      images: ["/images/bedSection/bed2/b1.png"],
+      colors: ["Blue", "Gray"],
+      sizes: ["King", "Queen"],
+      description: "Demo product - Ultra-soft bedsheet for premium comfort",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Machine washable",
+      manufactureDetail: "Premium blend fabric",
+      category: "bed",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchBedProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/bed');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts = await response.json();
+        
+        // Combine API products with demo products
+        // Remove demoProducts from this line after you have real data
+        const allProducts = [...demoProducts, ...apiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching bed products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBedProducts();
   }, []);
 
-  if (products.length === 0) {
+  if (loading) {
     return (
-      <div className="text-center py-20 text-gray-600">Loading products...</div>
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading bed products...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error && products.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <p className="text-red-600 mb-4">Error loading products: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -64,7 +131,7 @@ export default function BedPage() {
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-3">
-        <div className="w-full max-w-full mx-auto px-2">
+        <div className="w-full max-w-full mx-auto px-4">
           <nav className="text-sm text-gray-500">
             Home <span className="mx-2 text-gray-400">/</span>
             <span className="text-sky-600 font-medium">Bed</span>
@@ -78,11 +145,11 @@ export default function BedPage() {
           <div className="absolute inset-0 bg-black/50 z-10" />
           <img
             src="/images/bedSection/hero.png"
-            alt="page"
+            alt="Luxury Bed Collection"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative z-20 text-white px-2">
+        <div className="relative z-20 text-white px-4">
           <h1 className="text-4xl font-light bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent mb-2">
             Luxury Bed Collection
           </h1>
@@ -91,8 +158,7 @@ export default function BedPage() {
               Elevate your bedroom with our premium bedding range.
             </span>
             <span className="text-lg hidden md:block">
-              Experience ultra-soft fabrics and timeless designs crafted for
-              your comfort.
+              Experience ultra-soft fabrics and timeless designs crafted for your comfort.
             </span>
             <span className="hidden md:block">
               Sleep beautifully and wake refreshed every day.
@@ -106,25 +172,61 @@ export default function BedPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Product Grid */}
           <div className="flex-1">
+            {/* Show error message if there's an error but we have fallback products */}
+            {error && products.length > 0 && (
+              <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
+                <p className="text-yellow-800">
+                  <strong>Notice:</strong> Some products may not be up to date. {error}
+                </p>
+              </div>
+            )}
+
+            {/* Products count */}
+            <div className="mb-6">
+              <p className="text-gray-600">
+                Showing {products.length} bed product{products.length !== 1 ? 's' : ''}
+                {products.some(p => p.id >= 988) && (
+                  <span className="text-sm text-blue-600 ml-2">
+                    (Including demo products)
+                  </span>
+                )}
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
               {products.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.category}/${product.id}`}
                 >
-                  <div className="group border-2 border-gray-200 cursor-pointer">
-                    <div className="relative bg-gray-100 overflow-hidden mb-4 aspect-square">
+                  <div className="group border-2 border-gray-200 cursor-pointer p-4 rounded-lg hover:shadow-lg transition-all duration-300">
+                    {/* Demo product badge */}
+                    {product.id >= 988 && (
+                      <div className="mb-2">
+                        <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                          Demo
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="relative bg-gray-100 overflow-hidden mb-4 aspect-square rounded">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/api/placeholder/300/300';
+                        }}
                       />
                     </div>
-                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors">
+                    
+                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors mb-2 line-clamp-2">
                       {product.name}
                     </h3>
-                    <div className="flex items-center space-x-1">
+                    
+                    <div className="flex items-center space-x-1 mb-2">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={`${product.id}-star-${i}`}
@@ -139,23 +241,57 @@ export default function BedPage() {
                         ({product.reviews})
                       </span>
                     </div>
+                    
                     <div className="flex items-center space-x-2">
                       <span className="text-lg font-semibold text-gray-900">
-                        ₹{product.price}
+                        ₹{product.price.toLocaleString()}
                       </span>
-                      <span className="text-sm text-gray-500 line-through">
-                        ₹{product.originalPrice}
-                      </span>
+                      {product.originalPrice > product.price && (
+                        <span className="text-sm text-gray-500 line-through">
+                          ₹{product.originalPrice.toLocaleString()}
+                        </span>
+                      )}
+                      {product.originalPrice > product.price && (
+                        <span className="text-xs text-green-600 font-medium">
+                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Available sizes/colors */}
+                    <div className="text-xs text-gray-500 mt-2">
+                      {product.sizes?.length > 0 && (
+                        <div>Sizes: {product.sizes.slice(0, 2).join(', ')}</div>
+                      )}
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
+
+            {/* No products message */}
+            {products.length === 0 && !loading && (
+              <div className="text-center py-20">
+                <div className="text-gray-400 mb-4">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No bed products found</h3>
+                <p className="text-gray-500 mb-4">Check back soon for new bedding products!</p>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  Refresh Page
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

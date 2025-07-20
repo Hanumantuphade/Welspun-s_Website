@@ -1,66 +1,276 @@
-import PageLayout from "@/components/PageLayout";
-import PremiumProductGrid from "@/components/PremiumProductGrid";
+// app/bed/fitted/page.tsx
+"use client";
 
-const premiumBedsheets = [
-  {
-    id: 1,
-    name: "Fitted Cotton Bedsheet",
-    image: "/topSeller/fitted/f1.jpg",
-    price: "₹1599",
-    description: "Perfectly fitted cotton bedsheet for a smooth look.",
-  },
-  {
-    id: 2,
-    name: "Luxury Fitted Floral Bedsheet",
-    image: "/topSeller/fitted/f2.jpg",
-    price: "₹1899",
-    description: "Luxury floral fitted bedsheet for elegant bedrooms.",
-  },
-  {
-    id: 3,
-    name: "Elastic Fitted Bedsheet",
-    image: "/topSeller/fitted/f3.jpg",
-    price: "₹1799",
-    description: "Elasticated fitted bedsheet for perfect mattress grip.",
-  },
-  {
-    id: 4,
-    name: "Premium Fitted Comfort",
-    image: "/topSeller/fitted/f4.jpg",
-    price: "₹2099",
-    description: "Premium comfort with a fitted design for neat bedding.",
-  },
-  {
-    id: 5,
-    name: "Elegant Fitted Design",
-    image: "/topSeller/fitted/f5.jpg",
-    price: "₹1999",
-    description: "Add elegance with beautifully designed fitted bedsheets.",
-  },
-  {
-    id: 6,
-    name: "Soft Touch Fitted Bedsheet",
-    image: "/topSeller/fitted/f6.jpg",
-    price: "₹1699",
-    description: "Enjoy softness with our ultra-smooth fitted bedsheets.",
-  },
-];
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Image from "next/image";
+import { Star } from "lucide-react";
+import { Product } from "@/types";
 
-export default function BedsheetPage() {
+export default function FittedBedsheetsPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Demo hardcoded products (remove these after adding real data)
+  const demoProducts: Product[] = [
+    {
+      id: 987,
+      name: "Demo: Fitted Cotton Bedsheet",
+      price: 1599,
+      originalPrice: 1999,
+      rating: 4.5,
+      reviews: 120,
+      image: "/topSeller/fitted/f1.jpg",
+      images: ["/topSeller/fitted/f1.jpg"],
+      colors: ["White", "Blue"],
+      sizes: ["Single", "Double", "Queen", "King"],
+      description: "Perfectly fitted cotton bedsheet for a smooth look with elastic corners",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Machine washable, gentle cycle",
+      manufactureDetail: "100% cotton with elastic edges",
+      category: "fitted",
+    },
+    {
+      id: 986,
+      name: "Demo: Luxury Fitted Floral Bedsheet",
+      price: 1899,
+      originalPrice: 2399,
+      rating: 4.7,
+      reviews: 85,
+      image: "/topSeller/fitted/f2.jpg",
+      images: ["/topSeller/fitted/f2.jpg"],
+      colors: ["Floral Pink", "Floral Blue"],
+      sizes: ["Double", "Queen", "King"],
+      description: "Luxury floral fitted bedsheet for elegant bedrooms with premium fabric",
+      returnPolicy: "30 days return policy",
+      careInstructions: "Machine washable, cold water",
+      manufactureDetail: "Premium cotton blend with floral print",
+      category: "fitted",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchFittedProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/fitted');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts = await response.json();
+        
+        // Combine API products with demo products
+        const allProducts = [...demoProducts, ...apiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching fitted bedsheet products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFittedProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+          Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+        </div>
+        <Header />
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading fitted bedsheet products...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <PageLayout
-      breadcrumbItems={[
-        { label: "Home", link: "/" },
-        { label: "Bed" },
-        { label: "Premium" },
-      ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
-    >
-      <PremiumProductGrid products={premiumBedsheets} />
-    </PageLayout>
+    <div className="min-h-screen bg-white">
+      <div className="bg-gray-900 text-white text-center py-2 text-sm font-medium">
+        Buy Products worth Rs. 1999/- get a Free Towel Worth Rs. 999/-
+      </div>
+
+      <Header />
+
+      {/* Breadcrumb */}
+      <div className="bg-gray-50 py-3">
+        <div className="max-w-7xl mx-auto px-4">
+          <nav className="text-sm text-gray-500">
+            Home <span className="mx-2 text-gray-400">/</span>
+            <span className="text-sky-600 font-medium">Bed</span>
+            <span className="mx-2 text-gray-400">/</span>
+            <span className="text-sky-600 font-medium">Fitted</span>
+          </nav>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <div className="relative h-[410px] lg:h-[420px] xl:h-[500px] flex items-center justify-center text-center">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <img
+            src="/topSeller/hero.png"
+            alt="Fitted Bedsheet Collection"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative z-20 text-white px-4">
+          <h1 className="text-4xl font-light bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent mb-2">
+            Fitted Bedsheet Collection
+          </h1>
+          <p className="text-gray-100">
+            <span className="text-xl block">Experience the perfect fit for your mattress with our fitted bedsheets.</span>
+            <span className="text-lg hidden md:block">Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners.</span>
+            <span className="hidden md:block">Wake up to a neat, elegant, and comfortable bed every morning.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="w-full max-w-full mx-auto pt-10 px-2 md:px-12 lg:px-16 xl:px-16 pb-16">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex-1">
+            {/* Show error message if there's an error but we have fallback products */}
+            {error && products.length > 0 && (
+              <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
+                <p className="text-yellow-800">
+                  <strong>Notice:</strong> Some products may not be up to date. {error}
+                </p>
+              </div>
+            )}
+
+            {/* Products count */}
+            <div className="mb-6">
+              <p className="text-gray-600">
+                Showing {products.length} fitted bedsheet product{products.length !== 1 ? 's' : ''}
+                {products.some(p => p.id >= 986) && (
+                  <span className="text-sm text-blue-600 ml-2">
+                    (Including demo products)
+                  </span>
+                )}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6">
+              {products.map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/product/${product.category}/${product.id}`}
+                >
+                  <div className="group border-2 border-gray-200 cursor-pointer p-4 rounded-lg hover:shadow-lg transition-all duration-300">
+                    {/* Demo product badge */}
+                    {product.id >= 986 && (
+                      <div className="mb-2">
+                        <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                          Demo
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="relative bg-gray-100 overflow-hidden mb-4 aspect-square rounded">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/api/placeholder/300/300';
+                        }}
+                      />
+                    </div>
+                    
+                    <h3 className="font-medium text-gray-900 group-hover:text-amber-900 transition-colors mb-2 line-clamp-2">
+                      {product.name}
+                    </h3>
+
+                    {product.description && (
+                      <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                        {product.description}
+                      </p>
+                    )}
+                    
+                    <div className="flex items-center space-x-1 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating)
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                      <span className="text-sm text-gray-600">
+                        ({product.reviews})
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg font-semibold text-gray-900">
+                        ₹{product.price.toLocaleString()}
+                      </span>
+                      {product.originalPrice > product.price && (
+                        <span className="text-sm text-gray-500 line-through">
+                          ₹{product.originalPrice.toLocaleString()}
+                        </span>
+                      )}
+                      {product.originalPrice > product.price && (
+                        <span className="text-xs text-green-600 font-medium">
+                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Available sizes */}
+                    <div className="text-xs text-gray-500 mt-2">
+                      {product.sizes?.length > 0 && (
+                        <div>Sizes: {product.sizes.slice(0, 3).join(', ')}</div>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* No products message */}
+            {products.length === 0 && !loading && (
+              <div className="text-center py-20">
+                <div className="text-gray-400 mb-4">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No fitted bedsheets found</h3>
+                <p className="text-gray-500 mb-4">Check back soon for new fitted bedsheet products!</p>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  Refresh Page
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
   );
 }
