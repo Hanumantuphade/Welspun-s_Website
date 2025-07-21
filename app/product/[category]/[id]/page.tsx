@@ -8,14 +8,17 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useCart } from "@/app/context/CartContext";
 import { useWishlist } from "@/app/context/WishlistContext";
+import { useUser } from "@/app/context/UserContext";
 import ProductTabs from "@/components/ProductTabs";
+import LoginPopup from "@/components/login-popup";
 import { Product } from "@/types";
-import { Heart, Star } from "lucide-react";
+import { Heart, Star, ShoppingCart } from "lucide-react";
 
 export default function ProductDetailPage() {
   const { category, id } = useParams();
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const { isAuthenticated, user } = useUser();
   
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -24,6 +27,8 @@ export default function ProductDetailPage() {
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [qty, setQty] = useState<number>(1);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [actionLoading, setActionLoading] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -61,31 +66,60 @@ export default function ProductDetailPage() {
     }
   }, [id, category]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!product) return;
     
-    for (let i = 0; i < qty; i++) {
-      addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        size: selectedSize,
-        color: selectedColor,
-      });
+    if (!isAuthenticated) {
+      setShowLoginPopup(true);
+      return;
     }
-    
-    // Show success message (you can replace with toast notification)
-    alert(`Added ${qty} item(s) to cart!`);
+
+    try {
+      setActionLoading(true);
+      
+      // Add items based on quantity
+      for (let i = 0; i < qty; i++) {
+        await addToCart({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          size: selectedSize,
+          color: selectedColor,
+        });
+      }
+      
+      // Show success message
+      const message = `Added ${qty} item${qty > 1 ? 's' : ''} to cart!`;
+      // You can replace this with a toast notification
+      alert(message);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    } finally {
+      setActionLoading(false);
+    }
   };
 
-  const handleWishlistToggle = () => {
+  const handleWishlistToggle = async () => {
     if (!product) return;
     
-    if (isInWishlist(product.id)) {
-      removeFromWishlist(product.id);
-    } else {
-      addToWishlist(product);
+    if (!isAuthenticated) {
+      setShowLoginPopup(true);
+      return;
+    }
+
+    try {
+      setActionLoading(true);
+      
+      if (isInWishlist(product.id)) {
+        await removeFromWishlist(product.id);
+      } else {
+        await addToWishlist(product);
+      }
+    } catch (error) {
+      console.error('Error updating wishlist:', error);
+    } finally {
+      setActionLoading(false);
     }
   };
 
@@ -157,16 +191,28 @@ export default function ProductDetailPage() {
             {/* Wishlist Button */}
             <button
               onClick={handleWishlistToggle}
+              disabled={actionLoading}
               className={`absolute top-4 right-4 p-2 rounded-full ${
-                isInWishlist(product.id) 
+                isAuthenticated && isInWishlist(product.id) 
                   ? 'bg-red-500 text-white' 
                   : 'bg-white text-gray-600 hover:text-red-500'
-              } shadow-md transition-colors`}
+              } shadow-md transition-colors disabled:opacity-50`}
             >
               <Heart 
-                className={`h-5 w-5 ${isInWishlist(product.id) ? 'fill-current' : ''}`} 
+                className={`h-5 w-5 ${
+                  isAuthenticated && isInWishlist(product.id) ? 'fill-current' : ''
+                }`} 
               />
             </button>
+
+            {/* Authentication indicator */}
+            {!isAuthenticated && (
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-black/70 text-white text-center py-2 px-4 rounded-md text-sm">
+                  <span>Login to save to wishlist & add to cart</span>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex gap-2 overflow-x-auto pb-2">
@@ -250,6 +296,23 @@ export default function ProductDetailPage() {
             Hurry Up! Last Few Items in stock
           </div>
 
+          {/* Authentication Status */}
+          {isAuthenticated && (
+            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-md">
+              <p className="text-sm text-green-700">
+                ✓ Logged in as {user?.name} - You can add to cart and wishlist
+              </p>
+            </div>
+          )}
+
+          {!isAuthenticated && (
+            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+              <p className="text-sm text-yellow-700">
+                ⚠ Please login to add items to cart and wishlist
+              </p>
+            </div>
+          )}
+
           {/* Size Selection */}
           {product.sizes && product.sizes.length > 0 && (
             <div className="mb-4">
@@ -304,16 +367,25 @@ export default function ProductDetailPage() {
               <input
                 type="number"
                 min="1"
+                max="10"
                 value={qty}
-                onChange={(e) => setQty(Math.max(1, +e.target.value))}
+                onChange={(e) => setQty(Math.max(1, Math.min(10, +e.target.value)))}
                 className="w-20 px-3 py-2 border rounded-md text-center"
               />
             </div>
             <button
               onClick={handleAddToCart}
-              className="bg-amber-900 text-white px-6 py-3 rounded-md hover:bg-amber-800 w-full sm:w-auto transition-colors font-medium"
+              disabled={actionLoading}
+              className="bg-amber-900 text-white px-6 py-3 rounded-md hover:bg-amber-800 w-full sm:w-auto transition-colors font-medium disabled:opacity-50 flex items-center justify-center space-x-2"
             >
-              ADD TO CART
+              {actionLoading ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                <ShoppingCart className="h-4 w-4" />
+              )}
+              <span>
+                {actionLoading ? 'Adding...' : 'ADD TO CART'}
+              </span>
             </button>
           </div>
 
@@ -322,6 +394,12 @@ export default function ProductDetailPage() {
       </div>
 
       <Footer />
+
+      {/* Login Popup */}
+      <LoginPopup 
+        isOpen={showLoginPopup} 
+        onClose={() => setShowLoginPopup(false)} 
+      />
     </div>
   );
 }
