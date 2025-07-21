@@ -6,7 +6,7 @@ import { getUserIdFromCookie } from '@/lib/auth-middleware';
 // DELETE - Remove item from wishlist
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { productId: string } }
+  { params }: { params: Promise<{ productId: string }> }
 ) {
   try {
     const userId = getUserIdFromCookie(request);
@@ -18,7 +18,16 @@ export async function DELETE(
       );
     }
 
-    const productId = parseInt(params.productId);
+    // Await the params since it's now a Promise in Next.js 15
+    const { productId: productIdParam } = await params;
+    const productId = parseInt(productIdParam);
+    
+    if (isNaN(productId)) {
+      return NextResponse.json(
+        { error: 'Invalid product ID' },
+        { status: 400 }
+      );
+    }
 
     const query = `
       DELETE FROM wishlist_items 
@@ -40,7 +49,7 @@ export async function DELETE(
 // GET - Check if item is in wishlist
 export async function GET(
   request: NextRequest,
-  { params }: { params: { productId: string } }
+  { params }: { params: Promise<{ productId: string }> }
 ) {
   try {
     const userId = getUserIdFromCookie(request);
@@ -49,7 +58,13 @@ export async function GET(
       return NextResponse.json({ inWishlist: false });
     }
 
-    const productId = parseInt(params.productId);
+    // Await the params since it's now a Promise in Next.js 15
+    const { productId: productIdParam } = await params;
+    const productId = parseInt(productIdParam);
+    
+    if (isNaN(productId)) {
+      return NextResponse.json({ inWishlist: false });
+    }
 
     const query = `
       SELECT id FROM wishlist_items 
