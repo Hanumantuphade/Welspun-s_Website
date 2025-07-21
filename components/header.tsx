@@ -32,13 +32,21 @@ export default function Header() {
   // Category data examples
   const bedCategories = [
     {
-      category: "Premium Bedsheets",
+      category: "Bedsheets",
       subcategories: [
+        "Single",
         "Double ",
-        "Single ",
         "Fitted",
-        "blankets ",
+        "Premium",
         "Comforters",
+      ],
+    },
+    {
+      category: "Blankets",
+      subcategories: [
+        "Single",
+        "Embrace",
+       
       ],
     },
     // {
@@ -115,7 +123,7 @@ export default function Header() {
               title="Bed"
               href="/bed"
               categories={bedCategories}
-              image="/topSeller/premium/s17.jpg"
+              image="/topSeller/Bedsheets/premium/s17.jpg"
             />
 
             <NavigationDropdown
@@ -132,7 +140,7 @@ export default function Header() {
               image="/images/MattressSection/mat3/m1.png"
             />
 
-            {navItems.map((item) => (
+             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
