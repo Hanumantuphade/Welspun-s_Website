@@ -34,11 +34,8 @@ export default function Header() {
     {
       category: "Bedsheets",
       subcategories: [
-        "Single",
-        "Double ",
         "Fitted",
         "Premium",
-        "Comforters",
       ],
     },
     {
@@ -58,26 +55,16 @@ export default function Header() {
   const bathCategories = [
     {
       category: "Towels",
-      subcategories: ["Bath Towels", "Hand Towels", "Face Towels"],
+      subcategories: [ "Hand Towels",],
     },
-    {
-      category: "Bath Mats",
-      subcategories: ["Cotton Mats", "Microfiber Mats"],
-    },
-    {
-      category: "Bathrobes",
-      subcategories: ["Cotton Robes", "Microfiber Robes", "Luxury Robes"],
-    },
+   
   ];
 
   const mattressCategories = [
+    
     {
-      category: "Luxury Mattress",
-      subcategories: ["Single", "Double", "Queen", "King"],
-    },
-    {
-      category: "therapedic Mattress",
-      subcategories: ["Single", "Double", "Queen", "King"],
+      category: "Otherapedic Mattress",
+      subcategories: [],
     },
   ];
 

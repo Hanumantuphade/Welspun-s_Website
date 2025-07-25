@@ -67,21 +67,19 @@ const singleBlankets = [
   },
 ];
 
-
-
 export default function BedsheetPage() {
   return (
     <PageLayout
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "Single" },
       ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
+      heroImage="/topSeller/Blankets/Single/s1.jpg" 
+      heroTitle="Single Blankets Collection"
+      heroSubtitle1="Stay warm and comfortable with our premium single blankets."
+      heroSubtitle2="Perfect for everyday use with soft fabrics and elegant designs."
+      heroSubtitle3="Make your nights cosy and your bedroom stylish effortlessly."
     >
       <PremiumProductGrid products={singleBlankets} />
     </PageLayout>

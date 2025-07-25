@@ -67,7 +67,7 @@ export default function PageLayout({
           </h1>
           <p className="text-gray-100">
             <span className="text-xl">{heroSubtitle1}</span> <br />
-            <span className=" hidden md:block text-lg">{heroSubtitle2}</span> <br />
+            <span className=" hidden md:block text-lg">{heroSubtitle2}</span>
             <span className="hidden md:block">{heroSubtitle3}</span>
           </p>
         </div>

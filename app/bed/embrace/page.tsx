@@ -69,13 +69,13 @@ export default function BedsheetPage() {
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "Embrace" },
       ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
+      heroImage="/topSeller/Blankets/Embrace/e1.jpg"
+      heroTitle="Embrace Blankets Collection"
+      heroSubtitle1="Wrap yourself in warmth and comfort with our Embrace blankets."
+      heroSubtitle2="Designed for softness, durability, and stylish elegance."
+      heroSubtitle3="Stay cosy and sleep peacefully every night."
     >
       <PremiumProductGrid products={embraceBlankets} />
     </PageLayout>
