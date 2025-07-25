@@ -1,48 +1,92 @@
+
+
 import PageLayout from "@/components/PageLayout";
 import PremiumProductGrid from "@/components/PremiumProductGrid";
 
-const premiumBedsheets = [
-  {
+const blankets = [
+   {
     id: 1,
-    name: "Fitted Cotton Bedsheet",
-    image: "/topSeller/Bedsheets/fitted/f1.jpg",
-    price: "₹1599",
-    description: "Perfectly fitted cotton bedsheet for a smooth look.",
+    name: "Warm Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e1.jpg",
+    price: "₹1299",
+    description: "Stay cosy with this warm embrace blanket.",
   },
   {
     id: 2,
-    name: "Luxury Fitted Floral Bedsheet",
-    image: "/topSeller/Bedsheets/fitted/f2.jpg",
-    price: "₹1899",
-    description: "Luxury floral fitted bedsheet for elegant bedrooms.",
+    name: "Floral Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e2.jpg",
+    price: "₹1399",
+    description: "Beautiful floral print for a stylish bedroom.",
   },
   {
     id: 3,
-    name: "Elastic Fitted Bedsheet",
-    image: "/topSeller/Bedsheets/fitted/f3.jpg",
-    price: "₹1799",
-    description: "Elasticated fitted bedsheet for perfect mattress grip.",
+    name: "Soft Touch Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e3.jpg",
+    price: "₹1499",
+    description: "Experience the ultra-soft touch of this blanket.",
   },
   {
     id: 4,
-    name: "Premium Fitted Comfort",
-    image: "/topSeller/Bedsheets/fitted/f4.jpg",
-    price: "₹2099",
-    description: "Premium comfort with a fitted design for neat bedding.",
+    name: "Luxury Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e4.jpg",
+    price: "₹1599",
+    description: "Add luxury to your sleep with this premium blanket.",
   },
   {
     id: 5,
-    name: "Elegant Fitted Design",
-    image: "/topSeller/Bedsheets/fitted/f5.jpg",
-    price: "₹1999",
-    description: "Add elegance with beautifully designed fitted bedsheets.",
+    name: "Elegant Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e5.jpg",
+    price: "₹1499",
+    description: "Elegant design for a classy bedroom look.",
   },
   {
     id: 6,
-    name: "Soft Touch Fitted Bedsheet",
-    image: "/topSeller/Bedsheets/fitted/f6.jpg",
-    price: "₹1699",
-    description: "Enjoy softness with our ultra-smooth fitted bedsheets.",
+    name: "Printed Embrace Blanket",
+    image: "/topSeller/Blankets/Embrace/e6.jpg",
+    price: "₹1399",
+    description: "Attractive printed blanket for daily use.",
+  },
+  {
+    id: 7,
+    name: "Warm Single Blanket",
+    image: "/topSeller/Blankets/Single/s1.jpg",
+    price: "₹1299",
+    description: "Stay cosy with this warm single blanket.",
+  },
+  {
+    id: 8,
+    name: "Floral Single Blanket",
+    image: "/topSeller/Blankets/Single/s2.jpg",
+    price: "₹1399",
+    description: "Beautiful floral print for a stylish bedroom.",
+  },
+  {
+    id: 9,
+    name: "Soft Touch Blanket",
+    image: "/topSeller/Blankets/Single/s3.jpg",
+    price: "₹1499",
+    description: "Experience the ultra-soft touch of this blanket.",
+  },
+  {
+    id: 10,
+    name: "Luxury Single Blanket",
+    image: "/topSeller/Blankets/Single/s4.jpg",
+    price: "₹1599",
+    description: "Add luxury to your sleep with this premium blanket.",
+  },
+  {
+    id: 11,
+    name: "Elegant Single Blanket",
+    image: "/topSeller/Blankets/Single/s5.jpg",
+    price: "₹1499",
+    description: "Elegant design for a classy bedroom look.",
+  },
+  {
+    id: 12,
+    name: "Printed Single Blanket",
+    image: "/topSeller/Blankets/Single/s6.jpg",
+    price: "₹1399",
+    description: "Attractive printed blanket for daily use.",
   },
 ];
 
@@ -53,7 +97,7 @@ export default function BedsheetPage() {
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "Fitted" },
       ]}
       heroImage="/topSeller/hero.png"
       heroTitle="Fitted Bedsheet Collection"
@@ -61,7 +105,7 @@ export default function BedsheetPage() {
       heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
       heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
     >
-      <PremiumProductGrid products={premiumBedsheets} />
+      <PremiumProductGrid products={blankets} />
     </PageLayout>
   );
 }
