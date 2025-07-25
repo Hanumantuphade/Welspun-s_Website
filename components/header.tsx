@@ -1,8 +1,11 @@
+// components/header.tsx
 "use client";
 
 import { useCart } from "@/app/context/CartContext";
+import { useWishlist } from "@/app/context/WishlistContext";
+import { useUser } from "@/app/context/UserContext";
 import Link from "next/link";
-import { Search, Heart, User, ShoppingCart, Menu, X } from "lucide-react";
+import { Search, Heart, User, ShoppingCart, Menu, X, LogOut } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SearchOverlay from "./search-overlay";
 import LoginPopup from "./login-popup";
@@ -10,15 +13,19 @@ import CartDropdown from "./cart-dropdown";
 import NavigationDropdown from "./navigation-dropdown";
 
 export default function Header() {
-  const { cartItems } = useCart();
+  const { cartItems, getTotalItems } = useCart();
+  const { wishlistItems } = useWishlist();
+  const { user, isAuthenticated, logout, loading: userLoading } = useUser();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const cartRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
     { name: "Rugs", href: "/rugs" },
@@ -46,10 +53,6 @@ export default function Header() {
        
       ],
     },
-    // {
-    //   category: "Simple Bedsheets",
-    //   subcategories: ["New Arrivals", "Single", "Double", "Large", "Fitted"],
-    // },
   ];
 
   const bathCategories = [
@@ -74,16 +77,48 @@ export default function Header() {
       if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
         setIsCartOpen(false);
       }
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const totalQuantity =
-    cartItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  const totalQuantity = getTotalItems();
+  const wishlistCount = wishlistItems.length;
+
+  const handleCartClick = () => {
+    if (!isAuthenticated) {
+      setIsLoginOpen(true);
+    } else {
+      setIsCartOpen((prev) => !prev);
+    }
+  };
+
+  const handleWishlistClick = () => {
+    if (!isAuthenticated) {
+      setIsLoginOpen(true);
+    } else {
+      // Navigate to wishlist page or handle wishlist action
+    }
+  };
+
+  const handleUserClick = () => {
+    if (!isAuthenticated) {
+      setIsLoginOpen(true);
+    } else {
+      setIsUserMenuOpen((prev) => !prev);
+    }
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    setIsUserMenuOpen(false);
+  };
 
   return (
-    <header className="sticky top-0 max-w-full z-50 w-full bg-transparent">
+    <header className="sticky top-0 max-w-full z-50 w-full bg-white shadow-sm">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
@@ -148,27 +183,80 @@ export default function Header() {
               <Search className="h-5 w-5" />
             </button>
 
+            {/* Wishlist */}
             <Link
               href="/wishlist"
+              onClick={handleWishlistClick}
               aria-label="Wishlist"
-              className="text-black hover:text-red-500 transition"
+              className="text-black hover:text-red-500 transition relative"
             >
-              <Heart className="h-5 w-5" />
+              <Heart className={`h-5 w-5 ${wishlistCount > 0 ? 'text-red-500 fill-current' : ''}`} />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-medium rounded-full min-w-[16px] h-4 flex items-center justify-center px-[2px]">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
 
-            <button
-              aria-label="Account"
-              onClick={() => setIsLoginOpen(true)}
-              className="text-black hover:text-red-500 transition"
-            >
-              <User className="h-5 w-5" />
-            </button>
+            {/* User Menu */}
+            <div ref={userMenuRef} className="relative">
+              <button
+                aria-label="Account"
+                onClick={handleUserClick}
+                className="text-black hover:text-red-500 transition flex items-center space-x-1"
+              >
+                <User className="h-5 w-5" />
+                {isAuthenticated && !userLoading && (
+                  <span className="hidden sm:inline text-sm">
+                    {user?.name?.split(' ')[0]}
+                  </span>
+                )}
+              </button>
+
+              {/* User Dropdown Menu */}
+              {isAuthenticated && isUserMenuOpen && (
+                <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                  <div className="px-4 py-2 border-b border-gray-100">
+                    <p className="text-sm font-medium text-gray-900">{user?.name}</p>
+                    <p className="text-xs text-gray-500">{user?.email}</p>
+                  </div>
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsUserMenuOpen(false)}
+                  >
+                    My Profile
+                  </Link>
+                  <Link
+                    href="/orders"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsUserMenuOpen(false)}
+                  >
+                    My Orders
+                  </Link>
+                  <Link
+                    href="/wishlist"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsUserMenuOpen(false)}
+                  >
+                    My Wishlist
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center space-x-2"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
 
             {/* Cart */}
             <div ref={cartRef} className="relative">
               <button
                 aria-label="Shopping cart"
-                onClick={() => setIsCartOpen((prev) => !prev)}
+                onClick={handleCartClick}
                 className="text-black hover:text-red-500 transition relative"
               >
                 <ShoppingCart className="h-5 w-5" />
@@ -178,10 +266,12 @@ export default function Header() {
                   </span>
                 )}
               </button>
-              <CartDropdown
-                isOpen={isCartOpen}
-                onClose={() => setIsCartOpen(false)}
-              />
+              {isAuthenticated && (
+                <CartDropdown
+                  isOpen={isCartOpen}
+                  onClose={() => setIsCartOpen(false)}
+                />
+              )}
             </div>
 
             {/* Mobile Nav Button */}
@@ -220,6 +310,48 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile user section */}
+              {isAuthenticated ? (
+                <div className="border-t border-gray-100 pt-2 mt-2">
+                  <div className="px-4 py-2 text-sm text-gray-700">
+                    Hi, {user?.name}
+                  </div>
+                  <Link
+                    href="/profile"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition block"
+                  >
+                    My Profile
+                  </Link>
+                  <Link
+                    href="/orders"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition block"
+                  >
+                    My Orders
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="px-4 py-2 text-[16px] font-medium text-red-600 hover:text-red-800 transition block"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => {
+                    setIsLoginOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition text-left"
+                >
+                  Login / Register
+                </button>
+              )}
             </nav>
           </div>
         )}

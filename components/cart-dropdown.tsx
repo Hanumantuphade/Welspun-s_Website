@@ -1,3 +1,4 @@
+// components/cart-dropdown.tsx
 'use client'
 
 import { ShoppingCart, X, Plus, Minus } from 'lucide-react'

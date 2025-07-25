@@ -1,5 +1,6 @@
 // lib/products.ts
-import pool from './db';
+
+import { pool } from './db';
 import { Product, CreateProductData, UpdateProductData } from '@/types/product';
 
 export class ProductService {
