@@ -113,7 +113,7 @@ export default function HeroSection() {
   }
 
   return (
-  <div className="relative md:-top-[65px] lg:-top-[65px] h-screen overflow-hidden">
+  <div className="relative -top-[65px]  md:-top-[65px] lg:-top-[65px] h-screen overflow-hidden">
     {/* Slides */}
     {slides.map((slide, index) => (
       <div
