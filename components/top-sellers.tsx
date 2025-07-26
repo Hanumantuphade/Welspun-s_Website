@@ -7,7 +7,7 @@ import { useState, useCallback } from "react";
 const topSellerSlides = [
   {
     id: 1,
-    image: "/topSeller/premium/s4.jpg",
+    image: "/topSeller/Bedsheets/premium/s4.jpg",
     title: "FLORA COLLECTION",
     subtitle: "Elegant floral patterns for your bedroom",
     buttonText: "SHOP NOW",
@@ -15,7 +15,7 @@ const topSellerSlides = [
   },
   {
     id: 2,
-    image: "/topSeller/premium/s6.jpg",
+    image: "/topSeller/Bedsheets/premium/s6.jpg",
     title: "PREMIUM COTTON",
     subtitle: "Soft and comfortable bedding essentials",
     buttonText: "SHOP NOW",
@@ -23,7 +23,7 @@ const topSellerSlides = [
   },
   {
     id: 3,
-    image: "/topSeller/premium/s8.jpg",
+    image: "/topSeller/Bedsheets/premium/s8.jpg",
     title: "LUXURY COLLECTION",
     subtitle: "Transform your bedroom into a luxury suite",
     buttonText: "SHOP NOW",
