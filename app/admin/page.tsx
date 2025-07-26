@@ -19,14 +19,35 @@ import ImageUpload from '@/components/ImageUpload';
 import MultipleImageUpload from '@/components/MultipleImageUpload';
 
 const categories = [
-  { value: 'bath', label: 'Bath' },
-  { value: 'bed', label: 'Bed' },
-  { value: 'fitted', label: 'Fitted' },
-  { value: 'premium-bedsheets', label: 'Premium Bedsheets' },
+  // { value: 'bath', label: 'Bath' },
+  // { value: 'bed', label: 'Bed' },
+  // { value: 'fitted', label: 'Fitted' },
+  // { value: 'premium-bedsheets', label: 'Premium Bedsheets' },
+  // { value: 'curtains', label: 'Curtains' },
+  // { value: 'deals', label: 'Deals' },
+  // { value: 'flooring', label: 'Flooring' },
+  // { value: 'mattress', label: 'Mattress' },
+  // { value: 'rugs', label: 'Rugs' }
+  // Bath categories
+  { value: 'bath', label: 'Bath (General)' },
+  { value: 'hand-towels', label: 'Hand Towels' },
+  { value: 'towels', label: 'Towels' },
+  
+  // Bed categories
+  { value: 'bed', label: 'Bed (General)' },
+  { value: 'bedsheets', label: 'Bedsheets' },
+  { value: 'blankets', label: 'Blankets' },
+  { value: 'embrace', label: 'Embrace Collection' },
+  { value: 'fitted', label: 'Fitted Sheets' },
+  { value: 'premium', label: 'Premium Bedsheets' },
+  { value: 'single', label: 'Single Bedsheets' },
+  
+  // Other categories
   { value: 'curtains', label: 'Curtains' },
   { value: 'deals', label: 'Deals' },
   { value: 'flooring', label: 'Flooring' },
-  { value: 'mattress', label: 'Mattress' },
+  { value: 'mattress', label: 'Mattress (General)' },
+  { value: 'otherapedic-mattress', label: 'Ortherapedic Mattress' },
   { value: 'rugs', label: 'Rugs' }
 ];
 

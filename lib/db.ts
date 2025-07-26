@@ -9,7 +9,7 @@ const pool = new Pool({
 });
 
 const createTablesQuery = `
-  -- Products table (existing)
+  -- Products table with updated category constraints
   CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -25,7 +25,13 @@ const createTablesQuery = `
     return_policy TEXT DEFAULT '',
     care_instructions TEXT DEFAULT '',
     manufacture_detail TEXT DEFAULT '',
-    category VARCHAR(100) NOT NULL,
+    category VARCHAR(100) NOT NULL CHECK (
+      category IN (
+        'bath', 'hand-towels', 'towels', 
+        'bed', 'bedsheets', 'blankets', 'embrace', 'fitted', 'premium', 'single',
+        'curtains', 'deals', 'flooring', 'mattress', 'otherapedic-mattress', 'rugs'
+      )
+    ),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
