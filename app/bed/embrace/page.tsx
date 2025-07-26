@@ -69,9 +69,9 @@ export default function BedsheetPage() {
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Embrace" },
+        { label: "Embrace-Blankets" },
       ]}
-      heroImage="/topSeller/Blankets/Embrace/e1.jpg"
+      heroImage="/topSeller/hero6.png"
       heroTitle="Embrace Blankets Collection"
       heroSubtitle1="Wrap yourself in warmth and comfort with our Embrace blankets."
       heroSubtitle2="Designed for softness, durability, and stylish elegance."

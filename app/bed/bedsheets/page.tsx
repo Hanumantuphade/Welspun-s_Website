@@ -109,126 +109,48 @@ const premiumBedsheets = [
   },
   {
     id: 16,
-    name: "ELEGANT GREY",
-    image: "/topSeller/Bedsheets/premium/s16.jpg",
-    price: "₹1799",
-    description: "Minimalistic grey bedsheet for urban decor.",
+    name: "Comfort Fit Bedsheet",
+    image: "/topSeller/Bedsheets/fitted/f1.jpg",
+    price: "₹1599",
+    description: "Snug fit and soft fabric for a perfect night's sleep.",
   },
   {
     id: 17,
-    name: "SUNSHINE YELLOW",
-    image: "/topSeller/Bedsheets/premium/s17.jpg",
-    price: "₹1699",
-    description: "Bright yellow bedsheet for cheerful mornings.",
+    name: "Luxury Fitted Bedsheet",
+    image: "/topSeller/Bedsheets/fitted/f2.jpg",
+    price: "₹1799",
+    description: "Add a luxurious touch to your bed with this fitted sheet.",
   },
   {
     id: 18,
-    name: "ROYAL MAROON",
-    image: "/topSeller/Bedsheets/premium/s18.jpg",
-    price: "₹2299",
-    description: "Deep maroon shades for a royal bedroom feel.",
+    name: "Printed Comfort Bedsheet",
+    image: "/topSeller/Bedsheets/fitted/f3.jpg",
+    price: "₹1499",
+    description:
+      "Beautiful printed design with deep pockets for secure fitting.",
   },
   {
     id: 19,
-    name: "TEAL TOUCH",
-    image: "/topSeller/Bedsheets/premium/s19.jpg",
-    price: "₹1599",
-    description: "Teal coloured bedsheet for a vibrant look.",
+    name: "Elegant Fitted Bedsheet",
+    image: "/topSeller/Bedsheets/fitted/f4.jpg",
+    price: "₹1699",
+    description: "Elegant patterns and soft texture for a classy look.",
   },
   {
     id: 20,
-    name: "BLACK ELEGANCE",
-    image: "/topSeller/Bedsheets/premium/s20.jpg",
-    price: "₹1999",
-    description: "Elegant black bedsheet for a bold statement.",
+    name: "Soft Touch Fitted Sheet",
+    image: "/topSeller/Bedsheets/fitted/f5.jpg",
+    price: "₹1399",
+    description: "Ultra-soft touch and wrinkle-resistant fabric.",
   },
   {
     id: 21,
-    name: "RUSTIC CHARM",
-    image: "/topSeller/Bedsheets/premium/s21.jpg",
-    price: "₹1899",
-    description: "Rustic prints for a vintage-inspired bedroom.",
-  },
-  {
-    id: 22,
-    name: "PEACH BLOSSOM",
-    image: "/topSeller/Bedsheets/premium/s22.jpg",
-    price: "₹1799",
-    description: "Peach blossom prints for a delicate touch.",
-  },
-  {
-    id: 23,
-    name: "LUXURY SATIN",
-    image: "/topSeller/Bedsheets/premium/s23.jpg",
-    price: "₹2999",
-    description: "Smooth satin bedsheet for ultimate luxury.",
-  },
-  {
-    id: 24,
-    name: "GOLDEN GRACE",
-    image: "/topSeller/Bedsheets/premium/s24.jpg",
-    price: "₹2499",
-    description: "Add grace with this golden printed bedsheet.",
-  },
-  {
-    id: 25,
-    name: "NAVY PREMIUM",
-    image: "/topSeller/Bedsheets/premium/s25.jpg",
-    price: "₹1899",
-    description: "Premium navy bedsheet for elegant interiors.",
-  },
-  {
-    id: 26,
-    name: "FOREST GREEN",
-    image: "/topSeller/Bedsheets/premium/s26.jpg",
+    name: "Classic Fit Bedsheet",
+    image: "/topSeller/Bedsheets/fitted/f6.jpg",
     price: "₹1599",
-    description: "Forest green bedsheet for a refreshing vibe.",
+    description: "Timeless design and perfect fit for everyday use.",
   },
-  {
-    id: 27,
-    name: "PURPLE ROYALTY",
-    image: "/topSeller/Bedsheets/premium/s27.jpg",
-    price: "₹1999",
-    description: "Royal purple bedsheet for luxurious bedrooms.",
-  },
-  {
-    id: 28,
-    name: "SILVER SHINE",
-    image: "/topSeller/Bedsheets/premium/s28.jpg",
-    price: "₹2799",
-    description: "Shimmering silver bedsheet for modern luxury.",
-  },
-  {
-    id: 29,
-    name: "COFFEE BROWN",
-    image: "/topSeller/Bedsheets/premium/s29.jpg",
-    price: "₹1699",
-    description: "Rich coffee brown bedsheet for warm interiors.",
-  },
-  {
-    id: 30,
-    name: "CRIMSON RED",
-    image: "/topSeller/Bedsheets/premium/s30.jpg",
-    price: "₹2199",
-    description: "Crimson red bedsheet for festive elegance.",
-  },
-  {
-    id: 31,
-    name: "IVORY CLASSIC",
-    image: "/topSeller/Bedsheets/premium/s31.jpg",
-    price: "₹1499",
-    description: "Classic ivory bedsheet for timeless beauty.",
-  },
-  {
-    id: 32,
-    name: "OMBRE STYLE",
-    image: "/topSeller/Bedsheets/premium/s32.jpg",
-    price: "₹1899",
-    description: "Ombre shaded bedsheet for a trendy look.",
-  },
-  // Add more products as needed
 ];
-
 
 export default function BedsheetPage() {
   return (
@@ -236,13 +158,13 @@ export default function BedsheetPage() {
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "BedSheets" },
       ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
+      heroImage="/topSeller/hero3.png"
+      heroTitle="Bedsheets Collection"
+      heroSubtitle1="Transform your bedroom with our premium bedsheet range."
+      heroSubtitle2="Crafted with soft, breathable fabrics and elegant designs for every taste."
+      heroSubtitle3="Enjoy a cozy, stylish, and restful sleep experience every night."
     >
       <PremiumProductGrid products={premiumBedsheets} />
     </PageLayout>

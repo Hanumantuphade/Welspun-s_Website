@@ -229,20 +229,19 @@ const premiumBedsheets = [
   // Add more products as needed
 ];
 
-
 export default function BedsheetPage() {
   return (
     <PageLayout
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "Premium-Bedsheets" },
       ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
+      heroImage="/topSeller/hero1.png"
+      heroTitle="Premium Bedsheet Collection"
+      heroSubtitle1="Indulge in luxurious sleep with our premium bedsheets crafted from the finest fabrics."
+      heroSubtitle2="Enjoy unmatched softness, elegant designs, and lasting durability for a five-star sleep experience."
+      heroSubtitle3="Transform your bedroom into a haven of comfort and style with every sheet you lay."
     >
       <PremiumProductGrid products={premiumBedsheets} />
     </PageLayout>

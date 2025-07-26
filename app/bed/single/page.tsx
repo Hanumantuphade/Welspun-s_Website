@@ -73,9 +73,9 @@ export default function BedsheetPage() {
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Single" },
+        { label: "Single-Blankets" },
       ]}
-      heroImage="/topSeller/Blankets/Single/s1.jpg" 
+      heroImage="/topSeller/hero5.png" 
       heroTitle="Single Blankets Collection"
       heroSubtitle1="Stay warm and comfortable with our premium single blankets."
       heroSubtitle2="Perfect for everyday use with soft fabrics and elegant designs."

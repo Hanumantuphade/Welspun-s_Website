@@ -2,7 +2,7 @@ import PageLayout from "@/components/PageLayout";
 import PremiumProductGrid from "@/components/PremiumProductGrid";
 
 const blankets = [
-   {
+  {
     id: 1,
     name: "Warm Embrace Blanket",
     image: "/topSeller/Blankets/Embrace/e1.jpg",
@@ -88,20 +88,19 @@ const blankets = [
   },
 ];
 
-
 export default function BedsheetPage() {
   return (
     <PageLayout
       breadcrumbItems={[
         { label: "Home", link: "/" },
         { label: "Bed" },
-        { label: "Premium" },
+        { label: "Blankets" },
       ]}
-      heroImage="/topSeller/hero.png"
-      heroTitle="Fitted Bedsheet Collection"
-      heroSubtitle1="Experience the perfect fit for your mattress with our fitted bedsheets."
-      heroSubtitle2="Enjoy wrinkle-free bedding with ultra-soft fabrics and secure elastic corners."
-      heroSubtitle3="Wake up to a neat, elegant, and comfortable bed every morning."
+      heroImage="/topSeller/hero4.png"
+      heroTitle="Luxurious Blanket Collection"
+      heroSubtitle1="Wrap yourself in warmth and comfort with our premium blankets crafted for all seasons."
+      heroSubtitle2="Made from ultra-soft, breathable fabrics that offer the perfect blend of coziness and elegance."
+      heroSubtitle3="Elevate your relaxation with timeless designs and unmatched softness, night after night."
     >
       <PremiumProductGrid products={blankets} />
     </PageLayout>
