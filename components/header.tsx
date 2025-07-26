@@ -300,6 +300,20 @@ export default function Header() {
               >
                 Bed
               </Link>
+              <Link
+                href="/bath"
+                className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Bath
+              </Link>
+              <Link
+                href="/mattress"
+                className="px-4 py-2 text-[16px] font-medium text-black hover:text-amber-900 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Mattress
+              </Link>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
