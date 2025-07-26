@@ -118,7 +118,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 max-w-full z-50 w-full bg-white shadow-sm">
+    <header className="sticky top-0 max-w-full z-50 w-full bg-transparent shadow-sm">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
