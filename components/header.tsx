@@ -41,15 +41,15 @@ export default function Header() {
     {
       category: "Bedsheets",
       subcategories: [
-        "Fitted",
-        "Premium",
+        "Fitted Bedsheets",
+        "Premium Bedsheets",
       ],
     },
     {
       category: "Blankets",
       subcategories: [
-        "Single",
-        "Embrace",
+        "Single Blankets",
+        "Embrace Blankets",
        
       ],
     },
@@ -66,7 +66,7 @@ export default function Header() {
   const mattressCategories = [
     
     {
-      category: "Otherapedic Mattress",
+      category: "Orthopedic Mattress",
       subcategories: [],
     },
   ];
