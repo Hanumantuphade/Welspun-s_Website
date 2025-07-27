@@ -1,235 +1,106 @@
+// app/bed/premium/page.tsx (or wherever this file is located)
+"use client";
+
+import { useEffect, useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import PremiumProductGrid from "@/components/PremiumProductGrid";
+import { Product } from "@/types";
 
-const premiumBedsheets = [
+// Demo products (keep as fallback)
+const demoProducts = [
   {
-    id: 1,
-    name: "Premium Cotton Bedsheet",
+    id: 991,
+    name: "Demo: Premium Cotton Bedsheet",
     image: "/topSeller/Bedsheets/premium/s1.jpeg",
     price: "₹1499",
-    description: "Soft and elegant premium cotton bedsheet.",
+    description: "Demo product - Soft and elegant premium cotton bedsheet with luxury finish.",
   },
   {
-    id: 2,
-    name: "Luxury Floral Bedsheet",
-    image: "/topSeller/Bedsheets/premium/s2.jpeg",
-    price: "₹1799",
-    description: "Luxury floral print bedsheet for elegance.",
-  },
-  {
-    id: 3,
-    name: "LUXURY COLLECTION",
+    id: 990,
+    name: "Demo: Luxury Collection Bedsheet",
     image: "/topSeller/Bedsheets/premium/s3.jpeg",
     price: "₹2499",
-    description: "Transform your bedroom into a luxury suite",
+    description: "Demo product - Transform your bedroom into a luxury suite with this premium collection.",
   },
-  {
-    id: 4,
-    name: "PREMIUM COMFORT",
-    image: "/topSeller/Bedsheets/premium/s4.jpg",
-    price: "₹2999",
-    description: "Experience unmatched comfort with our premium collection",
-  },
-  {
-    id: 5,
-    name: "ELEGANT DESIGNS",
-    image: "/topSeller/Bedsheets/premium/s5.jpg",
-    price: "₹1999",
-    description: "Upgrade your decor with elegant bedsheet designs",
-  },
-  {
-    id: 6,
-    name: "SOFT TOUCH",
-    image: "/topSeller/Bedsheets/premium/s6.jpg",
-    price: "₹1799",
-    description: "Feel the softness of our ultra-smooth fabrics",
-  },
-  {
-    id: 7,
-    name: "ROYAL COLLECTION",
-    image: "/topSeller/Bedsheets/premium/s7.jpg",
-    price: "₹3499",
-    description: "Bring home the royalty with this luxurious collection",
-  },
-  {
-    id: 8,
-    name: "EVERYDAY ESSENTIALS",
-    image: "/topSeller/Bedsheets/premium/s8.jpg",
-    price: "₹1499",
-    description: "Perfect essentials for everyday comfort and style",
-  },
-  {
-    id: 9,
-    name: "MODERN GEOMETRIC",
-    image: "/topSeller/Bedsheets/premium/s9.jpg",
-    price: "₹1899",
-    description: "Modern geometric patterns to elevate your room decor.",
-  },
-  {
-    id: 10,
-    name: "FLORAL DELIGHT",
-    image: "/topSeller/Bedsheets/premium/s10.jpg",
-    price: "₹1599",
-    description: "Bright floral prints for a refreshing bedroom look.",
-  },
-  {
-    id: 11,
-    name: "ROYAL BLUE LUXURY",
-    image: "/topSeller/Bedsheets/premium/s11.jpg",
-    price: "₹2799",
-    description: "Experience luxury with our royal blue bedsheet collection.",
-  },
-  {
-    id: 12,
-    name: "PASTEL BLISS",
-    image: "/topSeller/Bedsheets/premium/s12.jpg",
-    price: "₹1699",
-    description: "Calming pastel shades for soothing sleep.",
-  },
-  {
-    id: 13,
-    name: "CLASSIC WHITE",
-    image: "/topSeller/Bedsheets/premium/s13.jpg",
-    price: "₹1399",
-    description: "Elegant white bedsheet for timeless appeal.",
-  },
-  {
-    id: 14,
-    name: "CHECKERED STYLE",
-    image: "/topSeller/Bedsheets/premium/s14.jpg",
-    price: "₹1499",
-    description: "Stylish checkered pattern for modern homes.",
-  },
-  {
-    id: 15,
-    name: "EARTHY BROWN",
-    image: "/topSeller/Bedsheets/premium/s15.jpg",
-    price: "₹1599",
-    description: "Warm earthy tones for cosy bedrooms.",
-  },
-  {
-    id: 16,
-    name: "ELEGANT GREY",
-    image: "/topSeller/Bedsheets/premium/s16.jpg",
-    price: "₹1799",
-    description: "Minimalistic grey bedsheet for urban decor.",
-  },
-  {
-    id: 17,
-    name: "SUNSHINE YELLOW",
-    image: "/topSeller/Bedsheets/premium/s17.jpg",
-    price: "₹1699",
-    description: "Bright yellow bedsheet for cheerful mornings.",
-  },
-  {
-    id: 18,
-    name: "ROYAL MAROON",
-    image: "/topSeller/Bedsheets/premium/s18.jpg",
-    price: "₹2299",
-    description: "Deep maroon shades for a royal bedroom feel.",
-  },
-  {
-    id: 19,
-    name: "TEAL TOUCH",
-    image: "/topSeller/Bedsheets/premium/s19.jpg",
-    price: "₹1599",
-    description: "Teal coloured bedsheet for a vibrant look.",
-  },
-  {
-    id: 20,
-    name: "BLACK ELEGANCE",
-    image: "/topSeller/Bedsheets/premium/s20.jpg",
-    price: "₹1999",
-    description: "Elegant black bedsheet for a bold statement.",
-  },
-  {
-    id: 21,
-    name: "RUSTIC CHARM",
-    image: "/topSeller/Bedsheets/premium/s21.jpg",
-    price: "₹1899",
-    description: "Rustic prints for a vintage-inspired bedroom.",
-  },
-  {
-    id: 22,
-    name: "PEACH BLOSSOM",
-    image: "/topSeller/Bedsheets/premium/s22.jpg",
-    price: "₹1799",
-    description: "Peach blossom prints for a delicate touch.",
-  },
-  {
-    id: 23,
-    name: "LUXURY SATIN",
-    image: "/topSeller/Bedsheets/premium/s23.jpg",
-    price: "₹2999",
-    description: "Smooth satin bedsheet for ultimate luxury.",
-  },
-  {
-    id: 24,
-    name: "GOLDEN GRACE",
-    image: "/topSeller/Bedsheets/premium/s24.jpg",
-    price: "₹2499",
-    description: "Add grace with this golden printed bedsheet.",
-  },
-  {
-    id: 25,
-    name: "NAVY PREMIUM",
-    image: "/topSeller/Bedsheets/premium/s25.jpg",
-    price: "₹1899",
-    description: "Premium navy bedsheet for elegant interiors.",
-  },
-  {
-    id: 26,
-    name: "FOREST GREEN",
-    image: "/topSeller/Bedsheets/premium/s26.jpg",
-    price: "₹1599",
-    description: "Forest green bedsheet for a refreshing vibe.",
-  },
-  {
-    id: 27,
-    name: "PURPLE ROYALTY",
-    image: "/topSeller/Bedsheets/premium/s27.jpg",
-    price: "₹1999",
-    description: "Royal purple bedsheet for luxurious bedrooms.",
-  },
-  {
-    id: 28,
-    name: "SILVER SHINE",
-    image: "/topSeller/Bedsheets/premium/s28.jpg",
-    price: "₹2799",
-    description: "Shimmering silver bedsheet for modern luxury.",
-  },
-  {
-    id: 29,
-    name: "COFFEE BROWN",
-    image: "/topSeller/Bedsheets/premium/s29.jpg",
-    price: "₹1699",
-    description: "Rich coffee brown bedsheet for warm interiors.",
-  },
-  {
-    id: 30,
-    name: "CRIMSON RED",
-    image: "/topSeller/Bedsheets/premium/s30.jpg",
-    price: "₹2199",
-    description: "Crimson red bedsheet for festive elegance.",
-  },
-  {
-    id: 31,
-    name: "IVORY CLASSIC",
-    image: "/topSeller/Bedsheets/premium/s31.jpg",
-    price: "₹1499",
-    description: "Classic ivory bedsheet for timeless beauty.",
-  },
-  {
-    id: 32,
-    name: "OMBRE STYLE",
-    image: "/topSeller/Bedsheets/premium/s32.jpg",
-    price: "₹1899",
-    description: "Ombre shaded bedsheet for a trendy look.",
-  },
-  // Add more products as needed
 ];
 
-export default function BedsheetPage() {
+interface ProductGridItem {
+  id: number;
+  name: string;
+  image: string;
+  price: string;
+  description: string;
+}
+
+export default function PremiumBedsheetPage() {
+  const [products, setProducts] = useState<ProductGridItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPremiumProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/products/category/premium');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const apiProducts: Product[] = await response.json();
+        
+        // Transform API products to match PremiumProductGrid format
+        const transformedApiProducts: ProductGridItem[] = apiProducts.map(product => ({
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          price: `₹${product.price.toLocaleString()}`,
+          description: product.description || `Premium ${product.name.toLowerCase()} crafted from the finest fabrics for luxury comfort.`
+        }));
+
+        // Combine demo products with API products
+        const allProducts = [...demoProducts, ...transformedApiProducts];
+        
+        setProducts(allProducts);
+      } catch (err) {
+        console.error('Error fetching premium bedsheet products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+        
+        // Fallback to demo products only if API fails
+        setProducts(demoProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPremiumProducts();
+  }, []);
+
+  // Loading component
+  if (loading) {
+    return (
+      <PageLayout
+        breadcrumbItems={[
+          { label: "Home", link: "/" },
+          { label: "Bed" },
+          { label: "Premium-Bedsheets" },
+        ]}
+        heroImage="/topSeller/hero1.png"
+        heroTitle="Premium Bedsheet Collection"
+        heroSubtitle1="Indulge in luxurious sleep with our premium bedsheets crafted from the finest fabrics."
+        heroSubtitle2="Enjoy unmatched softness, elegant designs, and lasting durability for a five-star sleep experience."
+        heroSubtitle3="Transform your bedroom into a haven of comfort and style with every sheet you lay."
+      >
+        <div className="text-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading premium bedsheet products...</p>
+        </div>
+      </PageLayout>
+    );
+  }
+
   return (
     <PageLayout
       breadcrumbItems={[
@@ -243,7 +114,60 @@ export default function BedsheetPage() {
       heroSubtitle2="Enjoy unmatched softness, elegant designs, and lasting durability for a five-star sleep experience."
       heroSubtitle3="Transform your bedroom into a haven of comfort and style with every sheet you lay."
     >
-      <PremiumProductGrid products={premiumBedsheets} />
+      {/* Show error message if there's an error but we have fallback products */}
+      {error && products.length > 0 && (
+        <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
+          <p className="text-yellow-800">
+            <strong>Notice:</strong> Some products may not be up to date. {error}
+          </p>
+        </div>
+      )}
+
+      {/* Products count and demo indicator */}
+      <div className="mb-6 text-center">
+        <p className="text-gray-600">
+          Showing {products.length} premium bedsheet product{products.length !== 1 ? 's' : ''}
+          {products.some(p => p.id >= 990) && (
+            <span className="text-sm text-blue-600 ml-2">
+              (Including demo products)
+            </span>
+          )}
+        </p>
+      </div>
+
+      {/* Products Grid or No Products Message */}
+      {products.length > 0 ? (
+        <PremiumProductGrid products={products} />
+      ) : (
+        <div className="text-center py-20">
+          <div className="text-gray-400 mb-4">
+            <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">No premium bedsheet products found</h3>
+          <p className="text-gray-500 mb-4">
+            {error 
+              ? 'Unable to load products. Please try again later.' 
+              : 'Check back soon for new premium bedsheet products!'
+            }
+          </p>
+          <div className="flex gap-4 justify-center">
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+            >
+              Refresh Page
+            </button>
+            <a 
+              href="/bed" 
+              className="bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700"
+            >
+              Browse All Bed Products
+            </a>
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 }
