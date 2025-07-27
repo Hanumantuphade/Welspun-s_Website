@@ -3,24 +3,24 @@ import { NextRequest, NextResponse } from 'next/server';
 import { ProductService } from '@/lib/products';
 
 const validCategories = [
-  'bath', 'bed', 'fitted', 'premium-bedsheets', 
-  'curtains', 'deals', 'flooring', 'mattress', 'rugs'
+  // Bath categories
+  'bath', 'hand-towels', 'towels',
+  // Bed categories  
+  'bed', 'bedsheets', 'blankets', 'embrace', 'fitted', 'premium', 'single',
+  // Other categories
+  'curtains', 'deals', 'flooring', 'mattress', 'otherapedic-mattress', 'rugs'
 ];
-
-interface RouteParams {
-  params: Promise<{ category: string }>
-}
 
 export async function GET(
   request: NextRequest,
-  { params }: RouteParams
+  { params }: { params: Promise<{ category: string }> }
 ) {
   try {
     const { category } = await params;
     
     if (!validCategories.includes(category)) {
       return NextResponse.json(
-        { error: 'Invalid category' },
+        { error: `Invalid category. Valid categories are: ${validCategories.join(', ')}` },
         { status: 400 }
       );
     }
