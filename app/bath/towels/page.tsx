@@ -10,17 +10,17 @@ import { Product } from "@/types";
 const demoProducts = [
   {
     id: 981,
-    name: "Demo: Jacaqua Towels",
+    name: " Jacaqua Towels",
     image: "/topSeller/Towels/t1.jpg",
     price: "₹944",
-    description: "Demo product - Experience ultimate softness with these premium Jacaqua towels crafted for luxury.",
+    description: "Experience ultimate softness with these premium Jacaqua towels crafted for luxury.",
   },
   {
     id: 980,
-    name: "Demo: Egyptian Cotton Towels",
-    image: "/topSeller/Towels/t7.jpg",
-    price: "₹1799",
-    description: "Demo product - Luxurious Egyptian cotton towels for unmatched softness and superior absorbency.",
+    name: " Jacaqua Towels",
+    image: "/topSeller/Towels/t2.jpg",
+    price: "₹944",
+    description: "Experience ultimate softness with these premium Jacaqua towels crafted for luxury.",
   },
 ];
 
