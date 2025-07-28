@@ -10,17 +10,17 @@ import { Product } from "@/types";
 const demoProducts = [
   {
     id: 979,
-    name: "Demo: Jacaqua Hand Towel",
+    name: "Jacaqua Hand Towel",
     image: "/topSeller/Hand_Towels/t1.jpg",
     price: "₹539",
-    description: "Demo product - Experience ultimate softness with this premium cotton hand towel crafted for daily luxury.",
+    description: "Experience ultimate softness with this premium cotton hand towel crafted for daily luxury.",
   },
   {
     id: 978,
-    name: "Demo: Exotica Hand Towel",
-    image: "/topSeller/Hand_Towels/t3.jpg",
-    price: "₹719",
-    description: "Demo product - Elegant design hand towel perfect for enhancing your bathroom decor with style.",
+    name: "Jacaqua hand Towel",
+    image: "/topSeller/Hand_Towels/t2.jpg",
+    price: "₹539",
+    description: "Premium quality bath towel for everyday luxury.",
   },
 ];
 
