@@ -229,23 +229,7 @@ export default function MattressPage() {
               </div>
             </div>
 
-            {/* Size Filter */}
-            <div className="bg-white p-4 rounded-lg border">
-              <h3 className="font-semibold text-gray-900 mb-3">Size</h3>
-              <div className="space-y-2">
-                {["Single", "Double", "Queen", "King"].map((size) => (
-                  <label key={size} className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      checked={selectedSizes.includes(size)}
-                      onChange={() => handleSizeChange(size)}
-                      className="rounded border-gray-300"
-                    />
-                    <span className="text-sm text-gray-700">{size}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
+            
           </div>
 
           {/* Products Grid */}
