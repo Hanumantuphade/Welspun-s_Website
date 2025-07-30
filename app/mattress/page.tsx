@@ -22,16 +22,17 @@ export default function MattressPage() {
   const demoProducts: Product[] = [
     {
       id: 993,
-      name: "Demo: Luxury Mattress (8 inch height)",
-      price: 9999,
-      originalPrice: 12999,
+      name: "Oasis Haven Mattress(4, 5 & 6 Inches)",
+      price: 7499,
+      originalPrice: 8000,
       rating: 4.5,
       reviews: 120,
-      image: "/images/MattressSection/mat1/m1.png",
+      image: "/images/topSeller/Orthopedic/m1.jpg",
       images: [],
       colors: ["White"],
-      sizes: ["Single", "Double", "Queen", "King"],
-      description: "Demo product - Premium 8-inch luxury mattress with superior comfort",
+      sizes: ["4 Inche","5 Inche","6 Inche"],
+      description:
+        "Oasis Haven Mattress is engineered to minimize motion transfer for an undisturbed sleep. Enjoy improved spine alignment and weight distribution ensuring a peaceful nights rest, every night.",
       returnPolicy: "30 days return policy",
       careInstructions: "Regular rotation recommended",
       manufactureDetail: "Made with premium materials",
@@ -48,7 +49,8 @@ export default function MattressPage() {
       images: [],
       colors: ["Beige"],
       sizes: ["Single", "Double", "Queen", "King"],
-      description: "Demo product - Medium-firm 6-inch mattress perfect for balanced support",
+      description:
+        "Demo product - Medium-firm 6-inch mattress perfect for balanced support",
       returnPolicy: "30 days return policy",
       careInstructions: "Keep dry and well-ventilated",
       manufactureDetail: "Orthopedic design for spine support",
@@ -62,24 +64,26 @@ export default function MattressPage() {
         setLoading(true);
         setError(null);
 
-        const response = await fetch('/api/products/category/mattress');
-        
+        const response = await fetch("/api/products/category/mattress");
+
         if (!response.ok) {
           throw new Error(`Failed to fetch products: ${response.status}`);
         }
 
         const apiProducts = await response.json();
-        
+
         // Combine API products with demo products
         // Remove demoProducts from this line after you have real data
         const allProducts = [...demoProducts, ...apiProducts];
-        
+
         setProducts(allProducts);
         setFilteredProducts(allProducts); // initially show all
       } catch (err) {
-        console.error('Error fetching mattress products:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load products');
-        
+        console.error("Error fetching mattress products:", err);
+        setError(
+          err instanceof Error ? err.message : "Failed to load products"
+        );
+
         // Fallback to demo products only if API fails
         setProducts(demoProducts);
         setFilteredProducts(demoProducts);
@@ -94,18 +98,14 @@ export default function MattressPage() {
   // Handle Price Range change
   const handlePriceRangeChange = (range: string) => {
     setSelectedPriceRanges((prev) =>
-      prev.includes(range)
-        ? prev.filter((r) => r !== range)
-        : [...prev, range]
+      prev.includes(range) ? prev.filter((r) => r !== range) : [...prev, range]
     );
   };
 
   // Handle Size change
   const handleSizeChange = (size: string) => {
     setSelectedSizes((prev) =>
-      prev.includes(size)
-        ? prev.filter((s) => s !== size)
-        : [...prev, size]
+      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
     );
   };
 
@@ -162,8 +162,8 @@ export default function MattressPage() {
         <Header />
         <div className="text-center py-20">
           <p className="text-red-600 mb-4">Error loading products: {error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
             Retry
@@ -207,9 +207,15 @@ export default function MattressPage() {
             Comfort Mattress Collection
           </h1>
           <p className="text-gray-100">
-            <span className="text-xl">Upgrade your sleep with mattresses designed for ultimate comfort.</span>
-            <span className="text-lg hidden md:block">Balanced support and plush cushioning for peaceful nights.</span>
-            <span className="hidden md:block">Experience the difference of quality sleep every day.</span>
+            <span className="text-xl">
+              Upgrade your sleep with mattresses designed for ultimate comfort.
+            </span>
+            <span className="text-lg hidden md:block">
+              Balanced support and plush cushioning for peaceful nights.
+            </span>
+            <span className="hidden md:block">
+              Experience the difference of quality sleep every day.
+            </span>
           </p>
         </div>
       </div>
@@ -222,7 +228,12 @@ export default function MattressPage() {
             <div className="bg-white p-4 rounded-lg border">
               <h3 className="font-semibold text-gray-900 mb-3">Price Range</h3>
               <div className="space-y-2">
-                {["Under ₹10,000", "₹10,000 - ₹20,000", "₹20,000 - ₹30,000", "Above ₹30,000"].map((range) => (
+                {[
+                  "Under ₹10,000",
+                  "₹10,000 - ₹20,000",
+                  "₹20,000 - ₹30,000",
+                  "Above ₹30,000",
+                ].map((range) => (
                   <label key={range} className="flex items-center space-x-2">
                     <input
                       type="checkbox"
@@ -261,7 +272,8 @@ export default function MattressPage() {
             {error && products.length > 0 && (
               <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
                 <p className="text-yellow-800">
-                  <strong>Notice:</strong> Some products may not be up to date. {error}
+                  <strong>Notice:</strong> Some products may not be up to date.{" "}
+                  {error}
                 </p>
               </div>
             )}
@@ -269,14 +281,15 @@ export default function MattressPage() {
             {/* Products count and filters status */}
             <div className="mb-6 flex items-center justify-between">
               <p className="text-gray-600">
-                Showing {filteredProducts.length} of {products.length} mattress product{products.length !== 1 ? 's' : ''}
-                {products.some(p => p.id >= 992) && (
+                Showing {filteredProducts.length} of {products.length} mattress
+                product{products.length !== 1 ? "s" : ""}
+                {products.some((p) => p.id >= 992) && (
                   <span className="text-sm text-blue-600 ml-2">
                     (Including demo products)
                   </span>
                 )}
               </p>
-              
+
               {/* Clear filters button */}
               {(selectedPriceRanges.length > 0 || selectedSizes.length > 0) && (
                 <button
@@ -307,7 +320,7 @@ export default function MattressPage() {
                         </span>
                       </div>
                     )}
-                    
+
                     <div className="relative bg-gray-100 overflow-hidden mb-4">
                       <div className="aspect-square relative">
                         <Image
@@ -317,7 +330,7 @@ export default function MattressPage() {
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = '/api/placeholder/300/300';
+                            target.src = "/api/placeholder/300/300";
                           }}
                         />
                       </div>
@@ -362,14 +375,20 @@ export default function MattressPage() {
                         )}
                         {product.originalPrice > product.price && (
                           <span className="text-xs text-green-600 font-medium">
-                            {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                            {Math.round(
+                              ((product.originalPrice - product.price) /
+                                product.originalPrice) *
+                                100
+                            )}
+                            % OFF
                           </span>
                         )}
                       </div>
 
                       <div className="text-sm text-gray-600">
                         Available in: {product.sizes.slice(0, 2).join(", ")}
-                        {product.sizes.length > 2 && ` +${product.sizes.length - 2} more`}
+                        {product.sizes.length > 2 &&
+                          ` +${product.sizes.length - 2} more`}
                       </div>
                     </div>
                   </div>
@@ -381,19 +400,35 @@ export default function MattressPage() {
             {filteredProducts.length === 0 && !loading && (
               <div className="text-center py-20">
                 <div className="text-gray-400 mb-4">
-                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4l2 2 4-4" />
+                  <svg
+                    className="w-16 h-16 mx-auto"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1}
+                      d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1}
+                      d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4l2 2 4-4"
+                    />
                   </svg>
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  {products.length === 0 ? "No mattresses found" : "No mattresses match your filters"}
+                  {products.length === 0
+                    ? "No mattresses found"
+                    : "No mattresses match your filters"}
                 </h3>
                 <p className="text-gray-500 mb-4">
-                  {products.length === 0 
+                  {products.length === 0
                     ? "Check back soon for new mattress products!"
-                    : "Try adjusting your price range or size filters."
-                  }
+                    : "Try adjusting your price range or size filters."}
                 </p>
                 {filteredProducts.length === 0 && products.length > 0 && (
                   <button
@@ -406,8 +441,8 @@ export default function MattressPage() {
                     Clear Filters
                   </button>
                 )}
-                <button 
-                  onClick={() => window.location.reload()} 
+                <button
+                  onClick={() => window.location.reload()}
                   className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
                 >
                   Refresh Page
