@@ -18,7 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <CategorySection />
       <TopSellers />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
