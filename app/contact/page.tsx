@@ -130,9 +130,7 @@ export default function ContactPage() {
                         <p className="text-gray-600">
                           Customer Care: 6284824078{" "}
                         </p>
-                        <p className="text-gray-600">
-                          Bulk Orders: 1800-123-4568
-                        </p>
+                        
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -142,7 +140,7 @@ export default function ContactPage() {
                         <p className="text-gray-600">
                           swarattanenterprises@gmail.com
                         </p>
-                        <p className="text-gray-600">orders@spaces.in</p>
+                       
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
