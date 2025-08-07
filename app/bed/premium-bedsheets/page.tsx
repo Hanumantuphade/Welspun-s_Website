@@ -10,17 +10,17 @@ import { Product } from "@/types";
 const demoProducts = [
   {
     id: 991,
-    name: "Demo: Premium Cotton Bedsheet",
+    name: "Premium Cotton Bedsheet",
     image: "/topSeller/Bedsheets/premium/s1.jpeg",
-    price: "₹1499",
-    description: "Demo product - Soft and elegant premium cotton bedsheet with luxury finish.",
+    price: "₹2999",
+    description: " Soft and elegant premium cotton bedsheet with luxury finish.",
   },
   {
     id: 990,
-    name: "Demo: Luxury Collection Bedsheet",
+    name: "Luxury Collection Bedsheet",
     image: "/topSeller/Bedsheets/premium/s3.jpeg",
-    price: "₹2499",
-    description: "Demo product - Transform your bedroom into a luxury suite with this premium collection.",
+    price: "₹2999",
+    description: "Transform your bedroom into a luxury suite with this premium collection.",
   },
 ];
 
